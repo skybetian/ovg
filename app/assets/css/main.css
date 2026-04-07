@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #003BA4;
+  --color-secondary: #F0F5FF;
+  --color-black: #000816;
+  --color-white: #FFFFFF;
+  --color-light-gray: #EFEFEF;
+  --font-outfit: "Outfit", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Buttons — slide-fill hover */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  color: #ffffff;
+  border: 1px solid var(--color-primary);
+  background-image: linear-gradient(to right, #ffffff 50%, var(--color-primary) 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: background-position 0.4s ease, color 0.3s ease;
+}
+.btn-primary:hover {
+  background-position: left bottom;
+  color: var(--color-primary);
+}
+
+.btn-outline-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background-image: linear-gradient(to right, #ffffff 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: background-position 0.4s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.btn-outline-light:hover {
+  background-position: left bottom;
+  color: var(--color-black);
+  border-color: #ffffff;
+}
+
+.btn-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  background-image: linear-gradient(to right, var(--color-primary) 50%, #ffffff 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: background-position 0.4s ease, color 0.3s ease;
+}
+.btn-light:hover {
+  background-position: left bottom;
+  color: #ffffff;
+}
+
+/* Nav links — underline grows from 0 → full width on hover (matches .footer-link) */
+.nav-link-shift {
+  display: inline-block;
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  background-image: linear-gradient(#ffffff, #ffffff);
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  background-position: left bottom;
+  transition: background-size 0.4s ease, color 0.3s ease;
+}
+.nav-link-shift:hover {
+  color: #ffffff;
+  background-size: 100% 1px;
+}
+
+/* Footer links — underline grows from 0 → full width on hover */
+.footer-link {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.8);
+  background-image: linear-gradient(#ffffff, #ffffff);
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  background-position: left bottom;
+  padding-bottom: 2px;
+  transition: background-size 0.4s ease, color 0.3s ease;
+}
+.footer-link:hover {
+  color: #ffffff;
+  background-size: 100% 1px;
+}
