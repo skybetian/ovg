@@ -1,6 +1,6 @@
 <template>
   <nav class="bg-black w-full z-50 px-6 md:px-16 py-5">
-    <div class="max-w-7xl mx-auto px-6 md:px-16 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto md:px-6 md:px-16 flex items-center justify-between">
       <NuxtLink to="/">
         <img
           src="/images/logo-full.png"
@@ -22,7 +22,7 @@
 
       <NuxtLink
         to="/contacts"
-        class="btn-outline-light hidden md:inline-flex text-sm px-5 py-2 rounded"
+        class="btn-outline-light !hidden md:inline-flex text-sm px-5 py-2 rounded"
       >
         Contact Us
       </NuxtLink>

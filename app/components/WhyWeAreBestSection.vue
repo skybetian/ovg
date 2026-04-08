@@ -1,9 +1,9 @@
 <template>
-  <section ref="sectionEl" class="bg-secondary py-24">
+  <section ref="sectionEl" class="bg-navy-dark py-16 md:py-24">
     <div class="max-w-7xl mx-auto px-6 md:px-16">
-      <div ref="headingEl" class="text-center mb-16">
-        <p class="text-primary font-medium text-sm mb-2">About Us</p>
-        <h2 class="text-4xl md:text-5xl font-bold text-black font-outfit">
+      <div ref="headingEl" class="text-center mb-12 md:mb-16">
+        <p class="text-cool-gray font-medium text-sm mb-2">About Us</p>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-outfit">
           <span class="reveal">
             <span ref="titleTextEl" class="reveal-text">Why we are best</span>
             <span ref="titleBarEl" class="reveal-bar" />
@@ -11,26 +11,26 @@
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <!-- Collage images -->
-        <div ref="collageEl" class="grid grid-cols-2 grid-rows-2 gap-4 aspect-[5/5]">
+        <div ref="collageEl" class="grid grid-cols-2 grid-rows-2 gap-3 md:gap-4 aspect-[5/5]">
           <img
             ref="collageTopLeftEl"
             src="/images/best-1.png"
             alt="Team meeting"
-            class="w-full h-full object-cover rounded-xl grayscale"
+            class="w-full h-full object-cover rounded-xl"
           />
           <img
             ref="collageRightEl"
             src="/images/best-2.png"
             alt="Office collaboration"
-            class="row-span-2 w-full h-full object-cover rounded-xl grayscale"
+            class="row-span-2 w-full h-full object-cover rounded-xl"
           />
           <img
             ref="collageBottomLeftEl"
             src="/images/best-3.png"
             alt="Data chart"
-            class="w-full h-full object-cover rounded-xl grayscale"
+            class="w-full h-full object-cover rounded-xl"
           />
         </div>
 
@@ -38,10 +38,10 @@
         <div ref="valuesColEl">
           <div class="mb-10">
             <div class="flex items-start gap-4 mb-3">
-              <img src="/images/eye-icon.png" alt="" class="w-12 h-12 mt-1" />
+              <img src="/images/eye-icon.png" alt="" class="w-10 h-10 md:w-12 md:h-12 mt-1 flex-shrink-0" />
               <div>
-                <h3 class="text-2xl font-bold text-black mb-3">Our Vision</h3>
-                <p class="text-black/60 text-base leading-relaxed">
+                <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Our Vision</h3>
+                <p class="text-white/80 text-base leading-relaxed">
                   To lead the future of fintech and interactive
                   entertainment by building secure, scalable, and globally
                   trusted technology platforms.
@@ -52,10 +52,10 @@
 
           <div class="mb-10">
             <div class="flex items-start gap-4 mb-3">
-              <img src="/images/target-icon.png" alt="" class="w-12 h-12 mt-1" />
+              <img src="/images/target-icon.png" alt="" class="w-10 h-10 md:w-12 md:h-12 mt-1 flex-shrink-0" />
               <div>
-                <h3 class="text-2xl font-bold text-black mb-3">Our Mission</h3>
-                <p class="text-black/60 text-base leading-relaxed">
+                <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Our Mission</h3>
+                <p class="text-white/80 text-base leading-relaxed">
                   To build secure, compliant, and scalable technology
                   solutions for the interactive entertainment and fintech
                   sectors. We are committed to operating with integrity,

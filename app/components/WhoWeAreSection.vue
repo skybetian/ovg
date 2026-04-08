@@ -1,5 +1,5 @@
 <template>
-  <section ref="sectionEl" class="relative py-24 overflow-hidden">
+  <section ref="sectionEl" class="relative py-16 md:py-24 overflow-hidden">
     <img
       src="/images/who-we-are-bg.png"
       alt=""
@@ -36,7 +36,7 @@
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div ref="textContent">
-        <h2 class="text-4xl md:text-5xl font-bold text-white mb-8 font-outfit">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-8 font-outfit">
           <span class="reveal">
             <span ref="titleTextEl" class="reveal-text">Who We Are</span>
             <span ref="titleBarEl" class="reveal-bar" />

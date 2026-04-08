@@ -1,7 +1,7 @@
 <template>
   <footer ref="footerEl" class="bg-black text-white">
-    <div class="max-w-7xl mx-auto px-6 md:px-16 py-20">
-      <div class="flex flex-col lg:flex-row lg:justify-between gap-16">
+    <div class="max-w-7xl mx-auto px-6 md:px-16 py-14 md:py-20">
+      <div class="flex flex-col lg:flex-row lg:justify-between gap-12 lg:gap-16">
         <!-- Left: Logo, description, buttons -->
         <div ref="leftColEl" class="max-w-md">
           <img src="/images/logo-full.png" alt="SkyTech International" class="h-12 mb-6" />
@@ -21,7 +21,7 @@
         </div>
 
         <!-- Right: Links columns -->
-        <div ref="linksColsEl" class="grid grid-cols-2 gap-16">
+        <div ref="linksColsEl" class="grid grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
           <!-- Quick Links + Connect with us -->
           <div>
             <h3 class="text-lg font-bold mb-6">Quick Links</h3>
@@ -50,13 +50,13 @@
 
             <h3 class="text-lg font-bold mb-5">Connect with us</h3>
             <div class="flex gap-3">
-              <a href="#" aria-label="Facebook" class="hover:opacity-80 transition-opacity">
+              <a href="#" aria-label="Facebook" class="social-icon">
                 <img src="/images/facebook.png" alt="Facebook" class="w-9 h-9" />
               </a>
-              <a href="#" aria-label="Instagram" class="hover:opacity-80 transition-opacity">
+              <a href="#" aria-label="Instagram" class="social-icon">
                 <img src="/images/instagram.png" alt="Instagram" class="w-9 h-9" />
               </a>
-              <a href="#" aria-label="LinkedIn" class="hover:opacity-80 transition-opacity">
+              <a href="#" aria-label="LinkedIn" class="social-icon">
                 <img src="/images/linkedin.png" alt="LinkedIn" class="w-9 h-9" />
               </a>
             </div>
@@ -151,3 +151,23 @@ onBeforeUnmount(() => {
   trigger?.kill()
 })
 </script>
+
+<style scoped>
+.social-icon {
+  display: inline-flex;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+  will-change: transform;
+}
+.social-icon img {
+  transition: filter 0.3s ease;
+}
+.social-icon:hover {
+  transform: translateY(-4px) scale(1.1);
+}
+.social-icon:hover img {
+  filter: drop-shadow(0 6px 12px rgba(142, 179, 239, 0.55));
+}
+.social-icon:active {
+  transform: translateY(-2px) scale(1.05);
+}
+</style>

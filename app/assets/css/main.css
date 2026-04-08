@@ -6,6 +6,11 @@
   --color-black: #000816;
   --color-white: #FFFFFF;
   --color-light-gray: #EFEFEF;
+  --color-navy: #021940;
+  --color-navy-dark: #021539;
+  --color-navy-light: #102143;
+  --color-sky-blue: #8EB3EF;
+  --color-cool-gray: #C4C7CD;
   --font-outfit: "Outfit", sans-serif;
   --font-poppins: "Poppins", sans-serif;
 }

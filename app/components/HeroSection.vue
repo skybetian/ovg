@@ -1,5 +1,5 @@
 <template>
-  <section class="relative min-h-screen flex items-center overflow-hidden bg-black">
+  <section class="relative min-h-screen flex items-center overflow-hidden bg-black py-24 lg:py-0">
     <img
       src="/images/home-bg.png"
       alt=""
@@ -10,7 +10,7 @@
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <div ref="textContent">
-        <h1 class="text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-tight mb-6 font-outfit">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-tight mb-6 font-outfit">
           <span
             v-for="(line, i) in headlineLines"
             :key="i"
@@ -46,12 +46,10 @@
         <img
           src="/images/phone.png"
           alt="Fintech mobile app"
-          class="w-full max-w-md lg:max-w-lg xl:max-w-xl drop-shadow-2xl"
+          class="w-full max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl drop-shadow-2xl"
         />
       </div>
     </div>
-
-    <div class="absolute bottom-0 left-0 w-full h-1.5 bg-primary" />
   </section>
 </template>
 

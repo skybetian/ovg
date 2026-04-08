@@ -1,9 +1,9 @@
 <template>
-  <section ref="sectionEl" class="bg-white py-24">
+  <section ref="sectionEl" class="bg-navy py-16 md:py-24">
     <div class="max-w-7xl mx-auto px-6 md:px-16">
-      <div ref="headingEl" class="text-center mb-16">
-        <p class="text-primary font-medium text-sm mb-2">Testimonial</p>
-        <h2 class="text-4xl md:text-5xl font-bold text-black font-outfit">
+      <div ref="headingEl" class="text-center mb-12 md:mb-16">
+        <p class="text-cool-gray font-medium text-sm mb-2">Testimonial</p>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-outfit">
           <span class="reveal">
             <span ref="titleTextEl" class="reveal-text">What our clients say</span>
             <span ref="titleBarEl" class="reveal-bar" />
@@ -11,33 +11,41 @@
         </h2>
       </div>
 
-      <div ref="carouselEl" class="relative overflow-hidden">
+      <div
+        ref="carouselEl"
+        class="relative overflow-hidden"
+        @pointerdown="onPointerDown"
+        @pointermove="onPointerMove"
+        @pointerup="onPointerEnd"
+        @pointercancel="onPointerEnd"
+      >
         <div
-          class="flex transition-transform duration-500 ease-in-out"
-          :style="{ transform: `translateX(-${currentSlide * 100}%)` }"
+          :class="['flex', isDragging ? '' : 'transition-transform duration-500 ease-in-out']"
+          :style="trackStyle"
+          class="md:gap-8"
         >
           <div
             v-for="(page, pageIndex) in pagedTestimonials"
             :key="pageIndex"
-            class="w-full flex-shrink-0 grid grid-cols-1 md:grid-cols-2 gap-8"
+            class="w-full flex-shrink-0 grid grid-cols-1 md:grid-cols-2 md:gap-8"
           >
             <div
               v-for="(testimonial, index) in page"
               :key="index"
-              class="bg-secondary rounded-xl p-8"
+              class="testimonial-card bg-navy-light rounded-xl p-6 md:p-8"
             >
-              <img src="/images/quotes.png" alt="" class="w-14 h-14 mb-6 mx-auto" />
-              <p class="text-black/70 text-base leading-relaxed mb-8">
+              <img src="/images/quotes.png" alt="" class="quotes-icon w-12 h-12 md:w-14 md:h-14 mb-5 md:mb-6 mx-auto" />
+              <p class="text-white text-base leading-relaxed mb-8">
                 {{ testimonial.text }}
               </p>
               <div class="flex items-center justify-center gap-4">
                 <img
                   src="/images/user-placeholder.png"
                   alt=""
-                  class="w-22 h-22 rounded-full"
+                  class="w-16 h-16 md:w-22 md:h-22 rounded-full flex-shrink-0"
                 />
                 <div>
-                  <p class="font-semi-bold text-black text-base">{{ testimonial.role }}</p>
+                  <p class="font-semibold text-white text-base">{{ testimonial.role }}</p>
                   <div class="flex gap-1 mt-1">
                     <img
                       v-for="star in 5"
@@ -75,6 +83,58 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const currentSlide = ref(0)
+const pageSize = ref(2)
+const dragOffset = ref(0)
+const isDragging = ref(false)
+let pointerId: number | null = null
+let startX = 0
+let trackWidth = 0
+
+const trackStyle = computed(() => ({
+  transform: `translate3d(calc(${-currentSlide.value * 100}% + ${dragOffset.value}px), 0, 0)`,
+  touchAction: 'pan-y',
+  cursor: isDragging.value ? 'grabbing' : 'grab',
+  userSelect: 'none' as const,
+}))
+
+function onPointerDown(e: PointerEvent) {
+  if (!carouselEl.value) return
+  if (e.pointerType === 'mouse' && e.button !== 0) return
+  pointerId = e.pointerId
+  startX = e.clientX
+  trackWidth = carouselEl.value.clientWidth
+  isDragging.value = true
+  ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
+}
+
+function onPointerMove(e: PointerEvent) {
+  if (!isDragging.value || e.pointerId !== pointerId) return
+  let delta = e.clientX - startX
+  const lastIndex = pagedTestimonials.value.length - 1
+  if (
+    (currentSlide.value === 0 && delta > 0) ||
+    (currentSlide.value === lastIndex && delta < 0)
+  ) {
+    delta *= 0.35
+  }
+  dragOffset.value = delta
+}
+
+function onPointerEnd(e: PointerEvent) {
+  if (!isDragging.value || e.pointerId !== pointerId) return
+  const threshold = Math.max(50, trackWidth * 0.15)
+  const delta = dragOffset.value
+  const lastIndex = pagedTestimonials.value.length - 1
+
+  if (delta <= -threshold && currentSlide.value < lastIndex) {
+    currentSlide.value++
+  } else if (delta >= threshold && currentSlide.value > 0) {
+    currentSlide.value--
+  }
+  dragOffset.value = 0
+  isDragging.value = false
+  pointerId = null
+}
 
 const sectionEl = ref<HTMLElement>()
 const headingEl = ref<HTMLElement>()
@@ -84,9 +144,55 @@ const carouselEl = ref<HTMLElement>()
 const dotsEl = ref<HTMLElement>()
 
 let trigger: ScrollTrigger | undefined
+const cardCleanups: Array<() => void> = []
+let mql: MediaQueryList | undefined
+let onMqlChange: ((e: MediaQueryListEvent) => void) | undefined
 
 onMounted(() => {
   if (!sectionEl.value) return
+
+  // Responsive page size: 1 card on mobile, 2 on md+
+  mql = window.matchMedia('(min-width: 768px)')
+  pageSize.value = mql.matches ? 2 : 1
+  onMqlChange = (e) => {
+    pageSize.value = e.matches ? 2 : 1
+    const lastIndex = pagedTestimonials.value.length - 1
+    if (currentSlide.value > lastIndex) currentSlide.value = lastIndex
+  }
+  mql.addEventListener('change', onMqlChange)
+
+  sectionEl.value.querySelectorAll<HTMLElement>('.testimonial-card').forEach((card) => {
+    const icon = card.querySelector<HTMLImageElement>('.quotes-icon')
+    if (!icon) return
+
+    const onEnter = () => {
+      gsap.to(icon, {
+        scale: 1.2,
+        rotation: -8,
+        y: -4,
+        duration: 0.5,
+        ease: 'back.out(2)',
+        overwrite: true,
+      })
+    }
+    const onLeave = () => {
+      gsap.to(icon, {
+        scale: 1,
+        rotation: 0,
+        y: 0,
+        duration: 0.45,
+        ease: 'power3.out',
+        overwrite: true,
+      })
+    }
+
+    card.addEventListener('mouseenter', onEnter)
+    card.addEventListener('mouseleave', onLeave)
+    cardCleanups.push(() => {
+      card.removeEventListener('mouseenter', onEnter)
+      card.removeEventListener('mouseleave', onLeave)
+    })
+  })
 
   const tl = gsap.timeline({
     defaults: { ease: 'power3.out' },
@@ -174,6 +280,8 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   trigger?.kill()
+  cardCleanups.forEach((fn) => fn())
+  if (mql && onMqlChange) mql.removeEventListener('change', onMqlChange)
 })
 
 const testimonials = [
@@ -197,8 +305,9 @@ const testimonials = [
 
 const pagedTestimonials = computed(() => {
   const pages = []
-  for (let i = 0; i < testimonials.length; i += 2) {
-    pages.push(testimonials.slice(i, i + 2))
+  const size = pageSize.value
+  for (let i = 0; i < testimonials.length; i += size) {
+    pages.push(testimonials.slice(i, i + size))
   }
   return pages
 })
@@ -217,8 +326,50 @@ const pagedTestimonials = computed(() => {
 .reveal-bar {
   position: absolute;
   inset: 0;
-  background: var(--color-primary);
+  background: var(--color-white);
   pointer-events: none;
   will-change: transform;
+}
+
+@property --sheen-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.testimonial-card {
+  position: relative;
+  isolation: isolate;
+}
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--sheen-angle),
+    transparent 0%,
+    rgba(142, 179, 239, 0.9) 15%,
+    rgba(142, 179, 239, 0) 35%,
+    transparent 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.testimonial-card:hover::before {
+  opacity: 1;
+  animation: sheen-spin 3s linear infinite;
+}
+@keyframes sheen-spin {
+  to {
+    --sheen-angle: 360deg;
+  }
 }
 </style>
