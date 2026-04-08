@@ -450,6 +450,7 @@ onMounted(() => {
   // Force ScrollTrigger to recompute positions once Vue/images settle.
   // Without this, the line's start/end can be wrong on first paint and only
   // correct themselves when something triggers a resize event.
+  
   nextTick(() => ScrollTrigger.refresh())
   if (document.readyState !== 'complete') {
     window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true })
