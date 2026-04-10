@@ -1,41 +1,32 @@
 <template>
   <div>
     <!-- Hero -->
-    <section class="relative min-h-[75vh] flex items-center overflow-hidden bg-black">
-      <img
-        src="/images/product-bg.png"
-        alt=""
-        class="absolute inset-0 w-full h-full object-cover"
-      />
-      <div class="absolute inset-0" style="background: linear-gradient(to bottom, #000816 0%, rgba(0, 45, 124, 0.7) 100%)" />
-
-      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 w-full pt-24">
-        <h1 class="text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-tight mb-6 font-outfit">
-          Products
-        </h1>
-        <p class="text-white/80 text-base md:text-lg max-w-xl mb-10 leading-relaxed">
-          Skytech develops and operates technology products across fintech and interactive entertainment. Our platforms are built with compliance, security, and scalability at the core.
-        </p>
-        <NuxtLink
-          to="#company-overview"
-          class="btn-primary px-7 py-3 rounded"
-        >
-          Explore Games
-        </NuxtLink>
-      </div>
-    </section>
+    <PageHero
+      title="Products"
+      paragraph="Skytech develops and operates technology products across fintech and interactive entertainment. Our platforms are built with compliance, security, and scalability at the core."
+      cta-to="#company-overview"
+      cta-label="Explore Games"
+      image="/images/computer.png"
+      image-alt="Skytech multi-device platform"
+      bg-image="/images/product-bg.png"
+    />
 
     <!-- Our Expertise and Experience -->
-    <section class="bg-white py-20 md:py-28">
+    <section ref="expertiseEl" class="bg-navy py-20 md:py-28">
       <div class="max-w-7xl mx-auto px-6 md:px-16">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-black font-outfit mb-6">
-          Our Expertise and Experience
-        </h2>
-        <p class="text-gray-700 text-base md:text-lg max-w-2xl leading-relaxed mb-14">
-          Innovating at the intersection of finance and digital experiences, we deliver seamless fintech solutions and engaging interactive entertainment that empower users worldwide.
-        </p>
+        <div ref="expertiseHeadingEl">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-outfit mb-6">
+            <span class="reveal">
+              <span ref="expertiseTitleTextEl" class="reveal-text">Our Expertise and Experience</span>
+              <span ref="expertiseTitleBarEl" class="reveal-bar" />
+            </span>
+          </h2>
+          <p class="text-white/70 text-base md:text-lg max-w-2xl leading-relaxed mb-14">
+            Innovating at the intersection of finance and digital experiences, we deliver seamless fintech solutions and engaging interactive entertainment that empower users worldwide.
+          </p>
+        </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div ref="expertiseGridEl" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div
             v-for="item in expertise"
             :key="item.title"
@@ -62,26 +53,34 @@
 
 
     <!-- Our Interactive Platform -->
-    <section class="bg-[#000816] py-20 md:py-28">
+    <section ref="platformEl" class="bg-black py-20 md:py-28">
       <div class="max-w-7xl mx-auto px-6 md:px-16">
-        <div class="text-center mb-14">
+        <div ref="platformHeadingEl" class="text-center mb-14">
           <p class="text-white/70 text-sm md:text-base mb-3">Projects</p>
           <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-outfit">
-            Our Interactive Platform
+            <span class="reveal">
+              <span ref="platformTitleTextEl" class="reveal-text">Our Interactive Platform</span>
+              <span ref="platformTitleBarEl" class="reveal-bar" />
+            </span>
           </h2>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <NuxtLink
-            to="/products/bsweeps"
-            class="relative rounded-xl overflow-hidden aspect-[16/10] block group"
-          >
+        <div ref="platformGridEl" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="relative rounded-xl overflow-hidden aspect-[16/10] group cursor-pointer">
             <img
               src="/images/bsweeps.png"
               alt="BSweeps"
               class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
-          </NuxtLink>
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-300 flex items-center justify-center">
+              <NuxtLink
+                to="/products/bsweeps"
+                class="btn-primary px-6 py-2.5 rounded opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
+              >
+                View Details
+              </NuxtLink>
+            </div>
+          </div>
           <div
             v-for="n in 5"
             :key="n"
@@ -95,7 +94,7 @@
           </div>
         </div>
 
-        <div class="flex justify-center mt-12">
+        <div ref="platformCtaEl" class="flex justify-center mt-12">
           <NuxtLink
             to="#"
             class="btn-primary px-8 py-3 rounded"
@@ -108,14 +107,17 @@
     </section>
 
     <!-- How It Works -->
-    <section class="bg-[#EEF3FB] py-20 md:py-28">
+    <section ref="howItWorksEl" class="bg-navy py-20 md:py-28">
       <div class="max-w-7xl mx-auto px-6 md:px-16">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="flex flex-col justify-center p-2">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-black font-outfit mb-6">
-              How It Works
+          <div ref="howItWorksTextEl" class="flex flex-col justify-center p-2">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-outfit mb-6">
+              <span class="reveal">
+                <span ref="howTitleTextEl" class="reveal-text">How It Works</span>
+                <span ref="howTitleBarEl" class="reveal-bar" />
+              </span>
             </h2>
-            <p class="text-gray-700 text-base leading-relaxed max-w-sm">
+            <p class="text-white/70 text-base leading-relaxed max-w-sm">
               From ideation to launch and beyond, we guide every step to deliver innovative, secure, and seamless fintech and interactive experiences.
             </p>
           </div>
@@ -124,20 +126,24 @@
             v-for="(step, idx) in steps"
             :key="step.title"
             :class="[
-              'rounded-2xl p-8 shadow-md min-h-[260px] flex flex-col',
-              step.featured ? 'bg-primary text-white' : 'bg-white text-black',
+              'step-card group relative overflow-hidden rounded-2xl p-8 shadow-md min-h-[260px] flex flex-col transition-transform duration-300 hover:-translate-y-2',
+              step.featured ? 'bg-primary text-white' : 'bg-navy-light text-white',
             ]"
           >
+            <!-- Large background number — slides up on hover -->
+            <span
+              class="absolute -right-20 text-[8rem] md:text-[10rem] font-bold font-outfit leading-none opacity-0 translate-y-full pointer-events-none select-none transition-all duration-500 ease-out group-hover:opacity-[0.08] group-hover:translate-y-0 group-hover:right-0 -bottom-6"
+              :class="step.featured ? 'text-white' : 'text-sky-blue'"
+            >{{ String(idx + 1).padStart(2, '0') }}</span>
+
             <p
-              :class="[
-                'text-4xl md:text-5xl font-bold font-outfit mb-6',
-                step.featured ? 'text-white' : 'text-primary',
-              ]"
+              class="relative z-10 text-4xl md:text-5xl font-bold font-outfit mb-6 transition-all duration-300 group-hover:-rotate-6 origin-bottom-left group-hover:drop-shadow-[0_4px_12px_rgba(142,179,239,0.6)]"
+              :class="step.featured ? 'text-white' : 'text-sky-blue'"
             >
               {{ String(idx + 1).padStart(2, '0') }}
             </p>
-            <h3 class="text-xl font-bold font-outfit mb-3">{{ step.title }}</h3>
-            <p :class="['text-sm leading-relaxed', step.featured ? 'text-white/90' : 'text-gray-600']">
+            <h3 class="relative z-10 text-xl font-bold font-outfit mb-3">{{ step.title }}</h3>
+            <p :class="['relative z-10 text-sm leading-relaxed', step.featured ? 'text-white/90' : 'text-white/60']">
               {{ step.description }}
             </p>
           </div>
@@ -151,6 +157,157 @@
 </template>
 
 <script setup lang="ts">
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const expertiseEl = ref<HTMLElement>()
+const expertiseHeadingEl = ref<HTMLElement>()
+const expertiseTitleTextEl = ref<HTMLElement>()
+const expertiseTitleBarEl = ref<HTMLElement>()
+const expertiseGridEl = ref<HTMLElement>()
+
+let expertiseTrigger: ScrollTrigger | undefined
+let platformTrigger: ScrollTrigger | undefined
+let howItWorksTrigger: ScrollTrigger | undefined
+
+const howItWorksEl = ref<HTMLElement>()
+const howItWorksTextEl = ref<HTMLElement>()
+const howTitleTextEl = ref<HTMLElement>()
+const howTitleBarEl = ref<HTMLElement>()
+
+const platformEl = ref<HTMLElement>()
+const platformHeadingEl = ref<HTMLElement>()
+const platformTitleTextEl = ref<HTMLElement>()
+const platformTitleBarEl = ref<HTMLElement>()
+const platformGridEl = ref<HTMLElement>()
+const platformCtaEl = ref<HTMLElement>()
+
+onMounted(() => {
+  if (!expertiseEl.value) return
+
+  const tl = gsap.timeline({
+    defaults: { ease: 'power3.out' },
+    scrollTrigger: {
+      trigger: expertiseEl.value,
+      start: 'top 75%',
+      toggleActions: 'play none none none',
+    },
+  })
+
+  if (expertiseTitleTextEl.value && expertiseTitleBarEl.value) {
+    tl.to(expertiseTitleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
+    tl.to(expertiseTitleBarEl.value, { xPercent: -100, duration: 0.7 }, '<')
+  }
+
+  if (expertiseHeadingEl.value) {
+    tl.from(
+      expertiseHeadingEl.value.querySelectorAll('p'),
+      { opacity: 0, y: 20, duration: 0.6 },
+      '-=0.4',
+    )
+  }
+
+  if (expertiseGridEl.value) {
+    tl.from(
+      expertiseGridEl.value.children,
+      { opacity: 0, y: 60, duration: 0.8, stagger: 0.15 },
+      '-=0.3',
+    )
+  }
+
+  expertiseTrigger = tl.scrollTrigger
+
+  // Platform section animation
+  if (platformEl.value) {
+    const tl2 = gsap.timeline({
+      defaults: { ease: 'power3.out' },
+      scrollTrigger: {
+        trigger: platformEl.value,
+        start: 'top 75%',
+        toggleActions: 'play none none none',
+      },
+    })
+
+    if (platformTitleTextEl.value && platformTitleBarEl.value) {
+      tl2.to(platformTitleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
+      tl2.to(platformTitleBarEl.value, { xPercent: -100, duration: 0.7 }, '<')
+    }
+
+    if (platformHeadingEl.value) {
+      tl2.from(
+        platformHeadingEl.value.querySelectorAll('p'),
+        { opacity: 0, y: 20, duration: 0.6 },
+        '-=0.4',
+      )
+    }
+
+    if (platformGridEl.value) {
+      tl2.from(
+        platformGridEl.value.children,
+        { opacity: 0, y: 60, duration: 0.8, stagger: 0.1 },
+        '-=0.3',
+      )
+    }
+
+    if (platformCtaEl.value) {
+      tl2.from(
+        platformCtaEl.value,
+        { opacity: 0, y: 30, duration: 0.6 },
+        '-=0.3',
+      )
+    }
+
+    platformTrigger = tl2.scrollTrigger
+  }
+
+  // How It Works section animation
+  if (howItWorksEl.value) {
+    const tl3 = gsap.timeline({
+      defaults: { ease: 'power3.out' },
+      scrollTrigger: {
+        trigger: howItWorksEl.value,
+        start: 'top 75%',
+        toggleActions: 'play none none none',
+      },
+    })
+
+    // Title reveal
+    if (howTitleTextEl.value && howTitleBarEl.value) {
+      tl3.to(howTitleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
+      tl3.to(howTitleBarEl.value, { xPercent: -100, duration: 0.7 }, '<')
+    }
+
+    // Subtitle fade up
+    if (howItWorksTextEl.value) {
+      tl3.from(
+        howItWorksTextEl.value.querySelectorAll('p'),
+        { opacity: 0, y: 20, duration: 0.6 },
+        '-=0.4',
+      )
+    }
+
+    // Step cards cascade from right
+    const stepCards = howItWorksEl.value.querySelectorAll('.step-card')
+    if (stepCards.length) {
+      tl3.from(
+        stepCards,
+        { opacity: 0, x: 80, duration: 0.7, stagger: 0.15 },
+        '-=0.3',
+      )
+    }
+
+    howItWorksTrigger = tl3.scrollTrigger
+  }
+})
+
+onBeforeUnmount(() => {
+  expertiseTrigger?.kill()
+  platformTrigger?.kill()
+  howItWorksTrigger?.kill()
+})
+
 const expertise = [
   {
     title: 'Software Development',
@@ -182,3 +339,22 @@ const steps = [
   { title: 'Optimize',         description: 'Continuously monitor performance and enhance with data-driven insights.', featured: false },
 ]
 </script>
+
+<style scoped>
+.reveal {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+.reveal-text {
+  display: inline-block;
+  clip-path: inset(0 0 0 100%);
+}
+.reveal-bar {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  pointer-events: none;
+  will-change: transform;
+}
+</style>

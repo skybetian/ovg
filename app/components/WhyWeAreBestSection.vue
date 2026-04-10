@@ -110,7 +110,7 @@ onMounted(() => {
     scrollTrigger: {
       trigger: sectionEl.value,
       start: '15% 75%',
-      toggleActions: 'play none none reverse',
+      toggleActions: 'play none none none',
     },
   })
 

@@ -1,39 +1,27 @@
 <template>
   <div>
     <!-- Hero -->
-    <section class="relative min-h-[75vh] flex items-center overflow-hidden bg-black">
-      <img
-        src="/images/about-bg.png"
-        alt=""
-        class="absolute inset-0 w-full h-full object-cover"
-      />
-      <div class="absolute inset-0" style="background: linear-gradient(to bottom, #000816 0%, rgba(0, 45, 124, 0.7) 100%)" />
-
-      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 w-full pt-24">
-        <h1 class="text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-tight mb-6 font-outfit">
-          About Us
-        </h1>
-        <p class="text-white/80 text-base md:text-lg max-w-xl mb-10 leading-relaxed">
-          Learn more about our mission, vision, and the team driving innovation in
-          fintech and interactive technology.
-        </p>
-        <NuxtLink
-          to="#company-overview"
-          class="btn-primary px-7 py-3 rounded"
-        >
-          Discover More
-        </NuxtLink>
-      </div>
-    </section>
+    <PageHero
+      title="About Us"
+      paragraph="Learn more about our mission, vision, and the team driving innovation in fintech and interactive technology."
+      cta-to="#company-overview"
+      cta-label="Discover More"
+      image="/images/globe.png"
+      image-alt="Globe representing global reach"
+      bg-image="/images/about-bg.png"
+    />
 
     <!-- Company Overview -->
-    <section id="company-overview" class="bg-white py-24">
+    <section id="company-overview" ref="overviewEl" class="bg-navy py-24">
       <div class="max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <h2 class="text-4xl md:text-5xl font-bold text-black mb-8 font-outfit">
-            Company Overview
+        <div ref="overviewTextEl">
+          <h2 class="text-4xl md:text-5xl font-bold text-white mb-8 font-outfit">
+            <span class="reveal">
+              <span ref="overviewTitleTextEl" class="reveal-text">Company Overview</span>
+              <span ref="overviewTitleBarEl" class="reveal-bar" />
+            </span>
           </h2>
-          <p class="text-black/70 text-base leading-relaxed mb-6">
+          <p class="text-white/70 text-base leading-relaxed mb-6">
             SkyTech International is a Nevada-based technology
             company focused on developing software products in
             fintech, payment processing, and interactive
@@ -45,14 +33,14 @@
             operations in the United States and continues to grow its
             team and expand its product offerings for the U.S. market.
           </p>
-          <p class="text-black/70 text-base leading-relaxed">
+          <p class="text-white/70 text-base leading-relaxed">
             Our team combines deep expertise in software
             engineering, financial technology, and regulatory
             compliance to deliver secure, scalable solutions.
           </p>
         </div>
 
-        <div class="flex justify-center lg:justify-end">
+        <div ref="overviewImageEl" class="flex justify-center lg:justify-end">
           <img
             src="/images/building.png"
             alt="SkyTech International building"
@@ -66,3 +54,77 @@
     <LeadersSection />
   </div>
 </template>
+
+<script setup lang="ts">
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const overviewEl = ref<HTMLElement>()
+const overviewTitleTextEl = ref<HTMLElement>()
+const overviewTitleBarEl = ref<HTMLElement>()
+const overviewTextEl = ref<HTMLElement>()
+const overviewImageEl = ref<HTMLElement>()
+
+let overviewTrigger: ScrollTrigger | undefined
+
+onMounted(() => {
+  if (!overviewEl.value) return
+
+  const tl = gsap.timeline({
+    defaults: { ease: 'power3.out' },
+    scrollTrigger: {
+      trigger: overviewEl.value,
+      start: 'top 75%',
+      toggleActions: 'play none none none',
+    },
+  })
+
+  if (overviewTitleTextEl.value && overviewTitleBarEl.value) {
+    tl.to(overviewTitleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
+    tl.to(overviewTitleBarEl.value, { xPercent: -100, duration: 0.7 }, '<')
+  }
+
+  if (overviewTextEl.value) {
+    tl.from(
+      overviewTextEl.value.querySelectorAll('p'),
+      { opacity: 0, y: 30, duration: 0.8, stagger: 0.15 },
+      '-=0.3',
+    )
+  }
+
+  if (overviewImageEl.value) {
+    tl.from(
+      overviewImageEl.value,
+      { opacity: 0, x: 60, duration: 1, ease: 'power3.out' },
+      '<',
+    )
+  }
+
+  overviewTrigger = tl.scrollTrigger
+})
+
+onBeforeUnmount(() => {
+  overviewTrigger?.kill()
+})
+</script>
+
+<style scoped>
+.reveal {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+.reveal-text {
+  display: inline-block;
+  clip-path: inset(0 0 0 100%);
+}
+.reveal-bar {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  pointer-events: none;
+  will-change: transform;
+}
+</style>

@@ -17,6 +17,9 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  background-color: var(--color-navy);
+  overflow-x: hidden;
+  position: relative;
 }
 
 /* Buttons — slide-fill hover */
