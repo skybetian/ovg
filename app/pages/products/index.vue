@@ -72,10 +72,13 @@
               alt="BSweeps"
               class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-300 flex items-center justify-center">
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-300 flex flex-col items-center justify-center gap-3">
+              <h3 class="text-white text-2xl font-bold font-outfit opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                BSweeps
+              </h3>
               <NuxtLink
                 to="/products/bsweeps"
-                class="btn-primary px-6 py-2.5 rounded opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
+                class="btn-primary px-6 py-2.5 rounded opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 delay-75"
               >
                 View Details
               </NuxtLink>
@@ -84,12 +87,12 @@
           <div
             v-for="n in 5"
             :key="n"
-            class="relative rounded-xl overflow-hidden aspect-[16/10] bg-[#0a1428] w-full h-full flex items-center justify-center"
+            class="group relative rounded-xl overflow-hidden aspect-[16/10] bg-[#0a1428] w-full h-full flex items-center justify-center cursor-pointer"
           >
             <img
               src="/images/coming-soon.png"
               alt="Coming Soon"
-              class="w-28 h-auto object-cover"
+              class="w-28 h-auto object-cover coming-soon-img"
             />
           </div>
         </div>
@@ -293,7 +296,7 @@ onMounted(() => {
     if (stepCards.length) {
       tl3.from(
         stepCards,
-        { opacity: 0, x: 80, duration: 0.7, stagger: 0.15 },
+        { opacity: 0, y: 40, duration: 0.7, stagger: 0.15 },
         '-=0.3',
       )
     }
@@ -356,5 +359,19 @@ const steps = [
   background: #ffffff;
   pointer-events: none;
   will-change: transform;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-4px) rotate(-2deg); }
+  30% { transform: translateX(4px) rotate(2deg); }
+  45% { transform: translateX(-3px) rotate(-1deg); }
+  60% { transform: translateX(3px) rotate(1deg); }
+  75% { transform: translateX(-2px); }
+  90% { transform: translateX(2px); }
+}
+
+.group:hover .coming-soon-img {
+  animation: shake 0.5s ease-in-out;
 }
 </style>
