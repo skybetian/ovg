@@ -1,0 +1,103 @@
+<template>
+  <section class="relative min-h-[75vh] lg:min-h-screen flex items-center overflow-hidden bg-black py-24 lg:py-0">
+    <img
+      :src="bgImage"
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover opacity-40"
+    />
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(to bottom, #000816 0%, rgba(0, 45, 124, 0.7) 100%)"
+    />
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div ref="textContent">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-tight mb-6 font-outfit">
+          <span class="reveal w-fit">
+            <span ref="titleTextEl" class="reveal-text">{{ title }}</span>
+            <span ref="titleBarEl" class="reveal-bar" />
+          </span>
+        </h1>
+        <p class="text-white/80 text-base md:text-lg max-w-xl mb-10 leading-relaxed">
+          {{ paragraph }}
+        </p>
+        <NuxtLink :to="ctaTo" class="btn-primary px-7 py-3 rounded">
+          {{ ctaLabel }}
+        </NuxtLink>
+      </div>
+
+      <div ref="heroImage" class="flex justify-center lg:justify-end">
+        <img
+          :src="image"
+          :alt="imageAlt"
+          class="w-full max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl drop-shadow-2xl"
+        />
+      </div>
+    </div>
+  </section>
+</template>
+
+<script setup lang="ts">
+import { gsap } from 'gsap'
+
+defineProps<{
+  title: string
+  paragraph: string
+  ctaTo: string
+  ctaLabel: string
+  image: string
+  imageAlt: string
+  bgImage: string
+}>()
+
+const textContent = ref<HTMLElement>()
+const heroImage = ref<HTMLElement>()
+const titleTextEl = ref<HTMLElement>()
+const titleBarEl = ref<HTMLElement>()
+
+onMounted(() => {
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+
+  if (titleTextEl.value && titleBarEl.value) {
+    tl.to(titleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
+    tl.to(titleBarEl.value, { xPercent: -100, duration: 0.7 }, '<')
+  }
+
+  if (textContent.value) {
+    tl.from(
+      textContent.value.querySelectorAll('p, a'),
+      { opacity: 0, y: 30, duration: 0.8, stagger: 0.15 },
+      '-=0.3',
+    )
+  }
+
+  if (heroImage.value) {
+    gsap.from(heroImage.value, {
+      opacity: 0,
+      x: 60,
+      duration: 1,
+      delay: 0.3,
+      ease: 'power3.out',
+    })
+  }
+})
+</script>
+
+<style scoped>
+.reveal {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+.reveal-text {
+  display: inline-block;
+  clip-path: inset(0 0 0 100%);
+}
+.reveal-bar {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  pointer-events: none;
+  will-change: transform;
+}
+</style>

@@ -116,7 +116,7 @@ onMounted(() => {
     scrollTrigger: {
       trigger: footerEl.value,
       start: 'top 90%',
-      toggleActions: 'play none none reverse',
+      toggleActions: 'play none none none',
     },
   })
 

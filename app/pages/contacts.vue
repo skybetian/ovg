@@ -1,65 +1,54 @@
 <template>
   <div>
     <!-- Hero -->
-    <section class="relative min-h-[75vh] flex items-center overflow-hidden bg-black">
-      <img
-        src="/images/contacts-bg.png"
-        alt=""
-        class="absolute inset-0 w-full h-full object-cover"
-      />
-      <div class="absolute inset-0" style="background: linear-gradient(to bottom, #000816 0%, rgba(0, 45, 124, 0.7) 100%)" />
-
-      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 w-full pt-24">
-        <h1 class="text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-tight mb-6 font-outfit">
-          Contacts
-        </h1>
-        <p class="text-white/80 text-base md:text-lg max-w-xl mb-10 leading-relaxed">
-          Contact us for business inquiries, technical support, or collaboration opportunities.
-        </p>
-        <NuxtLink
-          to="#lets-talk"
-          class="btn-primary px-7 py-3 rounded"
-        >
-          Send us inquiry
-        </NuxtLink>
-      </div>
-    </section>
+    <PageHero
+      title="Contacts"
+      paragraph="Contact us for business inquiries, technical support, or collaboration opportunities."
+      cta-to="#lets-talk"
+      cta-label="Send Us Inquiry"
+      image="/images/usa.png"
+      image-alt="United States map"
+      bg-image="/images/contacts-bg.png"
+    />
 
     <!-- Let's Talk -->
-    <section id="lets-talk" class="bg-white py-20 md:py-28">
+    <section id="lets-talk" ref="letsTalkEl" class="bg-navy py-20 md:py-28">
       <div class="max-w-7xl mx-auto px-6 md:px-16">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <!-- Left: info -->
-          <div>
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-black font-outfit mb-6">
-              Let&rsquo;s Talk
+          <div ref="letsTalkInfoEl">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-outfit mb-6">
+              <span class="reveal">
+                <span ref="letsTalkTitleTextEl" class="reveal-text">Let&rsquo;s Talk</span>
+                <span ref="letsTalkTitleBarEl" class="reveal-bar" />
+              </span>
             </h2>
-            <p class="text-gray-700 text-base md:text-lg leading-relaxed max-w-md mb-12">
+            <p class="text-white/70 text-base md:text-lg leading-relaxed max-w-md mb-12">
               Have some big idea or brand to develop and need help? Then reach out we&rsquo;d love to hear about your project and provide help
             </p>
 
-            <h3 class="text-2xl font-bold text-black font-outfit mb-3">Location</h3>
-            <p class="text-gray-700 mb-10">
+            <h3 class="text-2xl font-bold text-white font-outfit mb-3">Location</h3>
+            <p class="text-white/70 mb-10">
               2835 South Jones, Suite 1, Las Vegas, Nevada 89107
             </p>
 
-            <h3 class="text-2xl font-bold text-black font-outfit mb-3">Email</h3>
-            <p class="text-gray-700 mb-10">info@skytech.international</p>
+            <h3 class="text-2xl font-bold text-white font-outfit mb-3">Email</h3>
+            <p class="text-white/70 mb-10">info@skytech.international</p>
 
-            <h3 class="text-2xl font-bold text-black font-outfit mb-4">Socials</h3>
+            <h3 class="text-2xl font-bold text-white font-outfit mb-4">Socials</h3>
             <ul class="space-y-3">
               <li>
-                <a href="#" class="text-black underline underline-offset-4 hover:text-primary transition-colors">
+                <a href="#" class="text-sky-blue underline underline-offset-4 hover:text-primary transition-colors">
                   Facebook
                 </a>
               </li>
               <li>
-                <a href="#" class="text-black underline underline-offset-4 hover:text-primary transition-colors">
+                <a href="#" class="text-sky-blue underline underline-offset-4 hover:text-primary transition-colors">
                   Instagram
                 </a>
               </li>
               <li>
-                <a href="#" class="text-black underline underline-offset-4 hover:text-primary transition-colors">
+                <a href="#" class="text-sky-blue underline underline-offset-4 hover:text-primary transition-colors">
                   LinkedIn
                 </a>
               </li>
@@ -67,9 +56,9 @@
           </div>
 
           <!-- Right: form -->
-          <form class="space-y-6" novalidate @submit.prevent="onSubmit">
+          <form ref="letsTalkFormEl" class="space-y-6" novalidate @submit.prevent="onSubmit">
             <div>
-              <label for="name" class="block text-sm font-medium text-black mb-2">Name</label>
+              <label for="name" class="block text-sm font-medium text-white mb-2">Name</label>
               <input
                 id="name"
                 v-model="form.name"
@@ -84,7 +73,7 @@
             </div>
 
             <div>
-              <label for="email" class="block text-sm font-medium text-black mb-2">Email</label>
+              <label for="email" class="block text-sm font-medium text-white mb-2">Email</label>
               <input
                 id="email"
                 v-model="form.email"
@@ -99,7 +88,7 @@
             </div>
 
             <div>
-              <label for="contact" class="block text-sm font-medium text-black mb-2">Contact Number</label>
+              <label for="contact" class="block text-sm font-medium text-white mb-2">Contact Number</label>
               <input
                 id="contact"
                 v-model="form.contact"
@@ -114,7 +103,7 @@
             </div>
 
             <div>
-              <label for="message" class="block text-sm font-medium text-black mb-2">Message</label>
+              <label for="message" class="block text-sm font-medium text-white mb-2">Message</label>
               <textarea
                 id="message"
                 v-model="form.message"
@@ -145,6 +134,61 @@
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import { z } from 'zod'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const letsTalkEl = ref<HTMLElement>()
+const letsTalkInfoEl = ref<HTMLElement>()
+const letsTalkTitleTextEl = ref<HTMLElement>()
+const letsTalkTitleBarEl = ref<HTMLElement>()
+const letsTalkFormEl = ref<HTMLFormElement>()
+
+let letsTalkTrigger: ScrollTrigger | undefined
+
+onMounted(() => {
+  if (!letsTalkEl.value) return
+
+  const tl = gsap.timeline({
+    defaults: { ease: 'power3.out' },
+    scrollTrigger: {
+      trigger: letsTalkEl.value,
+      start: 'top 75%',
+      toggleActions: 'play none none none',
+    },
+  })
+
+  // Title reveal
+  if (letsTalkTitleTextEl.value && letsTalkTitleBarEl.value) {
+    tl.to(letsTalkTitleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
+    tl.to(letsTalkTitleBarEl.value, { xPercent: -100, duration: 0.7 }, '<')
+  }
+
+  // Info content fade up
+  if (letsTalkInfoEl.value) {
+    tl.from(
+      letsTalkInfoEl.value.querySelectorAll('p, h3, ul'),
+      { opacity: 0, y: 30, duration: 0.7, stagger: 0.1 },
+      '-=0.3',
+    )
+  }
+
+  // Form slide in from right
+  if (letsTalkFormEl.value) {
+    tl.from(
+      letsTalkFormEl.value,
+      { opacity: 0, x: 60, duration: 0.9, ease: 'power3.out' },
+      '<',
+    )
+  }
+
+  letsTalkTrigger = tl.scrollTrigger
+})
+
+onBeforeUnmount(() => {
+  letsTalkTrigger?.kill()
+})
 
 const contactSchema = z.object({
   name: z
@@ -212,3 +256,22 @@ async function onSubmit() {
   }
 }
 </script>
+
+<style scoped>
+.reveal {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+.reveal-text {
+  display: inline-block;
+  clip-path: inset(0 0 0 100%);
+}
+.reveal-bar {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  pointer-events: none;
+  will-change: transform;
+}
+</style>

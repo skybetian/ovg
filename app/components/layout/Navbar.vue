@@ -22,14 +22,14 @@
 
       <NuxtLink
         to="/contacts"
-        class="btn-outline-light !hidden md:inline-flex text-sm px-5 py-2 rounded"
+        class="btn-outline-light !hidden md:!inline-flex text-sm px-5 py-2 rounded"
       >
         Contact Us
       </NuxtLink>
 
       <button
         class="md:hidden text-white"
-        @click="mobileOpen = !mobileOpen"
+        @click="mobileOpen = true"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -37,27 +37,38 @@
       </button>
     </div>
 
-    <div
-      v-if="mobileOpen"
-      class="md:hidden mt-4 flex flex-col gap-4 bg-black/95 backdrop-blur rounded-lg p-6"
-    >
-      <NuxtLink
-        v-for="link in navLinks"
-        :key="link.label"
-        :to="link.to"
-        class="text-white/80 hover:text-white transition-colors text-sm font-medium"
-        @click="mobileOpen = false"
-      >
-        {{ link.label }}
-      </NuxtLink>
-      <NuxtLink
-        to="/contacts"
-        class="btn-outline-light text-sm px-5 py-2 rounded"
-        @click="mobileOpen = false"
-      >
-        Contact Us
-      </NuxtLink>
-    </div>
+    <!-- Fullscreen mobile menu -->
+    <Teleport to="body">
+      <Transition name="mobile-menu">
+        <div
+          v-if="mobileOpen"
+          class="fixed inset-0 z-[200] flex flex-col items-center justify-center md:hidden"
+          style="background: radial-gradient(circle at 50% 40%, rgb(0, 30, 90) 0%, rgb(1, 12, 35) 45%, rgb(0, 4, 12) 100%)"
+        >
+          <nav class="flex flex-col items-center gap-8">
+            <NuxtLink
+              v-for="link in mobileLinks"
+              :key="link.label"
+              :to="link.to"
+              class="text-white/80 text-2xl font-light tracking-wide transition-colors hover:text-white"
+              active-class="!text-white underline underline-offset-8"
+              @click="mobileOpen = false"
+            >
+              {{ link.label }}
+            </NuxtLink>
+          </nav>
+
+          <button
+            class="absolute bottom-16 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-colors"
+            @click="mobileOpen = false"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </Transition>
+    </Teleport>
   </nav>
 </template>
 
@@ -69,4 +80,20 @@ const navLinks = [
   { label: 'About Us', to: '/about' },
   { label: 'Products', to: '/products' },
 ]
+
+const mobileLinks = [
+  ...navLinks,
+  { label: 'Contact Us', to: '/contacts' },
+]
 </script>
+
+<style scoped>
+.mobile-menu-enter-active,
+.mobile-menu-leave-active {
+  transition: opacity 0.3s ease;
+}
+.mobile-menu-enter-from,
+.mobile-menu-leave-to {
+  opacity: 0;
+}
+</style>

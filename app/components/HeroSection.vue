@@ -1,15 +1,19 @@
 <template>
-  <section class="relative min-h-screen flex items-center overflow-hidden bg-black py-24 lg:py-0">
-    <img
-      src="/images/home-bg.png"
-      alt=""
+  <section class="relative flex items-center overflow-hidden bg-black h-[calc(100dvh-80px)]">
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
       class="absolute inset-0 w-full h-full object-cover opacity-40"
-    />
+    >
+      <source src="/videos/hero-bg.mp4" type="video/mp4" />
+    </video>
 
-    <div class="absolute inset-0" style="background: radial-gradient(circle, rgba(0, 45, 124, 0.7) 0%, rgba(0, 8, 22, 1) 42%)" />
+    <!-- <div class="absolute inset-0" style="background: radial-gradient(circle, rgba(0, 45, 124, 0.7) 0%, rgba(0, 8, 22, 1) 42%)" /> -->
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div ref="textContent">
+      <div ref="textContent" class="order-2 lg:order-1">
         <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-tight mb-6 font-outfit">
           <span
             v-for="(line, i) in headlineLines"
@@ -42,7 +46,7 @@
         </div>
       </div>
 
-      <div ref="phoneImage" class="flex justify-center lg:justify-end">
+      <div ref="phoneImage" class="order-1 lg:order-2 flex justify-center lg:justify-end">
         <img
           src="/images/phone.png"
           alt="Fintech mobile app"

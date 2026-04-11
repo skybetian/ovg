@@ -301,7 +301,7 @@ onMounted(() => {
     scrollTrigger: {
       trigger: sectionEl.value,
       start: '15% 75%',
-      toggleActions: 'play none none reverse',
+      toggleActions: 'play none none none',
     },
   })
 
@@ -424,7 +424,7 @@ onMounted(() => {
       scrollTrigger: {
         trigger: cardsGridEl.value,
         start: 'top 40%',
-        toggleActions: 'play none none reverse',
+        toggleActions: 'play none none none',
       },
     })
 
