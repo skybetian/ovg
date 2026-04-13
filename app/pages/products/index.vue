@@ -6,9 +6,9 @@
       paragraph="Skytech develops and operates technology products across fintech and interactive entertainment. Our platforms are built with compliance, security, and scalability at the core."
       cta-to="#company-overview"
       cta-label="Explore Games"
-      image="/images/computer.png"
+      image="/images/computer.webp"
       image-alt="Skytech multi-device platform"
-      bg-image="/images/product-bg.png"
+      bg-image="/images/product-bg.webp"
     />
 
     <!-- Our Expertise and Experience -->
@@ -68,7 +68,7 @@
         <div ref="platformGridEl" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div class="relative rounded-xl overflow-hidden aspect-[16/10] group cursor-pointer">
             <img
-              src="/images/bsweeps.png"
+              src="/images/bsweeps.webp"
               alt="BSweeps"
               class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
@@ -90,7 +90,7 @@
             class="group relative rounded-xl overflow-hidden aspect-[16/10] bg-[#0a1428] w-full h-full flex items-center justify-center cursor-pointer"
           >
             <img
-              src="/images/coming-soon.png"
+              src="/images/coming-soon.webp"
               alt="Coming Soon"
               class="w-28 h-auto object-cover coming-soon-img"
             />
@@ -315,22 +315,22 @@ const expertise = [
   {
     title: 'Software Development',
     description: 'Custom platform development, API design, and cloud-native architecture for fintech and entertainment verticals.',
-    image: '/images/software-development.png',
+    image: '/images/software-development.webp',
   },
   {
     title: 'Fintech & Payments',
     description: 'Payment processing integration, ACH and card infrastructure, ledger systems, and payout automation for regulated environments.',
-    image: '/images/fintech-payments.png',
+    image: '/images/fintech-payments.webp',
   },
   {
     title: 'Game Development',
     description: 'Interactive entertainment software, sweepstakes game logic, RNG systems, and engaging UI/UX for social gaming platforms.',
-    image: '/images/game-development.png',
+    image: '/images/game-development.webp',
   },
   {
     title: 'Compliance-First',
     description: 'Geolocation enforcement, KYC/AML integration, jurisdiction-aware access controls, and regulatory reporting built from day one.',
-    image: '/images/compliance-first.png',
+    image: '/images/compliance-first.webp',
   },
 ]
 

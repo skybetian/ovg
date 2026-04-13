@@ -36,7 +36,7 @@
           :class="index === currentSlide ? 'leader-card-active' : ''"
         >
           <img
-            :src="index === currentSlide ? '/images/pattern.png' : '/images/pattern-dark.png'"
+            :src="index === currentSlide ? '/images/pattern.webp' : '/images/pattern-dark.webp'"
             alt=""
             class="absolute inset-0 w-full h-full object-cover pointer-events-none"
             :class="index === currentSlide ? 'opacity-40' : 'opacity-60'"
@@ -101,19 +101,19 @@ const leaders = [
   {
     name: 'Wendy Wongso',
     role: 'Chief Executive Officer',
-    image: '/images/user-placeholder.png',
+    image: '/images/user-placeholder.webp',
     bio: 'As Managing Member and CEO, Wendy leads Skytech\'s strategic direction and oversees all business operations. He brings extensive experience in technology management and business development to drive the company\'s growth in the fintech and interactive entertainment sectors.',
   },
   {
     name: 'Rich Newman',
     role: 'Legal Advisor',
-    image: '/images/rich-newman.png',
+    image: '/images/rich-newman.webp',
     bio: 'Rich serves as Legal Advisor, providing expert guidance on regulatory compliance, corporate governance, and legal strategy. His experience in U.S. gaming and technology law helps guide SkyTech in understanding and meeting applicable legal requirements across jurisdictions.',
   },
   {
     name: 'Mark Munger',
     role: 'Compliance & Technology Advisor',
-    image: '/images/mark-munger.png',
+    image: '/images/mark-munger.webp',
     bio: 'Mark advises on compliance strategy and technology architecture. With deep expertise in software engineering and fintech regulatory requirements, he provides guidance to help Skytech build platforms with security, scalability, and compliance at their core.',
   },
 ]

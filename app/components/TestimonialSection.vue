@@ -34,13 +34,13 @@
               :key="index"
               class="testimonial-card bg-navy-light rounded-xl p-6 md:p-8"
             >
-              <img src="/images/quotes.png" alt="" class="quotes-icon w-12 h-12 md:w-14 md:h-14 mb-5 md:mb-6 mx-auto" />
+              <img src="/images/quotes.webp" alt="" class="quotes-icon w-12 h-12 md:w-14 md:h-14 mb-5 md:mb-6 mx-auto" />
               <p class="text-white text-base leading-relaxed mb-8">
                 {{ testimonial.text }}
               </p>
               <div class="flex items-center justify-center gap-4">
                 <img
-                  src="/images/user-placeholder.png"
+                  src="/images/user-placeholder.webp"
                   alt=""
                   class="w-16 h-16 md:w-22 md:h-22 rounded-full flex-shrink-0"
                 />

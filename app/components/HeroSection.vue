@@ -48,7 +48,7 @@
 
       <div ref="phoneImage" class="order-1 lg:order-2 flex justify-center lg:justify-end">
         <img
-          src="/images/phone.png"
+          src="/images/phone.webp"
           alt="Fintech mobile app"
           class="w-full max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl drop-shadow-2xl"
         />

@@ -39,14 +39,14 @@ export const products: Product[] = [
     ],
     legalNote:
       'Bsweeps operates exclusively in states and jurisdictions where sweepstakes gaming is legal. Geofencing and other measures are implemented to ensure location enforcement to meet all federal and state requirements.',
-    hero: '/images/bsweeps-gallery-1.png',
+    hero: '/images/bsweeps-gallery-1.webp',
     gallery: [
-      '/images/bsweeps-gallery-1.png',
-      '/images/bsweeps-gallery-2.png',
-      '/images/bsweeps-gallery-3.png',
-      '/images/bsweeps-gallery-4.png',
-      '/images/bsweeps-gallery-5.png',
-      '/images/bsweeps-gallery-6.png',
+      '/images/bsweeps-gallery-1.webp',
+      '/images/bsweeps-gallery-2.webp',
+      '/images/bsweeps-gallery-3.webp',
+      '/images/bsweeps-gallery-4.webp',
+      '/images/bsweeps-gallery-5.webp',
+      '/images/bsweeps-gallery-6.webp',
     ],
   },
 ]

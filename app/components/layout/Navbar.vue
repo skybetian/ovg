@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto md:px-6 md:px-16 flex items-center justify-between">
       <NuxtLink to="/">
         <img
-          src="/images/logo-full.png"
+          src="/images/logo-full.webp"
           alt="SkyTech International"
           class="h-10"
         />
