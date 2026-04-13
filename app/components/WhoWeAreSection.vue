@@ -1,7 +1,7 @@
 <template>
   <section ref="sectionEl" class="relative py-16 md:py-24 overflow-hidden">
     <img
-      src="/images/who-we-are-bg.png"
+      src="/images/who-we-are-bg.webp"
       alt=""
       class="absolute inset-0 w-full h-full object-cover"
     />
@@ -65,7 +65,7 @@
 
       <div ref="buildingImageEl" class="flex justify-center lg:justify-end">
         <img
-          src="/images/building.png"
+          src="/images/building.webp"
           alt="SkyTech International building"
           class="w-full max-w-md lg:max-w-lg rounded-lg shadow-2xl"
         />

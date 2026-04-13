@@ -16,19 +16,19 @@
         <div ref="collageEl" class="grid grid-cols-2 grid-rows-2 gap-3 md:gap-4 aspect-[5/5]">
           <img
             ref="collageTopLeftEl"
-            src="/images/best-1.png"
+            src="/images/best-1.webp"
             alt="Team meeting"
             class="w-full h-full object-cover rounded-xl"
           />
           <img
             ref="collageRightEl"
-            src="/images/best-2.png"
+            src="/images/best-2.webp"
             alt="Office collaboration"
             class="row-span-2 w-full h-full object-cover rounded-xl"
           />
           <img
             ref="collageBottomLeftEl"
-            src="/images/best-3.png"
+            src="/images/best-3.webp"
             alt="Data chart"
             class="w-full h-full object-cover rounded-xl"
           />
@@ -38,7 +38,7 @@
         <div ref="valuesColEl">
           <div class="mb-10">
             <div class="flex items-start gap-4 mb-3">
-              <img src="/images/eye-icon.png" alt="" class="w-10 h-10 md:w-12 md:h-12 mt-1 flex-shrink-0" />
+              <img src="/images/eye-icon.webp" alt="" class="w-10 h-10 md:w-12 md:h-12 mt-1 flex-shrink-0" />
               <div>
                 <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Our Vision</h3>
                 <p class="text-white/80 text-base leading-relaxed">
@@ -52,7 +52,7 @@
 
           <div class="mb-10">
             <div class="flex items-start gap-4 mb-3">
-              <img src="/images/target-icon.png" alt="" class="w-10 h-10 md:w-12 md:h-12 mt-1 flex-shrink-0" />
+              <img src="/images/target-icon.webp" alt="" class="w-10 h-10 md:w-12 md:h-12 mt-1 flex-shrink-0" />
               <div>
                 <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Our Mission</h3>
                 <p class="text-white/80 text-base leading-relaxed">

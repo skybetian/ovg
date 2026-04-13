@@ -6,9 +6,9 @@
       paragraph="Learn more about our mission, vision, and the team driving innovation in fintech and interactive technology."
       cta-to="#company-overview"
       cta-label="Discover More"
-      image="/images/globe.png"
+      image="/images/globe.webp"
       image-alt="Globe representing global reach"
-      bg-image="/images/about-bg.png"
+      bg-image="/images/about-bg.webp"
     />
 
     <!-- Company Overview -->
@@ -42,7 +42,7 @@
 
         <div ref="overviewImageEl" class="flex justify-center lg:justify-end">
           <img
-            src="/images/building.png"
+            src="/images/building.webp"
             alt="SkyTech International building"
             class="w-full max-w-lg rounded-lg shadow-2xl"
           />

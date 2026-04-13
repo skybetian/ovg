@@ -6,9 +6,9 @@
       paragraph="Contact us for business inquiries, technical support, or collaboration opportunities."
       cta-to="#lets-talk"
       cta-label="Send Us Inquiry"
-      image="/images/usa.png"
+      image="/images/usa.webp"
       image-alt="United States map"
-      bg-image="/images/contacts-bg.png"
+      bg-image="/images/contacts-bg.webp"
     />
 
     <!-- Let's Talk -->

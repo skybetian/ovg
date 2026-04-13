@@ -90,14 +90,14 @@ onBeforeUnmount(() => {
 })
 
 const providers = [
-  { name: 'Cewin',           logo: '/images/cewin.png' },
-  { name: 'Evolution',       logo: '/images/evolution.png' },
-  { name: 'No Limit City',   logo: '/images/no-limit-city.png' },
-  { name: 'NetEnt',          logo: '/images/netent.png' },
-  { name: 'Red Tiger',       logo: '/images/red-tiger.png' },
-  { name: 'First Person',    logo: '/images/first-person.png' },
-  { name: 'Big Time Gaming', logo: '/images/big-time-gaming.png' },
-  { name: 'Altenar',         logo: '/images/altenar.png' },
+  { name: 'Cewin',           logo: '/images/cewin.webp' },
+  { name: 'Evolution',       logo: '/images/evolution.webp' },
+  { name: 'No Limit City',   logo: '/images/no-limit-city.webp' },
+  { name: 'NetEnt',          logo: '/images/netent.webp' },
+  { name: 'Red Tiger',       logo: '/images/red-tiger.webp' },
+  { name: 'First Person',    logo: '/images/first-person.webp' },
+  { name: 'Big Time Gaming', logo: '/images/big-time-gaming.webp' },
+  { name: 'Altenar',         logo: '/images/altenar.webp' },
 ]
 </script>
 

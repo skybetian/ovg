@@ -4,7 +4,7 @@
       <div class="flex flex-col lg:flex-row lg:justify-between gap-12 lg:gap-16">
         <!-- Left: Logo, description, buttons -->
         <div ref="leftColEl" class="max-w-md">
-          <img src="/images/logo-full.png" alt="SkyTech International" class="h-12 mb-6" />
+          <img src="/images/logo-full.webp" alt="SkyTech International" class="h-12 mb-6" />
           <p class="text-white/70 text-sm leading-relaxed mb-8">
             Innovating at the intersection of finance and digital experiences,
             we deliver seamless fintech solutions and engaging interactive
@@ -51,13 +51,13 @@
             <h3 class="text-lg font-bold mb-5">Connect with us</h3>
             <div class="flex gap-3">
               <a href="#" aria-label="Facebook" class="social-icon">
-                <img src="/images/facebook.png" alt="Facebook" class="w-9 h-9" />
+                <img src="/images/facebook.webp" alt="Facebook" class="w-9 h-9" />
               </a>
               <a href="#" aria-label="Instagram" class="social-icon">
-                <img src="/images/instagram.png" alt="Instagram" class="w-9 h-9" />
+                <img src="/images/instagram.webp" alt="Instagram" class="w-9 h-9" />
               </a>
               <a href="#" aria-label="LinkedIn" class="social-icon">
-                <img src="/images/linkedin.png" alt="LinkedIn" class="w-9 h-9" />
+                <img src="/images/linkedin.webp" alt="LinkedIn" class="w-9 h-9" />
               </a>
             </div>
           </div>

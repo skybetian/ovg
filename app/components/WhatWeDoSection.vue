@@ -63,10 +63,10 @@
           <picture class="z-10">
             <source
               media="(min-width: 640px)"
-              srcset="/images/what-we-do-logo.png"
+              srcset="/images/what-we-do-logo.webp"
             />
             <img
-              src="/images/what-we-do-logo-small.png"
+              src="/images/what-we-do-logo-small.webp"
               alt="logo"
               class="w-full max-w-[200px] sm:max-w-xs md:max-w-sm object-cover z-10"
             />
@@ -159,7 +159,7 @@
         </div>
 
         <div class="service-card js-left-card rounded-xl p-6 md:p-8 lg:col-start-1 lg:row-start-1">
-          <img src="/images/pc-icon.png" alt="" class="w-10 h-10 mb-5" />
+          <img src="/images/pc-icon.webp" alt="" class="w-10 h-10 mb-5" />
           <h3 class="text-xl font-bold text-white mb-3">Software Development</h3>
           <p class="text-cool-gray text-sm leading-relaxed">
             Custom platform development, API
@@ -170,7 +170,7 @@
         </div>
 
         <div class="service-card js-left-card rounded-xl p-6 md:p-8 lg:col-start-1 lg:row-start-2">
-          <img src="/images/plant-icon.png" alt="" class="w-10 h-10 mb-5" />
+          <img src="/images/plant-icon.webp" alt="" class="w-10 h-10 mb-5" />
           <h3 class="text-xl font-bold text-white mb-3">Game Development</h3>
           <p class="text-cool-gray text-sm leading-relaxed">
             Interactive entertainment
@@ -182,7 +182,7 @@
         </div>
 
         <div class="service-card js-right-card rounded-xl p-6 md:p-8 lg:col-start-3 lg:row-start-1">
-          <img src="/images/tags-icon.png" alt="" class="w-10 h-10 mb-5" />
+          <img src="/images/tags-icon.webp" alt="" class="w-10 h-10 mb-5" />
           <h3 class="text-xl font-bold text-white mb-3">Fintech &amp; Payments</h3>
           <p class="text-cool-gray text-sm leading-relaxed">
             Payment processing integration,
@@ -193,7 +193,7 @@
         </div>
 
         <div class="service-card js-right-card rounded-xl p-6 md:p-8 lg:col-start-3 lg:row-start-2">
-          <img src="/images/cs-icon.png" alt="" class="w-10 h-10 mb-5" />
+          <img src="/images/cs-icon.webp" alt="" class="w-10 h-10 mb-5" />
           <h3 class="text-xl font-bold text-white mb-3">Compliance-First</h3>
           <p class="text-cool-gray text-sm leading-relaxed">
             Geolocation enforcement, KYC/AML
