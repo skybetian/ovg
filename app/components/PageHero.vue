@@ -1,5 +1,5 @@
 <template>
-  <section class="relative min-h-[60vh] flex items-center overflow-hidden bg-black py-28 md:py-36">
+  <section class="relative max-h-[70vh] md:max-h-[60vh] flex items-center overflow-hidden bg-black py-28 md:py-36">
     <img
       :src="bgImage"
       alt=""
