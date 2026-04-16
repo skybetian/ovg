@@ -11,11 +11,11 @@
         </h2>
       </div>
 
-      <div ref="gridEl" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 md:gap-6 max-w-5xl mx-auto">
+      <div ref="gridEl" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-6 max-w-5xl mx-auto">
         <div
           v-for="provider in providers"
           :key="provider.name"
-          class="flex items-center justify-center h-24 transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(142,179,239,0.4)]"
+          class="flex items-center justify-center h-fit transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(142,179,239,0.4)]"
         >
           <img
             :src="provider.logo"
