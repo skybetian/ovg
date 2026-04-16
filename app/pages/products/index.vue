@@ -26,12 +26,12 @@
           </p>
         </div>
 
-        <div ref="expertisePinEl" class="overflow-hidden">
+        <div ref="expertisePinEl" class="overflow-hidden lg:overflow-visible">
           <div ref="expertiseGridEl" class="flex gap-6 lg:grid lg:grid-cols-4">
             <div
               v-for="item in expertise"
               :key="item.title"
-              class="relative rounded-2xl overflow-hidden min-h-[420px] min-w-[280px] max-w-[85vw] sm:min-w-[350px] sm:max-w-[70vw] lg:min-w-0 lg:max-w-none flex flex-col justify-end shadow-lg group flex-shrink-0 lg:flex-shrink snap-start"
+              class="relative rounded-2xl overflow-hidden min-h-[420px] min-w-[280px] max-w-[85vw] sm:min-w-[350px] sm:max-w-[70vw] lg:min-w-0 lg:max-w-none flex flex-col justify-end shadow-lg group flex-shrink-0 lg:flex-shrink"
             >
               <img
                 :src="item.image"
@@ -232,29 +232,25 @@ onMounted(() => {
 
   expertiseTrigger = tl.scrollTrigger
 
-  // Horizontal scroll for expertise cards on scroll
-  if (expertisePinEl.value && expertiseGridEl.value) {
-    const scrollWidth = expertiseGridEl.value.scrollWidth
-    const viewWidth = expertisePinEl.value.offsetWidth
+  // Pinned horizontal scroll for expertise cards on mobile
+  if (expertisePinEl.value && expertiseGridEl.value && window.innerWidth < 1024) {
+    const grid = expertiseGridEl.value
+    const container = expertisePinEl.value
+    const getDistance = () => grid.scrollWidth - container.offsetWidth
 
-    if (scrollWidth > viewWidth) {
-      gsap.set(expertiseGridEl.value, { willChange: 'transform' })
-      gsap.to(expertiseGridEl.value, {
-        x: -(scrollWidth - viewWidth),
-        ease: 'none',
-        force3D: true,
-        scrollTrigger: {
-          trigger: expertiseEl.value,
-          start: 'top 0px',
-          end: () => `+=${scrollWidth}`,
-          pin: true,
-          pinSpacing: true,
-          scrub: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
-      })
-    }
+    gsap.to(grid, {
+      x: () => -getDistance(),
+      ease: 'none',
+      force3D: true,
+      scrollTrigger: {
+        trigger: expertiseEl.value,
+        start: 'top top',
+        end: () => `+=${getDistance()}`,
+        pin: true,
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+    })
   }
 
   // Platform section animation
