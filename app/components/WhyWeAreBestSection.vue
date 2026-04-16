@@ -156,7 +156,7 @@ onMounted(() => {
   if (valuesColEl.value) {
     tl.from(
       valuesColEl.value.querySelectorAll('.mb-10'),
-      { opacity: 0, x: 80, duration: 0.8, stagger: 0.15 },
+      { opacity: 0, y: 40, duration: 0.8, stagger: 0.15 },
       '<',
     )
 

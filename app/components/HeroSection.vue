@@ -1,5 +1,5 @@
 <template>
-  <section class="relative flex items-center overflow-hidden bg-black py-28 lg:py-0 lg:h-[calc(100dvh-80px)]">
+  <section class="relative flex items-center overflow-hidden bg-black pt-16 pb-28 lg:py-0 lg:h-[calc(100dvh-80px)]">
     <video
       autoplay
       loop

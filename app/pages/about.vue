@@ -95,9 +95,10 @@ onMounted(() => {
   }
 
   if (overviewImageEl.value) {
+    const isMobile = window.innerWidth < 1024
     tl.from(
       overviewImageEl.value,
-      { opacity: 0, x: 60, duration: 1, ease: 'power3.out' },
+      { opacity: 0, ...(isMobile ? { y: 40 } : { x: 60 }), duration: 1, ease: 'power3.out' },
       '<',
     )
   }

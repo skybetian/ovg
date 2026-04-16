@@ -238,15 +238,18 @@ onMounted(() => {
     const viewWidth = expertisePinEl.value.offsetWidth
 
     if (scrollWidth > viewWidth) {
+      gsap.set(expertiseGridEl.value, { willChange: 'transform' })
       gsap.to(expertiseGridEl.value, {
         x: -(scrollWidth - viewWidth),
         ease: 'none',
+        force3D: true,
         scrollTrigger: {
           trigger: expertiseEl.value,
           start: 'top top',
           end: () => `+=${scrollWidth - viewWidth}`,
           pin: true,
-          scrub: 1,
+          scrub: true,
+          anticipatePin: 1,
         },
       })
     }
