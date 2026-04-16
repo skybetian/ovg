@@ -103,7 +103,7 @@ onMounted(() => {
     )
     tl.to(
       item.bar,
-      { xPercent: -100, duration: 0.7 },
+      { xPercent: -101, duration: 0.7 },
       '<',
     )
   }

@@ -211,7 +211,7 @@ onMounted(() => {
 
   if (expertiseTitleTextEl.value && expertiseTitleBarEl.value) {
     tl.to(expertiseTitleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
-    tl.to(expertiseTitleBarEl.value, { xPercent: -100, duration: 0.7 }, '<')
+    tl.to(expertiseTitleBarEl.value, { xPercent: -101, duration: 0.7 }, '<')
   }
 
   if (expertiseHeadingEl.value) {
@@ -264,8 +264,10 @@ onMounted(() => {
     })
 
     if (platformTitleTextEl.value && platformTitleBarEl.value) {
+      gsap.set(platformTitleBarEl.value, { opacity: 0 })
       tl2.to(platformTitleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
-      tl2.to(platformTitleBarEl.value, { xPercent: -100, duration: 0.7 }, '<')
+      tl2.set(platformTitleBarEl.value, { opacity: 1 }, 0.1)
+      tl2.to(platformTitleBarEl.value, { xPercent: -101, duration: 0.7 }, '<')
     }
 
     if (platformHeadingEl.value) {
@@ -309,8 +311,10 @@ onMounted(() => {
 
     // Title reveal
     if (howTitleTextEl.value && howTitleBarEl.value) {
+      gsap.set(howTitleBarEl.value, { opacity: 0 })
       tl3.to(howTitleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
-      tl3.to(howTitleBarEl.value, { xPercent: -100, duration: 0.7 }, '<')
+      tl3.set(howTitleBarEl.value, { opacity: 1 }, 0.1)
+      tl3.to(howTitleBarEl.value, { xPercent: -101, duration: 0.7 }, '<')
     }
 
     // Subtitle fade up
