@@ -83,7 +83,7 @@ onMounted(() => {
 
   if (overviewTitleTextEl.value && overviewTitleBarEl.value) {
     tl.to(overviewTitleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
-    tl.to(overviewTitleBarEl.value, { xPercent: -100, duration: 0.7 }, '<')
+    tl.to(overviewTitleBarEl.value, { xPercent: -101, duration: 0.7 }, '<')
   }
 
   if (overviewTextEl.value) {

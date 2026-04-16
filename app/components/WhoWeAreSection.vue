@@ -174,7 +174,7 @@ onMounted(() => {
 
   if (titleTextEl.value && titleBarEl.value) {
     tl.to(titleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
-    tl.to(titleBarEl.value, { xPercent: -100, duration: 0.7 }, '<')
+    tl.to(titleBarEl.value, { xPercent: -101, duration: 0.7 }, '<')
   }
 
   if (textContent.value) {

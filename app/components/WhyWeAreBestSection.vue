@@ -35,10 +35,10 @@
         </div>
 
         <!-- Vision & Mission -->
-        <div ref="valuesColEl">
+        <div ref="valuesColEl" class="text-center lg:text-left">
           <div class="mb-10">
-            <div class="flex items-start gap-4 mb-3">
-              <img src="/images/eye-icon.webp" alt="" class="w-10 h-10 md:w-12 md:h-12 mt-1 flex-shrink-0" />
+            <div class="flex flex-col items-center lg:flex-row lg:items-start gap-4 mb-3">
+              <img src="/images/eye-icon.webp" alt="" class="w-10 h-10 md:w-12 md:h-12 lg:mt-1 flex-shrink-0" />
               <div>
                 <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Our Vision</h3>
                 <p class="text-white/80 text-base leading-relaxed">
@@ -51,8 +51,8 @@
           </div>
 
           <div class="mb-10">
-            <div class="flex items-start gap-4 mb-3">
-              <img src="/images/target-icon.webp" alt="" class="w-10 h-10 md:w-12 md:h-12 mt-1 flex-shrink-0" />
+            <div class="flex flex-col items-center lg:flex-row lg:items-start gap-4 mb-3">
+              <img src="/images/target-icon.webp" alt="" class="w-10 h-10 md:w-12 md:h-12 lg:mt-1 flex-shrink-0" />
               <div>
                 <h3 class="text-xl md:text-2xl font-bold text-white mb-3">Our Mission</h3>
                 <p class="text-white/80 text-base leading-relaxed">
@@ -66,14 +66,16 @@
             </div>
           </div>
 
-          <NuxtLink
-            v-if="showReadMore"
-            to="/about"
-            class="btn-primary px-7 py-3 rounded"
-          >
-            Read More
-            <span>&rarr;</span>
-          </NuxtLink>
+          <div class="flex justify-center lg:justify-start">
+            <NuxtLink
+              v-if="showReadMore"
+              to="/about"
+              class="btn-light px-7 py-3 rounded"
+            >
+              Read More
+              <span>&rarr;</span>
+            </NuxtLink>
+          </div>
         </div>
       </div>
     </div>
@@ -116,7 +118,7 @@ onMounted(() => {
 
   if (titleTextEl.value && titleBarEl.value) {
     tl.to(titleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
-    tl.to(titleBarEl.value, { xPercent: -100, duration: 0.7 }, '<')
+    tl.to(titleBarEl.value, { xPercent: -101, duration: 0.7 }, '<')
   }
 
   if (headingEl.value) {

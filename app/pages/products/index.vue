@@ -26,25 +26,27 @@
           </p>
         </div>
 
-        <div ref="expertiseGridEl" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div
-            v-for="item in expertise"
-            :key="item.title"
-            class="relative rounded-2xl overflow-hidden min-h-[420px] flex flex-col justify-end shadow-lg group"
-          >
-            <img
-              :src="item.image"
-              :alt="item.title"
-              class="absolute inset-0 w-full h-full object-cover"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
-            <div class="relative z-10 p-6">
-              <h3 class="text-white text-xl font-bold mb-3 font-outfit">
-                {{ item.title }}
-              </h3>
-              <p class="text-white/80 text-sm leading-relaxed">
-                {{ item.description }}
-              </p>
+        <div ref="expertisePinEl" class="overflow-hidden">
+          <div ref="expertiseGridEl" class="flex gap-6 lg:grid lg:grid-cols-4">
+            <div
+              v-for="item in expertise"
+              :key="item.title"
+              class="relative rounded-2xl overflow-hidden min-h-[420px] min-w-[280px] max-w-[85vw] sm:min-w-[350px] sm:max-w-[70vw] lg:min-w-0 lg:max-w-none flex flex-col justify-end shadow-lg group flex-shrink-0 lg:flex-shrink snap-start"
+            >
+              <img
+                :src="item.image"
+                :alt="item.title"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
+              <div class="relative z-10 p-6">
+                <h3 class="text-white text-xl font-bold mb-3 font-outfit">
+                  {{ item.title }}
+                </h3>
+                <p class="text-white/80 text-sm leading-relaxed">
+                  {{ item.description }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -65,8 +67,9 @@
           </h2>
         </div>
 
-        <div ref="platformGridEl" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="relative rounded-xl overflow-hidden aspect-[16/10] group cursor-pointer">
+        <div ref="platformPinEl" class="overflow-x-auto lg:overflow-visible scrollbar-hide snap-x snap-mandatory">
+        <div ref="platformGridEl" class="flex gap-3 lg:gap-6 lg:grid lg:grid-cols-3">
+          <div class="relative rounded-xl overflow-hidden aspect-[16/10] w-[85vw] sm:w-[350px] lg:w-auto flex-shrink-0 lg:flex-shrink group cursor-pointer snap-start">
             <img
               src="/images/bsweeps.webp"
               alt="BSweeps"
@@ -87,7 +90,7 @@
           <div
             v-for="n in 5"
             :key="n"
-            class="group relative rounded-xl overflow-hidden aspect-[16/10] bg-[#0a1428] w-full h-full flex items-center justify-center cursor-pointer"
+            class="group relative rounded-xl overflow-hidden aspect-[16/10] w-[85vw] sm:w-[350px] lg:w-auto flex-shrink-0 lg:flex-shrink bg-[#0a1428] flex items-center justify-center cursor-pointer snap-start"
           >
             <img
               src="/images/coming-soon.webp"
@@ -96,8 +99,9 @@
             />
           </div>
         </div>
+        </div>
 
-        <div ref="platformCtaEl" class="flex justify-center mt-12">
+        <!-- <div ref="platformCtaEl" class="flex justify-center mt-12">
           <NuxtLink
             to="#"
             class="btn-primary px-8 py-3 rounded"
@@ -105,14 +109,15 @@
             View more
             <span aria-hidden="true">&rarr;</span>
           </NuxtLink>
-        </div>
+        </div> -->
       </div>
     </section>
 
     <!-- How It Works -->
     <section ref="howItWorksEl" class="bg-navy py-20 md:py-28">
       <div class="max-w-7xl mx-auto px-6 md:px-16">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Title -->
           <div ref="howItWorksTextEl" class="flex flex-col justify-center p-2">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-outfit mb-6">
               <span class="reveal">
@@ -125,15 +130,17 @@
             </p>
           </div>
 
+          <!-- Cards -->
           <div
             v-for="(step, idx) in steps"
             :key="step.title"
             :class="[
-              'step-card group relative overflow-hidden rounded-2xl p-8 shadow-md min-h-[260px] flex flex-col transition-transform duration-300 hover:-translate-y-2',
+              'step-card group overflow-hidden rounded-2xl p-8 shadow-md min-h-[260px] flex flex-col transition-transform duration-300 lg:hover:-translate-y-2',
+              'sticky lg:relative lg:!top-auto',
               step.featured ? 'bg-primary text-white' : 'bg-navy-light text-white',
             ]"
+            :style="{ top: `${30 + idx * 20}px`, zIndex: idx + 1 }"
           >
-            <!-- Large background number — slides up on hover -->
             <span
               class="absolute -right-20 text-[8rem] md:text-[10rem] font-bold font-outfit leading-none opacity-0 translate-y-full pointer-events-none select-none transition-all duration-500 ease-out group-hover:opacity-[0.08] group-hover:translate-y-0 group-hover:right-0 -bottom-6"
               :class="step.featured ? 'text-white' : 'text-sky-blue'"
@@ -170,6 +177,7 @@ const expertiseHeadingEl = ref<HTMLElement>()
 const expertiseTitleTextEl = ref<HTMLElement>()
 const expertiseTitleBarEl = ref<HTMLElement>()
 const expertiseGridEl = ref<HTMLElement>()
+const expertisePinEl = ref<HTMLElement>()
 
 let expertiseTrigger: ScrollTrigger | undefined
 let platformTrigger: ScrollTrigger | undefined
@@ -179,12 +187,14 @@ const howItWorksEl = ref<HTMLElement>()
 const howItWorksTextEl = ref<HTMLElement>()
 const howTitleTextEl = ref<HTMLElement>()
 const howTitleBarEl = ref<HTMLElement>()
+const stackContainerEl = ref<HTMLElement>()
 
 const platformEl = ref<HTMLElement>()
 const platformHeadingEl = ref<HTMLElement>()
 const platformTitleTextEl = ref<HTMLElement>()
 const platformTitleBarEl = ref<HTMLElement>()
 const platformGridEl = ref<HTMLElement>()
+const platformPinEl = ref<HTMLElement>()
 const platformCtaEl = ref<HTMLElement>()
 
 onMounted(() => {
@@ -193,15 +203,15 @@ onMounted(() => {
   const tl = gsap.timeline({
     defaults: { ease: 'power3.out' },
     scrollTrigger: {
-      trigger: expertiseEl.value,
-      start: 'top 75%',
+      trigger: expertiseHeadingEl.value,
+      start: 'top 90%',
       toggleActions: 'play none none none',
     },
   })
 
   if (expertiseTitleTextEl.value && expertiseTitleBarEl.value) {
     tl.to(expertiseTitleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
-    tl.to(expertiseTitleBarEl.value, { xPercent: -100, duration: 0.7 }, '<')
+    tl.to(expertiseTitleBarEl.value, { xPercent: -101, duration: 0.7 }, '<')
   }
 
   if (expertiseHeadingEl.value) {
@@ -222,6 +232,26 @@ onMounted(() => {
 
   expertiseTrigger = tl.scrollTrigger
 
+  // Horizontal scroll for expertise cards on scroll
+  if (expertisePinEl.value && expertiseGridEl.value) {
+    const scrollWidth = expertiseGridEl.value.scrollWidth
+    const viewWidth = expertisePinEl.value.offsetWidth
+
+    if (scrollWidth > viewWidth) {
+      gsap.to(expertiseGridEl.value, {
+        x: -(scrollWidth - viewWidth),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: expertiseEl.value,
+          start: 'top top',
+          end: () => `+=${scrollWidth - viewWidth}`,
+          pin: true,
+          scrub: 1,
+        },
+      })
+    }
+  }
+
   // Platform section animation
   if (platformEl.value) {
     const tl2 = gsap.timeline({
@@ -234,8 +264,10 @@ onMounted(() => {
     })
 
     if (platformTitleTextEl.value && platformTitleBarEl.value) {
+      gsap.set(platformTitleBarEl.value, { opacity: 0 })
       tl2.to(platformTitleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
-      tl2.to(platformTitleBarEl.value, { xPercent: -100, duration: 0.7 }, '<')
+      tl2.set(platformTitleBarEl.value, { opacity: 1 }, 0.1)
+      tl2.to(platformTitleBarEl.value, { xPercent: -101, duration: 0.7 }, '<')
     }
 
     if (platformHeadingEl.value) {
@@ -263,6 +295,7 @@ onMounted(() => {
     }
 
     platformTrigger = tl2.scrollTrigger
+
   }
 
   // How It Works section animation
@@ -271,15 +304,17 @@ onMounted(() => {
       defaults: { ease: 'power3.out' },
       scrollTrigger: {
         trigger: howItWorksEl.value,
-        start: 'top 75%',
+        start: 'top 90%',
         toggleActions: 'play none none none',
       },
     })
 
     // Title reveal
     if (howTitleTextEl.value && howTitleBarEl.value) {
+      gsap.set(howTitleBarEl.value, { opacity: 0 })
       tl3.to(howTitleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
-      tl3.to(howTitleBarEl.value, { xPercent: -100, duration: 0.7 }, '<')
+      tl3.set(howTitleBarEl.value, { opacity: 1 }, 0.1)
+      tl3.to(howTitleBarEl.value, { xPercent: -101, duration: 0.7 }, '<')
     }
 
     // Subtitle fade up
@@ -291,15 +326,7 @@ onMounted(() => {
       )
     }
 
-    // Step cards cascade from right
-    const stepCards = howItWorksEl.value.querySelectorAll('.step-card')
-    if (stepCards.length) {
-      tl3.from(
-        stepCards,
-        { opacity: 0, y: 40, duration: 0.7, stagger: 0.15 },
-        '-=0.3',
-      )
-    }
+    // Step cards — stacking is handled by CSS sticky positioning
 
     howItWorksTrigger = tl3.scrollTrigger
   }

@@ -162,7 +162,7 @@ onMounted(() => {
   // Title reveal
   if (letsTalkTitleTextEl.value && letsTalkTitleBarEl.value) {
     tl.to(letsTalkTitleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
-    tl.to(letsTalkTitleBarEl.value, { xPercent: -100, duration: 0.7 }, '<')
+    tl.to(letsTalkTitleBarEl.value, { xPercent: -101, duration: 0.7 }, '<')
   }
 
   // Info content fade up
