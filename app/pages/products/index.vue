@@ -245,11 +245,13 @@ onMounted(() => {
         force3D: true,
         scrollTrigger: {
           trigger: expertiseEl.value,
-          start: 'top top',
-          end: () => `+=${scrollWidth - viewWidth}`,
+          start: 'top 0px',
+          end: () => `+=${scrollWidth}`,
           pin: true,
+          pinSpacing: true,
           scrub: true,
           anticipatePin: 1,
+          invalidateOnRefresh: true,
         },
       })
     }
