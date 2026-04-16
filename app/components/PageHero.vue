@@ -1,5 +1,5 @@
 <template>
-  <section class="relative max-h-[70vh] md:max-h-[60vh] flex items-center overflow-hidden bg-black py-28 md:py-36">
+  <section class="relative lg:max-h-[60vh] xl:max-h-[70vh] flex items-center overflow-hidden bg-black py-28 lg:py-36">
     <img
       :src="bgImage"
       alt=""
@@ -11,9 +11,9 @@
     />
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div ref="textContent">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-tight mb-6 font-outfit">
-          <span class="reveal w-fit">
+      <div ref="textContent" class="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start">
+        <h1 class="text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-tight mb-6 font-outfit">
+          <span class="reveal w-fit mx-auto lg:mx-0">
             <span ref="titleTextEl" class="reveal-text">{{ title }}</span>
             <span ref="titleBarEl" class="reveal-bar" />
           </span>
@@ -26,7 +26,7 @@
         </NuxtLink>
       </div>
 
-      <div ref="heroImage" class="flex justify-center lg:justify-end">
+      <div ref="heroImage" class="order-1 lg:order-2 flex justify-center lg:justify-end">
         <img
           :src="image"
           :alt="imageAlt"

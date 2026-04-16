@@ -1,5 +1,5 @@
 <template>
-  <section class="relative flex items-center overflow-hidden bg-black h-[calc(100dvh-80px)]">
+  <section class="relative flex items-center overflow-hidden bg-black py-28 lg:py-0 lg:h-[calc(100dvh-80px)]">
     <video
       autoplay
       loop
@@ -13,12 +13,12 @@
     <!-- <div class="absolute inset-0" style="background: radial-gradient(circle, rgba(0, 45, 124, 0.7) 0%, rgba(0, 8, 22, 1) 42%)" /> -->
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div ref="textContent" class="order-2 lg:order-1">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-tight mb-6 font-outfit">
+      <div ref="textContent" class="order-2 lg:order-1 text-center lg:text-left">
+        <h1 class="text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-tight mb-6 font-outfit">
           <span
             v-for="(line, i) in headlineLines"
             :key="i"
-            class="reveal w-fit"
+            class="reveal w-fit mx-auto lg:mx-0"
           >
             <span
               :ref="(el) => setLineRef(el as HTMLElement | null, i, 'text')"
@@ -30,13 +30,13 @@
             />
           </span>
         </h1>
-        <p class="text-white/60 text-base md:text-lg max-w-lg mb-10 leading-relaxed">
+        <p class="text-white/60 text-base md:text-lg max-w-lg mx-auto lg:mx-0 mb-10 leading-relaxed">
           Innovating at the intersection of finance and digital
           experiences, we deliver seamless fintech solutions and
           engaging interactive entertainment that empower users
           worldwide.
         </p>
-        <div class="flex flex-wrap gap-4">
+        <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
           <NuxtLink to="/contacts" class="btn-primary px-7 py-3 rounded">
             Get Started
           </NuxtLink>
