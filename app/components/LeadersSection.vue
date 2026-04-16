@@ -18,7 +18,7 @@
     <!-- Coverflow carousel -->
     <div
       ref="carouselEl"
-      class="relative min-h-[520px] md:min-h-[560px] select-none"
+      class="relative min-h-[480px] md:min-h-[480px] select-none"
       @pointerdown="onPointerDown"
       @pointermove="onPointerMove"
       @pointerup="onPointerEnd"
@@ -69,7 +69,7 @@
     </div>
 
     <!-- Dots -->
-    <div class="flex justify-center gap-2 mt-6">
+    <div class="flex justify-center gap-2 -mt-4 md:-mt-6">
       <button
         v-for="(_, index) in leaders"
         :key="index"
@@ -196,23 +196,29 @@ onBeforeUnmount(() => {
 })
 
 // Swipe handlers
+let captured = false
+
 function onPointerDown(e: PointerEvent) {
   if (e.pointerType === 'mouse' && e.button !== 0) return
   pointerId = e.pointerId
   startX = e.clientX
   trackWidth = (e.currentTarget as HTMLElement).clientWidth
-  ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
+  captured = false
 }
 
-function onPointerMove(_e: PointerEvent) {
-  // No real-time drag tracking needed for coverflow — just detect swipe on end
+function onPointerMove(e: PointerEvent) {
+  if (e.pointerId !== pointerId) return
+  // Only capture after real movement to allow click-through on taps
+  if (!captured && Math.abs(e.clientX - startX) > 5) {
+    ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
+    captured = true
+  }
 }
 
 function onPointerEnd(e: PointerEvent) {
   if (e.pointerId !== pointerId) return
   const delta = e.clientX - startX
   const threshold = Math.max(40, trackWidth * 0.1)
-  const lastIndex = leaders.length - 1
 
   if (delta <= -threshold) {
     currentSlide.value = (currentSlide.value + 1) % leaders.length
@@ -220,6 +226,7 @@ function onPointerEnd(e: PointerEvent) {
     currentSlide.value = (currentSlide.value - 1 + leaders.length) % leaders.length
   }
   pointerId = null
+  captured = false
 }
 </script>
 
