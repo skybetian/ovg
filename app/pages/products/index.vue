@@ -29,21 +29,31 @@
         <div ref="expertisePinEl" class="overflow-hidden lg:overflow-visible">
           <div ref="expertiseGridEl" class="flex gap-6 lg:grid lg:grid-cols-4">
             <div
-              v-for="item in expertise"
+              v-for="(item, idx) in expertise"
               :key="item.title"
-              class="relative rounded-2xl overflow-hidden min-h-[420px] min-w-[280px] max-w-[85vw] sm:min-w-[350px] sm:max-w-[70vw] lg:min-w-0 lg:max-w-none flex flex-col justify-end shadow-lg group flex-shrink-0 lg:flex-shrink"
+              class="expertise-card relative rounded-2xl overflow-hidden min-h-[420px] min-w-[280px] max-w-[85vw] sm:min-w-[350px] sm:max-w-[70vw] lg:min-w-0 lg:max-w-none flex flex-col justify-end shadow-lg group flex-shrink-0 lg:flex-shrink"
+              @mouseenter="onCardEnter($event, idx)"
+              @mousemove="onCardMove($event, idx)"
+              @mouseleave="onCardLeave($event, idx)"
             >
               <img
                 :src="item.image"
                 :alt="item.title"
-                class="absolute inset-0 w-full h-full object-cover"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent transition-opacity duration-300 group-hover:from-black/90 group-hover:via-black/60" />
+              <!-- Mouse-tracking light overlay -->
+              <div
+                class="expertise-glow absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
+                :style="`background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), rgba(59,130,246,0.15), transparent 60%)`"
+              />
+              <!-- Border glow -->
+              <div class="absolute inset-0 rounded-2xl border border-white/0 group-hover:border-sky-blue/30 transition-all duration-500 pointer-events-none" />
               <div class="relative z-10 p-6">
-                <h3 class="text-white text-xl font-bold mb-3 font-outfit">
+                <h3 class="text-white text-xl font-bold mb-3 font-outfit transition-transform duration-300 group-hover:translate-x-1">
                   {{ item.title }}
                 </h3>
-                <p class="text-white/80 text-sm leading-relaxed">
+                <p class="text-white/80 text-sm leading-relaxed transition-all duration-300 group-hover:text-white/95">
                   {{ item.description }}
                 </p>
               </div>
@@ -197,6 +207,41 @@ const platformGridEl = ref<HTMLElement>()
 const platformPinEl = ref<HTMLElement>()
 const platformCtaEl = ref<HTMLElement>()
 
+// Mouse-tracking light effect for expertise cards
+const cardQuickTos = ref<{ mx: ReturnType<typeof gsap.quickTo>; my: ReturnType<typeof gsap.quickTo> }[]>([])
+
+function onCardEnter(e: MouseEvent, idx: number) {
+  const card = (e.currentTarget as HTMLElement)
+  const glow = card.querySelector('.expertise-glow') as HTMLElement
+  if (!glow) return
+
+  const rect = card.getBoundingClientRect()
+  const mx = gsap.quickTo(glow, '--mx', { duration: 0.3, ease: 'power2.out' })
+  const my = gsap.quickTo(glow, '--my', { duration: 0.3, ease: 'power2.out' })
+  cardQuickTos.value[idx] = { mx, my }
+
+  const x = ((e.clientX - rect.left) / rect.width) * 100
+  const y = ((e.clientY - rect.top) / rect.height) * 100
+  gsap.set(glow, { '--mx': `${x}%`, '--my': `${y}%` })
+}
+
+function onCardMove(e: MouseEvent, idx: number) {
+  const card = (e.currentTarget as HTMLElement)
+  const rect = card.getBoundingClientRect()
+  const x = ((e.clientX - rect.left) / rect.width) * 100
+  const y = ((e.clientY - rect.top) / rect.height) * 100
+
+  const qt = cardQuickTos.value[idx]
+  if (qt) {
+    qt.mx(`${x}%`)
+    qt.my(`${y}%`)
+  }
+}
+
+function onCardLeave(_e: MouseEvent, idx: number) {
+  cardQuickTos.value[idx] = undefined as any
+}
+
 onMounted(() => {
   if (!expertiseEl.value) return
 
@@ -225,7 +270,7 @@ onMounted(() => {
   if (expertiseGridEl.value) {
     tl.from(
       expertiseGridEl.value.children,
-      { opacity: 0, y: 60, duration: 0.8, stagger: 0.15 },
+      { opacity: 0, y: 80, scale: 0.92, duration: 0.9, stagger: 0.18, ease: 'back.out(1.4)' },
       '-=0.3',
     )
   }
@@ -401,5 +446,17 @@ const steps = [
 
 .group:hover .coming-soon-img {
   animation: shake 0.5s ease-in-out;
+}
+
+.expertise-card {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s ease;
+}
+
+@media (min-width: 1024px) {
+  .expertise-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(59, 130, 246, 0.1);
+  }
 }
 </style>
