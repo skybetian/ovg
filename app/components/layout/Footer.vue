@@ -50,10 +50,10 @@
 
             <h3 class="text-lg font-bold mb-5">Connect with us</h3>
             <div class="flex gap-3">
-              <a href="#" aria-label="Facebook" class="social-icon">
+              <a href="https://web.facebook.com/profile.php?id=61587201375617" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">
                 <img src="/images/facebook.webp" alt="Facebook" class="w-9 h-9" />
               </a>
-              <a href="#" aria-label="Instagram" class="social-icon">
+              <a href="https://www.instagram.com/bsweeps5?igsh=MWI3bWFkZHB4c3hmdA%3D%3D" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
                 <img src="/images/instagram.webp" alt="Instagram" class="w-9 h-9" />
               </a>
               <a href="#" aria-label="LinkedIn" class="social-icon">
