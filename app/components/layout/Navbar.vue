@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-black w-full z-50 px-6 md:px-16 py-5">
+  <nav ref="navEl" class="fixed top-0 left-0 bg-black/80 backdrop-blur-md w-full z-50 px-6 md:px-16 py-5">
     <div class="max-w-7xl mx-auto md:px-6 md:px-16 flex items-center justify-between">
       <NuxtLink to="/">
         <img
@@ -15,6 +15,7 @@
           :key="link.label"
           :to="link.to"
           class="nav-link-shift"
+          :class="{ 'nav-link-active': isActive(link.to) }"
         >
           {{ link.label }}
         </NuxtLink>
@@ -51,7 +52,7 @@
               :key="link.label"
               :to="link.to"
               class="text-white/80 text-2xl font-light tracking-wide transition-colors hover:text-white"
-              active-class="!text-white underline underline-offset-8"
+              :class="{ '!text-white underline underline-offset-8 decoration-white decoration-[1px]': isActive(link.to) }"
               @click="mobileOpen = false"
             >
               {{ link.label }}
@@ -73,7 +74,13 @@
 </template>
 
 <script setup lang="ts">
+const route = useRoute()
 const mobileOpen = ref(false)
+
+function isActive(to: string) {
+  if (to === '/') return route.path === '/'
+  return route.path.startsWith(to)
+}
 
 const navLinks = [
   { label: 'Home', to: '/' },
@@ -95,5 +102,11 @@ const mobileLinks = [
 .mobile-menu-enter-from,
 .mobile-menu-leave-to {
   opacity: 0;
+}
+
+.nav-link-active {
+  color: #ffffff;
+  background-size: 100% 1px;
+  background-image: linear-gradient(to right, #ffffff, #ffffff);
 }
 </style>

@@ -87,7 +87,7 @@
       </div>
     </div>
 
-    <div ref="copyrightEl" class="bg-primary py-2">
+    <div class="bg-primary py-2">
       <p class="text-center text-white text-sm">
         &copy; {{ new Date().getFullYear() }} SkyTech International. All Rights Reserved.
       </p>
@@ -104,7 +104,6 @@ gsap.registerPlugin(ScrollTrigger)
 const footerEl = ref<HTMLElement>()
 const leftColEl = ref<HTMLElement>()
 const linksColsEl = ref<HTMLElement>()
-const copyrightEl = ref<HTMLElement>()
 
 let trigger: ScrollTrigger | undefined
 
@@ -115,32 +114,26 @@ onMounted(() => {
     defaults: { ease: 'power3.out' },
     scrollTrigger: {
       trigger: footerEl.value,
-      start: 'top 90%',
+      start: 'top 85%',
       toggleActions: 'play none none none',
     },
   })
 
+  // Logo, description, buttons — fade up one by one
   if (leftColEl.value) {
     tl.from(
       leftColEl.value.children,
-      { opacity: 0, y: 30, duration: 0.7, stagger: 0.12 },
+      { opacity: 0, y: 40, duration: 0.8, stagger: 0.15 },
       0,
     )
   }
 
+  // Links columns + social icons
   if (linksColsEl.value) {
     tl.from(
-      linksColsEl.value.querySelectorAll('h3, li, .flex.gap-3'),
-      { opacity: 0, y: 20, duration: 0.5, stagger: 0.06 },
-      '-=0.5',
-    )
-  }
-
-  if (copyrightEl.value) {
-    tl.from(
-      copyrightEl.value,
-      { opacity: 0, y: 20, duration: 0.5 },
-      '-=0.2',
+      linksColsEl.value.querySelectorAll('h3, ul, .flex.gap-3'),
+      { opacity: 0, y: 40, duration: 0.8, stagger: 0.1 },
+      0.2,
     )
   }
 
