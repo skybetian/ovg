@@ -2,10 +2,10 @@
   <section ref="sectionEl" class="bg-navy-dark py-20 md:py-28">
     <div class="max-w-7xl mx-auto px-6 md:px-16">
       <div ref="headingEl" class="text-center mb-12">
-        <p class="text-cool-gray text-sm md:text-base font-medium mb-3">Game Providers</p>
+        <p class="text-cool-gray text-sm md:text-base font-medium mb-3">Third-Party Providers</p>
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-outfit">
           <span class="reveal">
-            <span ref="titleTextEl" class="reveal-text">Our Gaming Partners</span>
+            <span ref="titleTextEl" class="reveal-text">Our Third-Party Providers</span>
             <span ref="titleBarEl" class="reveal-bar" />
           </span>
         </h2>
@@ -92,12 +92,12 @@ onBeforeUnmount(() => {
 const providers = [
   { name: 'Cewin',           logo: '/images/cewin.webp' },
   { name: 'Evolution',       logo: '/images/evolution.webp' },
-  { name: 'No Limit City',   logo: '/images/no-limit-city.webp' },
-  { name: 'NetEnt',          logo: '/images/netent.webp' },
-  { name: 'Red Tiger',       logo: '/images/red-tiger.webp' },
-  { name: 'First Person',    logo: '/images/first-person.webp' },
-  { name: 'Big Time Gaming', logo: '/images/big-time-gaming.webp' },
   { name: 'Altenar',         logo: '/images/altenar.webp' },
+  { name: 'Sumsub',          logo: '/images/sumsub.webp' },
+  { name: 'Paysafe',         logo: '/images/paysafe.webp' },
+  { name: 'Slash',           logo: '/images/slash.webp' },
+  { name: 'Laaffic',         logo: '/images/laaffic.webp' },
+  { name: 'Vegas Software',  logo: '/images/vegas-software.webp' },
 ]
 </script>
 

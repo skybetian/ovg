@@ -33,7 +33,7 @@
             </p>
 
             <h3 class="text-2xl font-bold text-white font-outfit mb-3">Email</h3>
-            <p class="text-white/70 mb-10">info@skytech.international</p>
+            <p class="text-white/70 mb-10">info@skytech-us.com</p>
 
             <h3 class="text-2xl font-bold text-white font-outfit mb-4">Socials</h3>
             <ul class="space-y-3">
