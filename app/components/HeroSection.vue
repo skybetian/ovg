@@ -7,7 +7,7 @@
       playsinline
       class="absolute inset-0 w-full h-full object-cover opacity-40"
     >
-      <source src="/videos/hero-bg.mp4" type="video/mp4" />
+      <source src="/videos/hero-bg2.mp4" type="video/mp4" />
     </video>
 
     <!-- <div class="absolute inset-0" style="background: radial-gradient(circle, rgba(0, 45, 124, 0.7) 0%, rgba(0, 8, 22, 1) 42%)" /> -->
