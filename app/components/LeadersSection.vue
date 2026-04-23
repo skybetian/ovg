@@ -101,7 +101,7 @@ const leaders = [
   {
     name: 'Wendy Wongso',
     role: 'Chief Executive Officer',
-    image: '/images/user-placeholder.webp',
+    image: '/images/wendy-wongso.webp',
     bio: 'As Managing Member and CEO, Wendy leads Skytech\'s strategic direction and oversees all business operations. He brings extensive experience in technology management and business development to drive the company\'s growth in the fintech and interactive entertainment sectors.',
   },
   {
