@@ -2,7 +2,7 @@
   <section ref="sectionEl" class="bg-navy-dark py-20 md:py-28">
     <div class="max-w-7xl mx-auto px-6 md:px-16">
       <div ref="headingEl" class="text-center mb-12">
-        <p class="text-cool-gray text-sm md:text-base font-medium mb-3">Third-Party Providers</p>
+        <p class="text-cool-gray text-sm md:text-base font-medium mb-3">Strategic Partners</p>
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-outfit">
           <span class="reveal">
             <span ref="titleTextEl" class="reveal-text">Our Third-Party Providers</span>
