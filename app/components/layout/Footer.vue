@@ -56,7 +56,7 @@
               <a href="https://www.instagram.com/bsweeps5?igsh=MWI3bWFkZHB4c3hmdA%3D%3D" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
                 <img src="/images/instagram.webp" alt="Instagram" class="w-9 h-9" />
               </a>
-              <a href="#" aria-label="LinkedIn" class="social-icon">
+              <a href="https://www.linkedin.com/company/skytech-international-llc/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon">
                 <img src="/images/linkedin.webp" alt="LinkedIn" class="w-9 h-9" />
               </a>
             </div>
