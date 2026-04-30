@@ -3,17 +3,17 @@
     <img
       :src="bgImage"
       alt=""
-      class="absolute inset-0 w-full h-full object-cover opacity-40"
+      :class="['absolute inset-0 w-full h-full object-cover opacity-40', bgPosition ? `object-${bgPosition}` : '']"
     />
     <div
       class="absolute inset-0"
       style="background: linear-gradient(to bottom, #000816 0%, rgba(0, 45, 124, 0.7) 100%)"
     />
 
-    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div ref="textContent" class="order-2 lg:order-1 text-center lg:text-left flex flex-col items-center lg:items-start">
+    <div :class="['relative z-10 max-w-7xl mx-auto px-6 md:px-16 w-full', image ? 'grid grid-cols-1 lg:grid-cols-2 gap-12 items-center' : 'flex justify-center']">
+      <div ref="textContent" :class="['flex flex-col', image ? 'order-2 lg:order-1 text-center lg:text-left items-center lg:items-start' : 'text-center items-center']">
         <h1 class="text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-tight mb-6 font-outfit">
-          <span class="reveal w-fit mx-auto lg:mx-0">
+          <span :class="['reveal w-fit', image ? 'mx-auto lg:mx-0' : 'mx-auto']">
             <span ref="titleTextEl" class="reveal-text">{{ title }}</span>
             <span ref="titleBarEl" class="reveal-bar" />
           </span>
@@ -26,7 +26,7 @@
         </NuxtLink>
       </div>
 
-      <div ref="heroImage" class="order-1 lg:order-2 flex justify-center lg:justify-end">
+      <div v-if="image" ref="heroImage" class="order-1 lg:order-2 flex justify-center lg:justify-end">
         <img
           :src="image"
           :alt="imageAlt"
@@ -45,9 +45,10 @@ defineProps<{
   paragraph: string
   ctaTo: string
   ctaLabel: string
-  image: string
-  imageAlt: string
+  image?: string
+  imageAlt?: string
   bgImage: string
+  bgPosition?: string
 }>()
 
 const textContent = ref<HTMLElement>()

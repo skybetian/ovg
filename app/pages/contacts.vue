@@ -48,7 +48,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="text-sky-blue underline underline-offset-4 hover:text-primary transition-colors">
+                <a href="https://www.linkedin.com/company/skytech-international-llc/" target="_blank" rel="noopener" class="text-sky-blue underline underline-offset-4 hover:text-primary transition-colors">
                   LinkedIn
                 </a>
               </li>
