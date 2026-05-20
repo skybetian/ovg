@@ -30,7 +30,8 @@
         <img
           :src="image"
           :alt="imageAlt"
-          class="w-full max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl drop-shadow-2xl"
+          class="w-full max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl"
+          style="filter: drop-shadow(0 20px 40px rgba(0, 100, 255, 0.4)) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5))"
         />
       </div>
     </div>

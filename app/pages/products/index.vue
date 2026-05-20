@@ -11,58 +11,97 @@
       bg-image="/images/product-bg.webp"
     />
 
-    <!-- Our Expertise and Experience -->
-    <section ref="expertiseEl" class="bg-navy py-20 md:py-28">
+    <!-- Features -->
+    <section ref="featuresEl" class="bg-navy py-20 md:py-28">
       <div class="max-w-7xl mx-auto px-6 md:px-16">
-        <div ref="expertiseHeadingEl">
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-outfit mb-6">
-            <span class="reveal">
-              <span ref="expertiseTitleTextEl" class="reveal-text">Our Expertise and Experience</span>
-              <span ref="expertiseTitleBarEl" class="reveal-bar" />
-            </span>
-          </h2>
-          <p class="text-white/70 text-base md:text-lg max-w-2xl leading-relaxed mb-14">
-            Innovating at the intersection of finance and digital experiences, we deliver seamless fintech solutions and engaging interactive entertainment that empower users worldwide.
-          </p>
-        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <!-- Left: heading + paragraph -->
+          <div ref="featuresTextEl">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-outfit mb-6 leading-tight">
+              Bringing excitement to every game
+            </h2>
+            <p class="text-white/60 text-base md:text-lg leading-relaxed max-w-lg">
+              Experience nonstop entertainment with thrilling games, exciting rewards, and action-packed moments in every play. Whether you're chasing big wins or simply enjoying the excitement, every round brings a new adventure waiting to unfold.
+            </p>
+          </div>
 
-        <div ref="expertisePinEl" class="overflow-hidden lg:overflow-visible">
-          <div ref="expertiseGridEl" class="flex gap-6 lg:grid lg:grid-cols-4">
+          <!-- Right: 2x2 feature cards -->
+          <div ref="featuresGridEl" class="grid grid-cols-2 gap-4">
             <div
-              v-for="(item, idx) in expertise"
-              :key="item.title"
-              class="expertise-card relative rounded-2xl overflow-hidden min-h-[420px] min-w-[280px] max-w-[85vw] sm:min-w-[350px] sm:max-w-[70vw] lg:min-w-0 lg:max-w-none flex flex-col justify-end shadow-lg group flex-shrink-0 lg:flex-shrink"
-              @mouseenter="onCardEnter($event, idx)"
-              @mousemove="onCardMove($event, idx)"
-              @mouseleave="onCardLeave($event, idx)"
+              v-for="feature in features"
+              :key="feature.title"
+              :class="[
+                'flex flex-col items-center justify-center text-center rounded-xl p-6 md:p-8',
+                feature.highlighted ? 'feature-card-highlighted' : 'feature-card',
+              ]"
             >
               <img
-                :src="item.image"
-                :alt="item.title"
-                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                :src="feature.highlighted ? feature.iconWhite : feature.icon"
+                :alt="feature.title"
+                :class="[
+                  'mb-4',
+                  feature.highlighted ? 'w-16 h-16 md:w-20 md:h-20' : 'w-14 h-14 md:w-16 md:h-16',
+                ]"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent transition-opacity duration-300 group-hover:from-black/90 group-hover:via-black/60" />
-              <!-- Mouse-tracking light overlay -->
-              <div
-                class="expertise-glow absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none"
-                :style="`background: radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), rgba(59,130,246,0.15), transparent 60%)`"
-              />
-              <!-- Border glow -->
-              <div class="absolute inset-0 rounded-2xl border border-white/0 group-hover:border-sky-blue/30 transition-all duration-500 pointer-events-none" />
-              <div class="relative z-10 p-6">
-                <h3 class="text-white text-xl font-bold mb-3 font-outfit transition-transform duration-300 group-hover:translate-x-1">
-                  {{ item.title }}
-                </h3>
-                <p class="text-white/80 text-sm leading-relaxed transition-all duration-300 group-hover:text-white/95">
-                  {{ item.description }}
-                </p>
-              </div>
+              <h3
+                :class="[
+                  'text-sm md:text-base font-bold font-outfit',
+                  feature.highlighted ? 'text-white' : 'text-sky-blue',
+                ]"
+              >
+                {{ feature.title }}
+              </h3>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Tilted Banner -->
+    <div ref="bannerEl" class="relative bg-navy-dark py-16 md:py-20 overflow-hidden">
+      <div
+        ref="bannerStripEl"
+        class="absolute inset-x-0 top-1/2 -translate-y-1/2 py-10 md:py-12 -rotate-2 -mx-4 shadow-[0_0_40px_rgba(0,59,164,0.5)] bg-cover bg-center"
+        style="background-image: url('/images/banner-bg.webp')"
+      >
+        <p class="max-w-5xl mx-auto px-10 text-white text-xl md:text-3xl lg:text-4xl font-bold font-outfit italic text-center">
+          Enjoy unique gameplay experiences all in one place.
+        </p>
+      </div>
+    </div>
+
+    <!-- Game Categories -->
+    <section ref="categoriesEl" class="bg-navy-dark pt-20 pb-28 md:pt-28 md:pb-36">
+      <div class="max-w-7xl mx-auto px-6 md:px-16">
+        <div ref="categoriesGridEl" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            v-for="category in categories"
+            :key="category.title"
+            class="category-card group rounded-xl flex flex-col items-center text-center relative z-0 hover:z-10 overflow-hidden hover:overflow-visible"
+          >
+            <!-- Phone image -->
+            <div class="relative flex items-start justify-center pt-6 z-10 h-[200px] transition-transform duration-500 ease-out group-hover:-translate-y-20">
+              <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-primary/60 rounded-full blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <img
+                :src="category.image"
+                :alt="category.title"
+                class="relative w-[90%] object-contain"
+              />
+            </div>
+
+            <!-- Text content (overlaps phone bottom) -->
+            <div class="relative z-20 bg-navy-light -mt-10 p-6 md:p-8 rounded-b-xl">
+              <h3 class="text-white text-lg md:text-xl font-bold font-outfit mb-2">
+                {{ category.title }}
+              </h3>
+              <p class="text-white/60 text-sm leading-relaxed max-w-xs">
+                {{ category.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Our Interactive Platform -->
     <section ref="platformEl" class="bg-black py-20 md:py-28">
@@ -124,10 +163,9 @@
     </section>
 
     <!-- How It Works -->
-    <section ref="howItWorksEl" class="bg-navy py-20 md:py-28">
+    <!-- <section ref="howItWorksEl" class="bg-navy py-20 md:py-28">
       <div class="max-w-7xl mx-auto px-6 md:px-16">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <!-- Title -->
           <div ref="howItWorksTextEl" class="flex flex-col justify-center p-2">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-outfit mb-6">
               <span class="reveal">
@@ -140,7 +178,6 @@
             </p>
           </div>
 
-          <!-- Cards -->
           <div
             v-for="(step, idx) in steps"
             :key="step.title"
@@ -169,7 +206,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <GameProvidersSection />
 
@@ -182,22 +219,19 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const expertiseEl = ref<HTMLElement>()
-const expertiseHeadingEl = ref<HTMLElement>()
-const expertiseTitleTextEl = ref<HTMLElement>()
-const expertiseTitleBarEl = ref<HTMLElement>()
-const expertiseGridEl = ref<HTMLElement>()
-const expertisePinEl = ref<HTMLElement>()
+const featuresEl = ref<HTMLElement>()
+const featuresTextEl = ref<HTMLElement>()
+const featuresGridEl = ref<HTMLElement>()
 
-let expertiseTrigger: ScrollTrigger | undefined
+const bannerEl = ref<HTMLElement>()
+const bannerStripEl = ref<HTMLElement>()
+
+const categoriesEl = ref<HTMLElement>()
+const categoriesGridEl = ref<HTMLElement>()
+
+let featuresTrigger: ScrollTrigger | undefined
+let categoriesTrigger: ScrollTrigger | undefined
 let platformTrigger: ScrollTrigger | undefined
-let howItWorksTrigger: ScrollTrigger | undefined
-
-const howItWorksEl = ref<HTMLElement>()
-const howItWorksTextEl = ref<HTMLElement>()
-const howTitleTextEl = ref<HTMLElement>()
-const howTitleBarEl = ref<HTMLElement>()
-const stackContainerEl = ref<HTMLElement>()
 
 const platformEl = ref<HTMLElement>()
 const platformHeadingEl = ref<HTMLElement>()
@@ -207,95 +241,71 @@ const platformGridEl = ref<HTMLElement>()
 const platformPinEl = ref<HTMLElement>()
 const platformCtaEl = ref<HTMLElement>()
 
-// Mouse-tracking light effect for expertise cards
-const cardQuickTos = ref<{ mx: ReturnType<typeof gsap.quickTo>; my: ReturnType<typeof gsap.quickTo> }[]>([])
-
-function onCardEnter(e: MouseEvent, idx: number) {
-  const card = (e.currentTarget as HTMLElement)
-  const glow = card.querySelector('.expertise-glow') as HTMLElement
-  if (!glow) return
-
-  const rect = card.getBoundingClientRect()
-  const mx = gsap.quickTo(glow, '--mx', { duration: 0.3, ease: 'power2.out' })
-  const my = gsap.quickTo(glow, '--my', { duration: 0.3, ease: 'power2.out' })
-  cardQuickTos.value[idx] = { mx, my }
-
-  const x = ((e.clientX - rect.left) / rect.width) * 100
-  const y = ((e.clientY - rect.top) / rect.height) * 100
-  gsap.set(glow, { '--mx': `${x}%`, '--my': `${y}%` })
-}
-
-function onCardMove(e: MouseEvent, idx: number) {
-  const card = (e.currentTarget as HTMLElement)
-  const rect = card.getBoundingClientRect()
-  const x = ((e.clientX - rect.left) / rect.width) * 100
-  const y = ((e.clientY - rect.top) / rect.height) * 100
-
-  const qt = cardQuickTos.value[idx]
-  if (qt) {
-    qt.mx(`${x}%`)
-    qt.my(`${y}%`)
-  }
-}
-
-function onCardLeave(_e: MouseEvent, idx: number) {
-  cardQuickTos.value[idx] = undefined as any
-}
-
 onMounted(() => {
-  if (!expertiseEl.value) return
-
-  const tl = gsap.timeline({
-    defaults: { ease: 'power3.out' },
-    scrollTrigger: {
-      trigger: expertiseHeadingEl.value,
-      start: 'top 90%',
-      toggleActions: 'play none none none',
-    },
-  })
-
-  if (expertiseTitleTextEl.value && expertiseTitleBarEl.value) {
-    tl.to(expertiseTitleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
-    tl.to(expertiseTitleBarEl.value, { xPercent: -101, duration: 0.7 }, '<')
-  }
-
-  if (expertiseHeadingEl.value) {
-    tl.from(
-      expertiseHeadingEl.value.querySelectorAll('p'),
-      { opacity: 0, y: 20, duration: 0.6 },
-      '-=0.4',
-    )
-  }
-
-  if (expertiseGridEl.value) {
-    tl.from(
-      expertiseGridEl.value.children,
-      { opacity: 0, y: 80, scale: 0.92, duration: 0.9, stagger: 0.18, ease: 'back.out(1.4)' },
-      '-=0.3',
-    )
-  }
-
-  expertiseTrigger = tl.scrollTrigger
-
-  // Pinned horizontal scroll for expertise cards on mobile
-  if (expertisePinEl.value && expertiseGridEl.value && window.innerWidth < 1024) {
-    const grid = expertiseGridEl.value
-    const container = expertisePinEl.value
-    const getDistance = () => grid.scrollWidth - container.offsetWidth
-
-    gsap.to(grid, {
-      x: () => -getDistance(),
-      ease: 'none',
-      force3D: true,
+  // Features section animation
+  if (featuresEl.value && featuresGridEl.value) {
+    const ftl = gsap.timeline({
+      defaults: { ease: 'power3.out' },
       scrollTrigger: {
-        trigger: expertiseEl.value,
-        start: 'top top',
-        end: () => `+=${getDistance()}`,
-        pin: true,
-        scrub: true,
-        invalidateOnRefresh: true,
+        trigger: featuresEl.value,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
       },
     })
+
+    if (featuresTextEl.value) {
+      ftl.from(
+        featuresTextEl.value,
+        { opacity: 0, x: -40, duration: 0.7 },
+        0.1,
+      )
+    }
+
+    ftl.from(
+      featuresGridEl.value.children,
+      { opacity: 0, y: 40, duration: 0.7, stagger: 0.12 },
+      0.2,
+    )
+
+    featuresTrigger = ftl.scrollTrigger
+  }
+
+  // Banner tilt animation (scrubbed on scroll)
+  if (bannerStripEl.value && bannerEl.value) {
+    gsap.fromTo(
+      bannerStripEl.value,
+      { rotation: -2 },
+      {
+        rotation: 2,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: bannerEl.value,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+        },
+      },
+    )
+  }
+
+  // Categories section animation
+  if (categoriesEl.value && categoriesGridEl.value) {
+    const ctl = gsap.timeline({
+      defaults: { ease: 'power3.out' },
+      scrollTrigger: {
+        trigger: categoriesEl.value,
+        start: 'top 85%',
+        toggleActions: 'play none none none',
+      },
+    })
+
+    ctl.from(
+      categoriesGridEl.value.children,
+      { opacity: 0, y: 50, duration: 0.7, stagger: 0.1 },
+      0.1,
+    )
+
+    categoriesTrigger = ctl.scrollTrigger
   }
 
   // Platform section animation
@@ -344,75 +354,28 @@ onMounted(() => {
 
   }
 
-  // How It Works section animation
-  if (howItWorksEl.value) {
-    const tl3 = gsap.timeline({
-      defaults: { ease: 'power3.out' },
-      scrollTrigger: {
-        trigger: howItWorksEl.value,
-        start: 'top 90%',
-        toggleActions: 'play none none none',
-      },
-    })
-
-    // Title reveal
-    if (howTitleTextEl.value && howTitleBarEl.value) {
-      gsap.set(howTitleBarEl.value, { opacity: 0 })
-      tl3.to(howTitleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
-      tl3.set(howTitleBarEl.value, { opacity: 1 }, 0.1)
-      tl3.to(howTitleBarEl.value, { xPercent: -101, duration: 0.7 }, '<')
-    }
-
-    // Subtitle fade up
-    if (howItWorksTextEl.value) {
-      tl3.from(
-        howItWorksTextEl.value.querySelectorAll('p'),
-        { opacity: 0, y: 20, duration: 0.6 },
-        '-=0.4',
-      )
-    }
-
-    // Step cards — stacking is handled by CSS sticky positioning
-
-    howItWorksTrigger = tl3.scrollTrigger
-  }
 })
 
 onBeforeUnmount(() => {
-  expertiseTrigger?.kill()
+  featuresTrigger?.kill()
+  categoriesTrigger?.kill()
   platformTrigger?.kill()
-  howItWorksTrigger?.kill()
 })
 
-const expertise = [
-  {
-    title: 'Software Development',
-    description: 'Custom platform development, API design, and cloud-native architecture for fintech and entertainment verticals.',
-    image: '/images/software-development.webp',
-  },
-  {
-    title: 'Fintech & Payments',
-    description: 'Payment processing integration, ACH and card infrastructure, ledger systems, and payout automation for regulated environments.',
-    image: '/images/fintech-payments.webp',
-  },
-  {
-    title: 'Game Development',
-    description: 'Interactive entertainment software, sweepstakes game logic, RNG systems, and engaging UI/UX for social gaming platforms.',
-    image: '/images/game-development.webp',
-  },
-  {
-    title: 'Compliance-First',
-    description: 'Geolocation enforcement, KYC/AML integration, jurisdiction-aware access controls, and regulatory reporting built from day one.',
-    image: '/images/compliance-first.webp',
-  },
+const categories = [
+  { title: 'Slot Games', description: 'Experience the thrill of every spin with action-packed slot games and exciting rewards.', image: '/images/slot-games.webp' },
+  { title: 'Table Games', description: 'Discover immersive table games where strategy meets rewarding gameplay.', image: '/images/table-games.webp' },
+  { title: 'Live Casino', description: 'Play your favorite casino games live and feel the excitement of every moment.', image: '/images/live-casino.webp' },
+  { title: 'Arcade Games', description: 'Enjoy classic and modern arcade games designed for quick thrills and endless entertainment.', image: '/images/arcade-games.webp' },
+  { title: 'Live Sports', description: 'Watch the action unfold in real time with live sports, bringing every match closer than ever.', image: '/images/live-sports.webp' },
+  { title: 'Live E-Sports', description: 'Watch elite gamers battle in real time with nonstop action and competitive excitement.', image: '/images/live-e-sports.webp' },
 ]
 
-const steps = [
-  { title: 'Discover',         description: 'Analyze user needs, market trends, and business goals to identify opportunities.', featured: false },
-  { title: 'Ideate',           description: 'Brainstorm innovative solutions that merge fintech and interactive experiences.', featured: true  },
-  { title: 'Design',           description: 'We believe that every customer is unique, and their needs should be addressed accordingly.', featured: false },
-  { title: 'Develop & Deploy', description: 'Implement secure, scalable, and high-performing systems. Launch solutions with seamless integration.', featured: false },
-  { title: 'Optimize',         description: 'Continuously monitor performance and enhance with data-driven insights.', featured: false },
+const features = [
+  { title: 'Unique Experiences', icon: '/images/rocket.webp', iconWhite: '/images/rocket-white.webp', highlighted: true },
+  { title: 'Massive Rewards', icon: '/images/diamond.webp', iconWhite: '', highlighted: false },
+  { title: 'Endless Game Selection', icon: '/images/game.webp', iconWhite: '', highlighted: false },
+  { title: 'Exclusive Bonuses', icon: '/images/gift.webp', iconWhite: '', highlighted: false },
 ]
 </script>
 
@@ -448,15 +411,28 @@ const steps = [
   animation: shake 0.5s ease-in-out;
 }
 
-.expertise-card {
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              box-shadow 0.4s ease;
+.feature-card {
+  background: var(--color-navy-light);
+  border: 1px solid rgba(142, 179, 239, 0.12);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-
-@media (min-width: 1024px) {
-  .expertise-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(59, 130, 246, 0.1);
-  }
+.feature-card:hover {
+  border-color: rgba(142, 179, 239, 0.3);
+  box-shadow: 0 8px 24px -8px rgba(14, 47, 146, 0.5);
+}
+.category-card {
+  background: var(--color-navy-light);
+  border: 1px solid rgba(142, 179, 239, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.category-card:hover {
+  border-color: rgba(142, 179, 239, 0.25);
+  box-shadow: 0 8px 24px -8px rgba(14, 47, 146, 0.5);
+  transform: translateY(-4px);
+}
+.feature-card-highlighted {
+  background: linear-gradient(135deg, #0FA3FF 0%, #0030CF 53%);
+  border: 1px solid rgba(15, 163, 255, 0.3);
+  box-shadow: 0 8px 32px -8px rgba(0, 48, 207, 0.4);
 }
 </style>
