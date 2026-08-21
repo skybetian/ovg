@@ -1,57 +1,79 @@
 <template>
-  <section class="relative flex items-center overflow-hidden bg-black pt-16 pb-28 lg:py-0 lg:h-[calc(100dvh-160px)]">
+  <section class="relative flex items-center justify-center overflow-hidden bg-black pt-24 pb-32 lg:py-0 lg:min-h-dvh">
     <video
+      ref="videoEl"
       autoplay
       loop
       muted
       playsinline
-      class="absolute inset-0 w-full h-full object-cover opacity-40"
+      aria-hidden="true"
+      class="absolute inset-0 w-full h-full object-cover opacity-50 brand-tint"
     >
       <source src="/videos/hero-bg2.mp4" type="video/mp4" />
     </video>
 
-    <!-- <div class="absolute inset-0" style="background: radial-gradient(circle, rgba(0, 45, 124, 0.7) 0%, rgba(0, 8, 22, 1) 42%)" /> -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-navy/25 to-black/80" />
 
-    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div ref="textContent" class="order-2 lg:order-1 text-center lg:text-left">
-        <h1 class="text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-tight mb-6 font-outfit">
+    <!-- Chevron flanks — one path set, mirrored with <use> -->
+    <svg
+      class="hidden md:block absolute inset-0 w-full h-full pointer-events-none"
+      viewBox="0 0 1440 600"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+    >
+      <defs>
+        <linearGradient id="ovg-chev" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#7B018D" />
+          <stop offset="100%" stop-color="#ED1879" />
+        </linearGradient>
+        <g id="ovg-chev-set">
+          <path d="M40 200 L150 300 L40 400" opacity="0.3" />
+          <path d="M150 200 L260 300 L150 400" opacity="0.5" />
+          <path d="M260 200 L370 300 L260 400" opacity="0.75" />
+        </g>
+      </defs>
+      <g ref="chevronsEl" fill="none" stroke="url(#ovg-chev)" stroke-width="26" stroke-linecap="square">
+        <use href="#ovg-chev-set" />
+        <use href="#ovg-chev-set" transform="translate(1440,0) scale(-1,1)" />
+      </g>
+    </svg>
+
+    <!-- Perspective grid floor -->
+    <div ref="gridFloorEl" class="grid-floor" aria-hidden="true" />
+
+    <div ref="textContent" class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 w-full text-center">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.15] mb-8 font-outfit">
+        <span
+          v-for="(line, i) in headlineLines"
+          :key="i"
+          class="reveal w-fit mx-auto"
+        >
           <span
-            v-for="(line, i) in headlineLines"
-            :key="i"
-            class="reveal w-fit mx-auto lg:mx-0"
-          >
-            <span
-              :ref="(el) => setLineRef(el as HTMLElement | null, i, 'text')"
-              class="reveal-text"
-            >{{ line }}</span>
-            <span
-              :ref="(el) => setLineRef(el as HTMLElement | null, i, 'bar')"
-              class="reveal-bar"
-            />
-          </span>
-        </h1>
-        <p class="text-white/60 text-base md:text-lg max-w-lg mx-auto lg:mx-0 mb-10 leading-relaxed">
-          Innovating at the intersection of finance and digital
-          experiences, we deliver seamless fintech solutions and
-          engaging interactive entertainment that empower users
-          worldwide.
-        </p>
-        <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
-          <NuxtLink to="/contacts" class="btn-primary px-7 py-3 rounded">
-            Get Started
-          </NuxtLink>
-          <NuxtLink to="/products" class="btn-outline-light px-7 py-3 rounded">
-            See Our Products
-          </NuxtLink>
-        </div>
-      </div>
+            :ref="(el) => setLineRef(el as HTMLElement | null, i, 'text')"
+            class="reveal-text"
+            :class="{ 'grad-line': i === headlineLines.length - 1 }"
+          >{{ line }}</span>
+          <span
+            :ref="(el) => setLineRef(el as HTMLElement | null, i, 'bar')"
+            class="reveal-bar"
+          />
+        </span>
+      </h1>
 
-      <div ref="phoneImage" class="order-1 lg:order-2 flex justify-center lg:justify-end">
-        <img
-          src="/images/phone.webp"
-          alt="Fintech mobile app"
-          class="w-full max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl drop-shadow-2xl"
-        />
+      <p class="text-white/80 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+        One Visaya Gaming Corporation has been building online
+        entertainment since 2022 — founded by seasoned professionals
+        and veteran investors, and operated with strict adherence to
+        the PAGCOR codes of conduct.
+      </p>
+
+      <div class="flex flex-wrap gap-4 justify-center">
+        <NuxtLink to="/contacts" class="btn-primary px-7 py-3 rounded">
+          Get Started
+        </NuxtLink>
+        <NuxtLink to="/products" class="btn-outline-light px-7 py-3 rounded">
+          See Our Products
+        </NuxtLink>
       </div>
     </div>
   </section>
@@ -61,9 +83,9 @@
 import { gsap } from 'gsap'
 
 const headlineLines = [
-  'Building the Future of',
-  'Fintech & Interactive',
-  'Entertainment',
+  'Powering the Next',
+  'Generation of',
+  'Online Entertainment',
 ]
 
 interface LineRefs {
@@ -72,7 +94,9 @@ interface LineRefs {
 }
 
 const textContent = ref<HTMLElement>()
-const phoneImage = ref<HTMLElement>()
+const videoEl = ref<HTMLVideoElement>()
+const chevronsEl = ref<SVGGElement>()
+const gridFloorEl = ref<HTMLElement>()
 const lineRefs = new Map<number, LineRefs>()
 
 function setLineRef(el: HTMLElement | null, idx: number, role: 'text' | 'bar') {
@@ -90,6 +114,16 @@ function setLineRef(el: HTMLElement | null, idx: number, role: 'text' | 'bar') {
 }
 
 onMounted(() => {
+  // Reduced motion: land on the finished state, skip the reveal entirely
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    videoEl.value?.pause()
+    for (const { text, bar } of lineRefs.values()) {
+      if (text) text.style.clipPath = 'inset(0 0 0 0%)'
+      if (bar) bar.style.display = 'none'
+    }
+    return
+  }
+
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
   for (const idx of headlineLines.keys()) {
@@ -116,14 +150,12 @@ onMounted(() => {
     )
   }
 
-  if (phoneImage.value) {
-    gsap.from(phoneImage.value, {
-      opacity: 0,
-      x: 60,
-      duration: 1,
-      delay: 0.3,
-      ease: 'power3.out',
-    })
+  if (chevronsEl.value) {
+    tl.from(chevronsEl.value, { opacity: 0, scale: 1.15, duration: 1.2, transformOrigin: 'center' }, 0)
+  }
+
+  if (gridFloorEl.value) {
+    tl.from(gridFloorEl.value, { opacity: 0, y: 40, duration: 1.2 }, 0.2)
   }
 })
 </script>
@@ -141,8 +173,44 @@ onMounted(() => {
 .reveal-bar {
   position: absolute;
   inset: 0;
-  background: #ffffff;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-coral));
   pointer-events: none;
   will-change: transform;
+}
+
+/* Footage is cyan; sepia flattens the hue so hue-rotate lands it on brand magenta */
+/* ponytail: brightness is the dial — 0.35 for near-black, 0.85 for the original */
+.brand-tint {
+  filter: sepia(1) hue-rotate(255deg) saturate(4) brightness(0.25);
+}
+
+.grad-line {
+  background: linear-gradient(
+    90deg,
+    var(--color-magenta-deep) 0%,
+    var(--color-primary) 15%,
+    var(--color-coral) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Synthwave floor: flat grid tipped away from the camera */
+.grid-floor {
+  position: absolute;
+  left: -50%;
+  right: -50%;
+  bottom: 0;
+  height: 78%;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(237, 24, 121, 0.55) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(237, 24, 121, 0.55) 1px, transparent 1px);
+  background-size: 104px 104px;
+  transform: perspective(900px) rotateX(62deg);
+  transform-origin: bottom center;
+  -webkit-mask-image: linear-gradient(to top, #000 5%, transparent 92%);
+  mask-image: linear-gradient(to top, #000 5%, transparent 92%);
 }
 </style>

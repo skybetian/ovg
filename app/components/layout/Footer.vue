@@ -4,11 +4,11 @@
       <div class="flex flex-col lg:flex-row lg:justify-between gap-12 lg:gap-16">
         <!-- Left: Logo, description, buttons -->
         <div ref="leftColEl" class="max-w-md">
-          <img src="/images/logo-full.webp" alt="SkyTech International" class="h-12 mb-6" />
+          <img src="/images/logo-ovg.png" alt="One Visaya Gaming" class="h-12 mb-6" />
           <p class="text-white/70 text-sm leading-relaxed mb-8">
-            Innovating at the intersection of finance and digital experiences,
-            we deliver seamless fintech solutions and engaging interactive
-            entertainment that empower users worldwide.
+            One Visaya Gaming Corporation has been in the business of online
+            entertainment since 2022, operating with strict adherence to the
+            PAGCOR codes of conduct.
           </p>
           <div class="flex flex-wrap gap-4">
             <NuxtLink to="/contacts" class="btn-primary px-7 py-3 rounded">
@@ -76,7 +76,7 @@
           <div>
             <h3 class="text-lg font-bold mb-5">Connect with us</h3>
             <div class="flex gap-3">
-              <a href="https://www.linkedin.com/company/skytech-international-llc/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon">
+              <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon">
                 <img src="/images/linkedin.webp" alt="LinkedIn" class="w-9 h-9" />
               </a>
             </div>
@@ -87,7 +87,7 @@
 
     <div class="bg-primary py-2">
       <p class="text-center text-white text-sm">
-        &copy; {{ new Date().getFullYear() }} SkyTech International. All Rights Reserved.
+        &copy; {{ new Date().getFullYear() }} One Visaya Gaming Corporation. All Rights Reserved.
       </p>
     </div>
   </footer>
@@ -156,7 +156,7 @@ onBeforeUnmount(() => {
   transform: translateY(-4px) scale(1.1);
 }
 .social-icon:hover img {
-  filter: drop-shadow(0 6px 12px rgba(142, 179, 239, 0.55));
+  filter: drop-shadow(0 6px 12px rgba(237, 24, 121, 0.55));
 }
 .social-icon:active {
   transform: translateY(-2px) scale(1.05);

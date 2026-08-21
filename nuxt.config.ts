@@ -9,7 +9,10 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'SkyTech International',
+      title: 'One Visaya Gaming',
+      meta: [
+        { name: 'description', content: 'One Visaya Gaming Corporation has been in the business of online entertainment since 2022, operating with strict adherence to the PAGCOR codes of conduct.' },
+      ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },

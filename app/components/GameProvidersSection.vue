@@ -15,7 +15,7 @@
         <div
           v-for="provider in providers"
           :key="provider.name"
-          class="flex items-center justify-center h-fit transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(142,179,239,0.4)]"
+          class="flex items-center justify-center h-fit transition-all duration-300 hover:scale-110 hover:drop-shadow-[0_0_12px_rgba(237,24,121,0.45)]"
         >
           <img
             :src="provider.logo"

@@ -3,7 +3,7 @@
     <!-- Hero -->
     <PageHero
       title="About Us"
-      paragraph="Learn more about our mission, vision, and the team driving innovation in fintech and interactive technology."
+      paragraph="Learn more about our mission, vision, and the people building One Visaya Gaming."
       cta-to="#company-overview"
       cta-label="Discover More"
       image="/images/globe.webp"
@@ -22,16 +22,12 @@
             </span>
           </h2>
           <p class="text-white/70 text-base leading-relaxed mb-6">
-            SkyTech International is a Nevada-based technology
-            company focused on developing software products in
-            fintech, payment processing, and interactive
-            entertainment. Founded in 2025, SkyTech was established
-            to leverage software and assets developed for the U.S.
-            market. Following a period of focused software
-            development and successful deployment of previous
-            platform versions internationally, the company launched
-            operations in the United States and continues to grow its
-            team and expand its product offerings for the U.S. market.
+            One Visaya Gaming Corporation is an industry-leading
+            company that has been in the business of online
+            entertainment since 2022. The corporation was founded by
+            a group of professionals and veteran investors, and
+            operates with strict adherence to the PAGCOR codes of
+            conduct.
           </p>
           <p class="text-white/70 text-base leading-relaxed">
             Our team combines deep expertise in software
@@ -43,7 +39,7 @@
         <div ref="overviewImageEl" class="flex justify-center lg:justify-end">
           <img
             src="/images/building.webp"
-            alt="SkyTech International building"
+            alt="One Visaya Gaming Corporation office"
             class="w-full max-w-lg rounded-lg shadow-2xl"
           />
         </div>
@@ -51,7 +47,7 @@
     </section>
 
     <WhyWeAreBestSection :show-read-more="false" />
-    <LeadersSection />
+    <!-- LeadersSection removed: bios/photos belong to the previous brand's leadership. Restore once OVG supplies its own team. -->
   </div>
 </template>
 

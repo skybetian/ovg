@@ -2,7 +2,7 @@
   <div>
     <PageHero
       title="Privacy Policy"
-      paragraph="Learn how Skytech International handles and protects your personal data."
+      paragraph="Learn how One Visaya Gaming Corporation handles and protects your personal data."
       cta-to="#privacy-content"
       cta-label="Read Policy"
       bg-image="/images/legal-bg.webp"
@@ -14,7 +14,7 @@
         <div ref="contentEl" class="prose-legal">
           <h2>1. Introduction</h2>
           <p>
-            This Privacy Policy describes how Skytech International LLC ("Company", "Skytech LLC") collects, uses, and protects personal data in connection with its website and technology services.
+            This Privacy Policy describes how One Visaya Gaming Corporation ("Company", "OVG") collects, uses, and protects personal data in connection with its website and technology services.
           </p>
 
           <h2>2. Information We Collect</h2>
@@ -41,7 +41,7 @@
 
           <h2>4. Sharing of Information</h2>
           <p>
-            Skytech LLC does not sell personal data. However, data may be shared with the following:
+            OVG does not sell personal data. However, data may be shared with the following:
           </p>
           <ul>
             <li>Service providers (hosting, analytics, IT support)</li>
@@ -51,7 +51,7 @@
 
           <h2>5. Data Security</h2>
           <p>
-            Skytech implements industry-standard safeguards including access controls, encryption, and monitoring systems.
+            One Visaya Gaming implements industry-standard safeguards including access controls, encryption, and monitoring systems.
           </p>
 
           <h2>6. Data Retention</h2>
@@ -71,7 +71,7 @@
 
           <h2>9. Contact</h2>
           <p>
-            Email: <a href="mailto:dataprotection@skytech-us.com" class="text-sky-blue underline underline-offset-4 hover:text-primary transition-colors">dataprotection@skytech-us.com</a>
+            <!-- TODO: real OVG data protection email -->Contact us through the form on our Contact page.
           </p>
         </div>
       </div>

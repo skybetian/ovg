@@ -1,16 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #003BA4;
-  --color-secondary: #F0F5FF;
-  --color-black: #000816;
+  /* One Visaya Gaming — sampled from the brand key art */
+  /* Surfaces: deep violet-plum */
+  --color-black: #0B0118;
+  --color-navy-dark: #120327;
+  --color-navy: #1A042C;
+  --color-navy-light: #2A0842;
+
+  /* Brand gradient: deep magenta -> pink -> coral */
+  --color-magenta-deep: #B40C8B;
+  --color-primary: #ED1879;
+  --color-primary-deep: #C90F6B;
+  --color-coral: #FC916C;
+  --color-violet: #7B018D;
+
+  /* Text & light surfaces */
+  --color-secondary: #FDF0F7;
+  --color-light-gray: #F1ECF5;
+  --color-sky-blue: #FF8FB5;
+  --color-cool-gray: #C9BFD4;
   --color-white: #FFFFFF;
-  --color-light-gray: #EFEFEF;
-  --color-navy: #021940;
-  --color-navy-dark: #021539;
-  --color-navy-light: #102143;
-  --color-sky-blue: #8EB3EF;
-  --color-cool-gray: #C4C7CD;
+
   --font-outfit: "Outfit", sans-serif;
   --font-poppins: "Poppins", sans-serif;
 }
@@ -30,15 +41,15 @@ body {
   gap: 0.75rem;
   font-weight: 500;
   color: #ffffff;
-  border: 1px solid var(--color-primary);
-  background-image: linear-gradient(to right, #ffffff 50%, var(--color-primary) 50%);
+  border: 1px solid var(--color-primary-deep);
+  background-image: linear-gradient(to right, #ffffff 50%, var(--color-primary-deep) 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   transition: background-position 0.4s ease, color 0.3s ease;
 }
 .btn-primary:hover {
   background-position: left bottom;
-  color: var(--color-primary);
+  color: var(--color-primary-deep);
 }
 
 .btn-outline-light {
@@ -66,8 +77,8 @@ body {
   justify-content: center;
   gap: 0.75rem;
   font-weight: 500;
-  color: var(--color-primary);
-  background-image: linear-gradient(to right, var(--color-primary) 50%, #ffffff 50%);
+  color: var(--color-primary-deep);
+  background-image: linear-gradient(to right, var(--color-primary-deep) 50%, #ffffff 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   transition: background-position 0.4s ease, color 0.3s ease;

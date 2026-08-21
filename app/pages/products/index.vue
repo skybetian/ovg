@@ -3,11 +3,11 @@
     <!-- Hero -->
     <PageHero
       title="Products"
-      paragraph="Skytech develops and operates technology products across fintech and interactive entertainment. Our platforms are built with compliance, security, and scalability at the core."
+      paragraph="One Visaya Gaming Corporation develops and operates online entertainment products. Our platforms are built with compliance, security, and scalability at the core."
       cta-to="#interactive-platform"
       cta-label="Explore More"
       image="/images/girl.webp"
-      image-alt="Skytech multi-device platform"
+      image-alt="One Visaya Gaming multi-device platform"
       bg-image="/images/product-bg.webp"
       full-height
     />
@@ -62,7 +62,7 @@
     <div ref="bannerEl" class="relative bg-navy-dark py-16 md:py-20 overflow-hidden">
       <div
         ref="bannerStripEl"
-        class="absolute inset-x-0 top-1/2 -translate-y-1/2 py-10 md:py-12 -rotate-2 -mx-4 shadow-[0_0_40px_rgba(0,59,164,0.5)] bg-cover bg-center"
+        class="absolute inset-x-0 top-1/2 -translate-y-1/2 py-10 md:py-12 -rotate-2 -mx-4 shadow-[0_0_40px_rgba(237,24,121,0.5)] bg-cover bg-center"
         style="background-image: url('/images/banner-bg.webp')"
       >
         <p class="max-w-5xl mx-auto px-10 text-white text-xl md:text-3xl lg:text-4xl font-bold font-outfit italic text-center">
@@ -140,7 +140,7 @@
           <div
             v-for="n in 5"
             :key="n"
-            class="group relative rounded-xl overflow-hidden aspect-[16/10] w-[85vw] sm:w-[350px] lg:w-auto flex-shrink-0 lg:flex-shrink bg-[#0a1428] flex items-center justify-center cursor-pointer snap-start"
+            class="group relative rounded-xl overflow-hidden aspect-[16/10] w-[85vw] sm:w-[350px] lg:w-auto flex-shrink-0 lg:flex-shrink bg-[#1A042C] flex items-center justify-center cursor-pointer snap-start"
           >
             <img
               src="/images/coming-soon.webp"
@@ -175,7 +175,7 @@
               </span>
             </h2>
             <p class="text-white/70 text-base leading-relaxed max-w-sm">
-              From ideation to launch and beyond, we guide every step to deliver innovative, secure, and seamless fintech and interactive experiences.
+              From ideation to launch and beyond, we guide every step to deliver innovative, secure, and seamless online entertainment experiences.
             </p>
           </div>
 
@@ -195,7 +195,7 @@
             >{{ String(idx + 1).padStart(2, '0') }}</span>
 
             <p
-              class="relative z-10 text-4xl md:text-5xl font-bold font-outfit mb-6 transition-all duration-300 group-hover:-rotate-6 origin-bottom-left group-hover:drop-shadow-[0_4px_12px_rgba(142,179,239,0.6)]"
+              class="relative z-10 text-4xl md:text-5xl font-bold font-outfit mb-6 transition-all duration-300 group-hover:-rotate-6 origin-bottom-left group-hover:drop-shadow-[0_4px_12px_rgba(237,24,121,0.6)]"
               :class="step.featured ? 'text-white' : 'text-sky-blue'"
             >
               {{ String(idx + 1).padStart(2, '0') }}
@@ -414,26 +414,26 @@ const features = [
 
 .feature-card {
   background: var(--color-navy-light);
-  border: 1px solid rgba(142, 179, 239, 0.12);
+  border: 1px solid rgba(237, 24, 121, 0.12);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .feature-card:hover {
-  border-color: rgba(142, 179, 239, 0.3);
-  box-shadow: 0 8px 24px -8px rgba(14, 47, 146, 0.5);
+  border-color: rgba(237, 24, 121, 0.3);
+  box-shadow: 0 8px 24px -8px rgba(180, 12, 139, 0.5);
 }
 .category-card {
   background: var(--color-navy-light);
-  border: 1px solid rgba(142, 179, 239, 0.1);
+  border: 1px solid rgba(237, 24, 121, 0.1);
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 .category-card:hover {
-  border-color: rgba(142, 179, 239, 0.25);
-  box-shadow: 0 8px 24px -8px rgba(14, 47, 146, 0.5);
+  border-color: rgba(237, 24, 121, 0.25);
+  box-shadow: 0 8px 24px -8px rgba(180, 12, 139, 0.5);
   transform: translateY(-4px);
 }
 .feature-card-highlighted {
-  background: linear-gradient(135deg, #0FA3FF 0%, #0030CF 53%);
-  border: 1px solid rgba(15, 163, 255, 0.3);
-  box-shadow: 0 8px 32px -8px rgba(0, 48, 207, 0.4);
+  background: linear-gradient(135deg, #FC916C 0%, #B40C8B 53%);
+  border: 1px solid rgba(252, 145, 108, 0.3);
+  box-shadow: 0 8px 32px -8px rgba(180, 12, 139, 0.4);
 }
 </style>
