@@ -1,5 +1,5 @@
 <template>
-  <section class="relative lg:max-h-[60vh] xl:max-h-[70vh] flex items-center overflow-hidden bg-black py-28 lg:py-36">
+  <section :class="['relative flex items-center overflow-hidden bg-black', fullHeight ? 'lg:h-[calc(100dvh-160px)] pt-16 pb-28 lg:py-0' : 'lg:max-h-[60vh] xl:max-h-[70vh] py-28 lg:py-36']">
     <img
       :src="bgImage"
       alt=""
@@ -30,7 +30,7 @@
         <img
           :src="image"
           :alt="imageAlt"
-          class="w-full max-w-xs sm:max-w-md lg:max-w-lg xl:max-w-xl"
+          class="w-full max-w-xs sm:max-w-md lg:max-w-lg"
           style="filter: drop-shadow(0 20px 40px rgba(0, 100, 255, 0.4)) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5))"
         />
       </div>
@@ -50,6 +50,7 @@ defineProps<{
   imageAlt?: string
   bgImage: string
   bgPosition?: string
+  fullHeight?: boolean
 }>()
 
 const textContent = ref<HTMLElement>()

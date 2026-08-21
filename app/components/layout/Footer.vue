@@ -20,68 +20,66 @@
           </div>
         </div>
 
-        <!-- Right: Links columns -->
-        <div ref="linksColsEl" class="grid grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
-          <!-- Quick Links + Connect with us -->
-          <div>
-            <h3 class="text-lg font-bold mb-6">Quick Links</h3>
-            <ul class="space-y-3 mb-10">
-              <li>
-                <NuxtLink to="/" class="footer-link text-sm">
-                  Home
-                </NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/about" class="footer-link text-sm">
-                  About Us
-                </NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/products" class="footer-link text-sm">
-                  Products
-                </NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/contacts" class="footer-link text-sm">
-                  Contact Us
-                </NuxtLink>
-              </li>
-            </ul>
+        <!-- Right: Links + Socials -->
+        <div ref="linksColsEl" class="flex flex-col gap-10">
+          <!-- Row: Quick Links & Legal -->
+          <div class="grid grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
+            <div>
+              <h3 class="text-lg font-bold mb-6">Quick Links</h3>
+              <ul class="space-y-3">
+                <li>
+                  <NuxtLink to="/" class="footer-link text-sm">
+                    Home
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/about" class="footer-link text-sm">
+                    About Us
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/products" class="footer-link text-sm">
+                    Products
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/contacts" class="footer-link text-sm">
+                    Contact Us
+                  </NuxtLink>
+                </li>
+              </ul>
+            </div>
 
+            <div>
+              <h3 class="text-lg font-bold mb-6">Legal</h3>
+              <ul class="space-y-3">
+                <li>
+                  <NuxtLink to="/terms" class="footer-link text-sm">
+                    Terms of Use
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/privacy" class="footer-link text-sm">
+                    Privacy Policy
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/cookies" class="footer-link text-sm">
+                    Cookie Policy
+                  </NuxtLink>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Connect with us -->
+          <div>
             <h3 class="text-lg font-bold mb-5">Connect with us</h3>
             <div class="flex gap-3">
-              <a href="https://web.facebook.com/profile.php?id=61587201375617" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">
-                <img src="/images/facebook.webp" alt="Facebook" class="w-9 h-9" />
-              </a>
-              <a href="https://www.instagram.com/bsweeps5?igsh=MWI3bWFkZHB4c3hmdA%3D%3D" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
-                <img src="/images/instagram.webp" alt="Instagram" class="w-9 h-9" />
-              </a>
               <a href="https://www.linkedin.com/company/skytech-international-llc/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon">
                 <img src="/images/linkedin.webp" alt="LinkedIn" class="w-9 h-9" />
               </a>
             </div>
-          </div>
-
-          <!-- Legal -->
-          <div>
-            <h3 class="text-lg font-bold mb-6">Legal</h3>
-            <ul class="space-y-3">
-              <li>
-                <NuxtLink to="/terms" class="footer-link text-sm">
-                  Terms of Use
-                </NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/privacy" class="footer-link text-sm">
-                  Privacy Policy
-                </NuxtLink>
-              </li>
-              <li>
-                <NuxtLink to="/cookies" class="footer-link text-sm">
-                  Cookie Policy
-                </NuxtLink>
-              </li>
-            </ul>
           </div>
         </div>
       </div>

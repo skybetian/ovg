@@ -38,16 +38,6 @@
             <h3 class="text-2xl font-bold text-white font-outfit mb-4">Socials</h3>
             <ul class="space-y-3">
               <li>
-                <a href="https://web.facebook.com/profile.php?id=61587201375617" target="_blank" rel="noopener" class="text-sky-blue underline underline-offset-4 hover:text-primary transition-colors">
-                  Facebook
-                </a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/bsweeps5?igsh=MWI3bWFkZHB4c3hmdA%3D%3D" target="_blank" rel="noopener" class="text-sky-blue underline underline-offset-4 hover:text-primary transition-colors">
-                  Instagram
-                </a>
-              </li>
-              <li>
                 <a href="https://www.linkedin.com/company/skytech-international-llc/" target="_blank" rel="noopener" class="text-sky-blue underline underline-offset-4 hover:text-primary transition-colors">
                   LinkedIn
                 </a>

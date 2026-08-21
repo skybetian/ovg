@@ -4,11 +4,12 @@
     <PageHero
       title="Products"
       paragraph="Skytech develops and operates technology products across fintech and interactive entertainment. Our platforms are built with compliance, security, and scalability at the core."
-      cta-to="#company-overview"
-      cta-label="Explore Games"
-      image="/images/computer.webp"
+      cta-to="#interactive-platform"
+      cta-label="Explore More"
+      image="/images/girl.webp"
       image-alt="Skytech multi-device platform"
       bg-image="/images/product-bg.webp"
+      full-height
     />
 
     <!-- Features -->
@@ -104,7 +105,7 @@
     </section>
 
     <!-- Our Interactive Platform -->
-    <section ref="platformEl" class="bg-black py-20 md:py-28">
+    <section id="interactive-platform" ref="platformEl" class="bg-black py-20 md:py-28">
       <div class="max-w-7xl mx-auto px-6 md:px-16">
         <div ref="platformHeadingEl" class="text-center mb-14">
           <p class="text-white/70 text-sm md:text-base mb-3">Projects</p>
