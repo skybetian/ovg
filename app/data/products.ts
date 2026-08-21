@@ -32,10 +32,12 @@ export const products: Product[] = [
     websiteLabel: 'bsweeps.com',
     websiteHref: 'https://bsweeps.com',
     socials: [
-      { label: 'Facebook', href: '#' },
-      { label: 'Instagram', href: '#' },
-      { label: 'YouTube', href: '#' },
-      { label: 'TikTok', href: '#' },
+      { label: 'Facebook', href: 'https://www.facebook.com/people/BSweeps-US/pfbid0TZxwyX3P2gAfb2bsA3QWB1kag3BPZZiVrNEVwKspK533C58GZVrtDvnx7tNKQzzol/?mibextid=wwXIfr&rdid=KDlh7avB98nxHxig&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1C449UZFpf%2F' },
+      { label: 'Instagram', href: 'https://www.instagram.com/bsweeps5' },
+      { label: 'YouTube', href: 'http://www.youtube.com/@bsweepsglobal' },
+      { label: 'TikTok', href: 'https://tiktok.com/@bsweeps.official' },
+      { label: 'X', href: 'https://x.com/bsweepsglobal' },
+      { label: 'Telegram', href: 'https://t.me/sweeps8' },
     ],
     legalNote:
       'Bsweeps operates exclusively in states and jurisdictions where sweepstakes gaming is legal. Geofencing and other measures are implemented to ensure location enforcement to meet all federal and state requirements.',
