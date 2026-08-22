@@ -13,17 +13,6 @@
           class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
         >
           <div :class="i % 2 === 0 ? 'lg:order-1' : 'lg:order-2'">
-            <svg
-              class="value-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-              v-html="block.icon"
-            />
             <h3 class="text-2xl md:text-3xl font-bold text-white mb-4 font-outfit">
               {{ block.title }}
             </h3>
@@ -33,15 +22,19 @@
           </div>
 
           <div :class="i % 2 === 0 ? 'lg:order-2' : 'lg:order-1'">
-            <img
-              :src="block.image"
-              :alt="block.alt"
-              :width="block.w"
-              :height="block.h"
-              loading="lazy"
-              decoding="async"
-              class="value-image w-full aspect-[4/3] object-cover rounded-2xl"
-            />
+            <div class="media">
+              <HalftoneImage
+                :src="block.image"
+                :alt="block.alt"
+                :dot-spacing="5"
+                :max-dot-size="4.1"
+                :threshold="0.08"
+                :contrast="1.2"
+                dot-color="#FFFFFF"
+                background-color="#000000"
+                :square="true"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -70,20 +63,14 @@ const blocks = [
   {
     title: 'Our Vision',
     body: 'To be the platform operators keep choosing, because it stays up and keeps getting better.',
-    icon: '<path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z" /><circle cx="12" cy="12" r="2.8" />',
-    image: '/images/who-we-are-showcase.webp',
-    alt: 'The platform running on desktop and mobile with live casino, slot and table games',
-    w: 1200,
-    h: 800,
+    image: '/images/vision-eye.webp',
+    alt: 'Close-up of a human eye, rendered as a halftone print',
   },
   {
     title: 'Our Mission',
     body: 'To build online entertainment technology that is safe to run and easy to grow. Our team has been in this industry for years, and we hold every product we ship to the PAGCOR codes of conduct.',
-    icon: '<circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1.4" />',
-    image: '/images/who-we-are-parallax.webp',
-    alt: 'Casino chips, playing cards and dice on a table',
-    w: 1519,
-    h: 3295,
+    image: '/images/mission-rocket.webp',
+    alt: 'A rocket on its launch pad, rendered as a halftone print',
   },
 ]
 
@@ -124,15 +111,15 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.value-icon {
-  width: 2.75rem;
-  height: 2.75rem;
-  margin-bottom: 1.25rem;
-  color: var(--color-primary);
+.media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.35rem;
+  box-shadow: 0 24px 50px -26px rgba(0, 0, 0, 0.9);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
-
-.value-image {
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.9);
+.media:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px -26px rgba(0, 0, 0, 0.95);
 }
 </style>

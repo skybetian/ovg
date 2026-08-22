@@ -65,7 +65,7 @@
           />
           <!-- Connector lines (desktop only) -->
           <svg
-            class="pointer-events-none absolute z-0 inset-x-0 top-1/2 -translate-y-1/2 w-full h-6/12 hidden lg:block"
+            class="wwd-connectors pointer-events-none absolute z-0 inset-x-0 top-1/2 -translate-y-1/2 w-full h-6/12 hidden lg:block"
             viewBox="0 0 424 367"
             preserveAspectRatio="none"
             fill="none"
