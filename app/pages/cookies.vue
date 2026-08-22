@@ -14,7 +14,7 @@
         <div ref="contentEl" class="prose-legal">
           <h2>1. Overview</h2>
           <p>
-            Skytech LLC uses cookies to enhance functionality and performance.
+            OVG uses cookies to enhance functionality and performance.
           </p>
 
           <h2>2. Types of Cookies</h2>
@@ -26,7 +26,7 @@
 
           <h2>3. Third-Party Cookies</h2>
           <p>
-            Skytech LLC may use analytics and service providers.
+            OVG may use analytics and service providers.
           </p>
 
           <h2>4. Control</h2>
@@ -36,7 +36,7 @@
 
           <h2>5. Consent</h2>
           <p>
-            Where required by applicable laws, Skytech LLC obtains user consent prior to the use of non-essential cookies.
+            Where required by applicable laws, OVG obtains user consent prior to the use of non-essential cookies.
           </p>
         </div>
       </div>

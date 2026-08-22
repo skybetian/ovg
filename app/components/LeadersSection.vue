@@ -233,14 +233,14 @@ function onPointerEnd(e: PointerEvent) {
 <style scoped>
 .leader-card {
   background:
-    radial-gradient(120% 100% at 0% 0%, rgba(142, 179, 239, 0.15) 0%, rgba(142, 179, 239, 0) 55%),
+    radial-gradient(120% 100% at 0% 0%, rgba(237, 24, 121, 0.15) 0%, rgba(237, 24, 121, 0) 55%),
     var(--color-navy-light);
-  border: 1px solid rgba(142, 179, 239, 0.15);
+  border: 1px solid rgba(237, 24, 121, 0.15);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
 }
 .leader-card-active {
   background: #f0f5ff;
-  border-color: rgba(142, 179, 239, 0.25);
+  border-color: rgba(237, 24, 121, 0.25);
   box-shadow: 0 8px 30px -8px rgba(0, 0, 0, 0.15);
 }
 .reveal {

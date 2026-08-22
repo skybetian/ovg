@@ -14,12 +14,12 @@
         <div ref="contentEl" class="prose-legal">
           <h2>1. Business Overview</h2>
           <p>
-            Skytech International LLC ("Skytech LLC") is a company organized under the laws of the State of Nevada, USA, and operates as a technology and platform provider offering software infrastructure and digital solutions for promotional engagement platforms.
+            One Visaya Gaming Corporation ("OVG") has been in the business of online entertainment since 2022 and operates with strict adherence to the PAGCOR codes of conduct.
           </p>
 
           <h2>2. Business Model & Risk Positioning</h2>
           <p>
-            Skytech LLC provides backend systems, payment integrations, fraud monitoring, and user management tools. Consumer-facing sweepstakes platforms are operated separately and in compliance with applicable laws.
+            OVG provides backend systems, payment integrations, fraud monitoring, and user management tools. Consumer-facing gaming platforms are operated separately and in compliance with applicable laws.
           </p>
 
           <h2>3. Compliance Controls</h2>
@@ -33,7 +33,7 @@
 
           <h2>4. Jurisdictional Restrictions</h2>
           <p>
-            Access to services may not be available in certain jurisdictions, including Washington, Idaho, Michigan, and Nevada. Controls are implemented to ensure compliance with applicable laws and regulations.
+            Access to services may not be available in certain jurisdictions. Controls are implemented to ensure compliance with applicable laws and regulations.
           </p>
 
           <h2>5. Payment & PCI Compliance</h2>
@@ -43,7 +43,7 @@
 
           <h2>6. Privacy & Data Protection Summary</h2>
           <p>
-            Skytech LLC processes personal data for operational, compliance, and fraud prevention purposes. Processed data is not sold and is protected by appropriate security controls.
+            OVG processes personal data for operational, compliance, and fraud prevention purposes. Processed data is not sold and is protected by appropriate security controls.
           </p>
 
           <h2>7. Terms of Use Summary</h2>
@@ -65,7 +65,7 @@
 
           <h2>10. Nature of Services</h2>
           <p>
-            Skytech International LLC provides:
+            One Visaya Gaming Corporation provides:
           </p>
           <ul>
             <li>Technology infrastructure</li>
@@ -95,7 +95,7 @@
 
           <h2>14. Geographic Restrictions</h2>
           <p>
-            Services may not be available in all jurisdictions, including certain U.S. states such as Washington, Idaho, Michigan, and Nevada.
+            Services may not be available in all jurisdictions.
           </p>
 
           <h2>15. Disclaimer</h2>
@@ -110,7 +110,7 @@
 
           <h2>17. Governing Law</h2>
           <p>
-            These Terms are governed by the laws of the State of Nevada, USA.
+            <!-- LEGAL REVIEW: governing law must be confirmed by counsel for the PH entity. -->These Terms are governed by the laws of the Republic of the Philippines.
           </p>
         </div>
       </div>

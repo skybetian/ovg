@@ -29,16 +29,16 @@
 
             <h3 class="text-2xl font-bold text-white font-outfit mb-3">Location</h3>
             <p class="text-white/70 mb-10">
-              2835 South Jones, Suite 1, Las Vegas, Nevada 89107
+              <!-- TODO: real OVG address -->Visayas, Philippines
             </p>
 
             <h3 class="text-2xl font-bold text-white font-outfit mb-3">Email</h3>
-            <p class="text-white/70 mb-10">info@skytech-us.com</p>
+            <!-- TODO: real OVG contact email --><p class="text-white/70 mb-10">Please use the form to reach us.</p>
 
             <h3 class="text-2xl font-bold text-white font-outfit mb-4">Socials</h3>
             <ul class="space-y-3">
               <li>
-                <a href="https://www.linkedin.com/company/skytech-international-llc/" target="_blank" rel="noopener" class="text-sky-blue underline underline-offset-4 hover:text-primary transition-colors">
+                <a href="#" target="_blank" rel="noopener" class="text-sky-blue underline underline-offset-4 hover:text-primary transition-colors">
                   LinkedIn
                 </a>
               </li>

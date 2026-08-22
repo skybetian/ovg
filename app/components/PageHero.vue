@@ -7,7 +7,7 @@
     />
     <div
       class="absolute inset-0"
-      style="background: linear-gradient(to bottom, #000816 0%, rgba(0, 45, 124, 0.7) 100%)"
+      style="background: linear-gradient(to bottom, #0B0118 0%, rgba(123, 1, 141, 0.7) 100%)"
     />
 
     <div :class="['relative z-10 max-w-7xl mx-auto px-6 md:px-16 w-full', image ? 'grid grid-cols-1 lg:grid-cols-2 gap-12 items-center' : 'flex justify-center']">

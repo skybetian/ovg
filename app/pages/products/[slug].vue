@@ -153,7 +153,7 @@ if (!product) {
 }
 
 useHead({
-  title: `${product.name} — SkyTech International`,
+  title: `${product.name} — One Visaya Gaming Corporation`,
 })
 
 const heroEl = ref<HTMLElement>()

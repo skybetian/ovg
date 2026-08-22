@@ -60,17 +60,15 @@
           ref="centerImageEl"
           class="flex justify-center sm:col-span-2 sm:absolute sm:z-10 sm:w-full lg:static lg:z-auto lg:w-auto lg:col-span-1 lg:col-start-2 lg:row-span-2"
         >
-          <picture class="z-10">
-            <source
-              media="(min-width: 640px)"
-              srcset="/images/what-we-do-logo.webp"
-            />
-            <img
-              src="/images/what-we-do-logo-small.webp"
-              alt="logo"
-              class="w-full max-w-[200px] sm:max-w-xs md:max-w-sm object-cover z-10"
-            />
-          </picture>
+          <img
+            src="/images/ovg-monogram.webp"
+            alt="One Visaya Gaming monogram"
+            width="460"
+            height="460"
+            loading="lazy"
+            decoding="async"
+            class="relative z-10 w-full max-w-[190px] sm:max-w-[260px] md:max-w-[300px] h-auto"
+          />
           <!-- Connector lines (desktop only) -->
           <svg
             class="pointer-events-none absolute z-0 inset-x-0 top-1/2 -translate-y-1/2 w-full scale-120 h-6/12 hidden lg:block"
@@ -97,28 +95,28 @@
             <path
               class="connector-ray"
               d="M212.687 180.734L1.93848 2.28955"
-              stroke="#142453"
+              stroke="#3A0B52"
               stroke-width="2"
               stroke-linecap="round"
             />
             <path
               class="connector-ray"
               d="M212.687 180.734L421.938 6.47184"
-              stroke="#142453"
+              stroke="#3A0B52"
               stroke-width="2"
               stroke-linecap="round"
             />
             <path
               class="connector-ray"
               d="M212.687 180.734L421.938 364.29"
-              stroke="#142453"
+              stroke="#3A0B52"
               stroke-width="2"
               stroke-linecap="round"
             />
             <path
               class="connector-ray"
               d="M212.687 180.734L4.18447 364.29"
-              stroke="#142453"
+              stroke="#3A0B52"
               stroke-width="2"
               stroke-linecap="round"
             />
@@ -126,7 +124,7 @@
             <path
               class="connector-pulse"
               d="M212.687 180.734L1.93848 2.28955"
-              stroke="#7DD3FC"
+              stroke="#FF4D97"
               stroke-width="2.5"
               stroke-linecap="round"
               filter="url(#pulse-glow)"
@@ -134,7 +132,7 @@
             <path
               class="connector-pulse"
               d="M212.687 180.734L421.938 6.47184"
-              stroke="#7DD3FC"
+              stroke="#FF4D97"
               stroke-width="2.5"
               stroke-linecap="round"
               filter="url(#pulse-glow)"
@@ -142,7 +140,7 @@
             <path
               class="connector-pulse"
               d="M212.687 180.734L421.938 364.29"
-              stroke="#7DD3FC"
+              stroke="#FF4D97"
               stroke-width="2.5"
               stroke-linecap="round"
               filter="url(#pulse-glow)"
@@ -150,7 +148,7 @@
             <path
               class="connector-pulse"
               d="M212.687 180.734L4.18447 364.29"
-              stroke="#7DD3FC"
+              stroke="#FF4D97"
               stroke-width="2.5"
               stroke-linecap="round"
               filter="url(#pulse-glow)"
@@ -159,47 +157,44 @@
         </div>
 
         <div class="service-card js-left-card rounded-xl p-6 md:p-8 lg:col-start-1 lg:row-start-1">
-          <img src="/images/pc-icon.webp" alt="" class="w-10 h-10 mb-5" />
-          <h3 class="text-xl font-bold text-white mb-3">Software Development</h3>
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg>
+          <h3 class="text-xl font-bold text-white mb-3">Platform Development</h3>
           <p class="text-cool-gray text-sm leading-relaxed">
-            Custom platform development, API
-            design, and cloud-native
-            architecture for fintech and
-            entertainment verticals.
+            Core gaming platform, player wallet,
+            back-office tools, and APIs built to
+            run at operator scale.
           </p>
         </div>
 
         <div class="service-card js-left-card rounded-xl p-6 md:p-8 lg:col-start-1 lg:row-start-2">
-          <img src="/images/plant-icon.webp" alt="" class="w-10 h-10 mb-5" />
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 12h4M9 10v4"/><circle cx="15.5" cy="11" r="1"/><circle cx="17.5" cy="13.5" r="1"/><path d="M17.9 6H6.1a4 4 0 0 0-3.9 3.2l-1 5A3.4 3.4 0 0 0 4.5 18c1 0 1.9-.5 2.5-1.3L8.5 15h7l1.5 1.7c.6.8 1.5 1.3 2.5 1.3a3.4 3.4 0 0 0 3.3-3.8l-1-5A4 4 0 0 0 17.9 6Z"/></svg>
           <h3 class="text-xl font-bold text-white mb-3">Game Development</h3>
           <p class="text-cool-gray text-sm leading-relaxed">
-            Interactive entertainment
-            software, sweepstakes game
-            logic, RNG systems, and
-            engaging UI/UX for social
-            gaming platforms.
+            Slots, table games, and live-dealer
+            front ends — RNG logic, math models,
+            and UI built to hold up over long
+            play sessions.
           </p>
         </div>
 
         <div class="service-card js-right-card rounded-xl p-6 md:p-8 lg:col-start-3 lg:row-start-1">
-          <img src="/images/tags-icon.webp" alt="" class="w-10 h-10 mb-5" />
-          <h3 class="text-xl font-bold text-white mb-3">Fintech &amp; Payments</h3>
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2.6"/><path d="M12 3v6.4M12 14.6V21M3 12h6.4M14.6 12H21"/><circle cx="12" cy="3" r="1.4"/><circle cx="12" cy="21" r="1.4"/><circle cx="3" cy="12" r="1.4"/><circle cx="21" cy="12" r="1.4"/></svg>
+          <h3 class="text-xl font-bold text-white mb-3">Game Aggregation</h3>
           <p class="text-cool-gray text-sm leading-relaxed">
-            Payment processing integration,
-            ACH and card infrastructure, ledger
-            systems, and payout automation for
-            compliant environments.
+            One integration, hundreds of titles.
+            Unified API, shared wallet, and
+            consolidated reporting across studios.
           </p>
         </div>
 
         <div class="service-card js-right-card rounded-xl p-6 md:p-8 lg:col-start-3 lg:row-start-2">
-          <img src="/images/cs-icon.webp" alt="" class="w-10 h-10 mb-5" />
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5.5c0 4.3 2.9 8.3 7 9.5 4.1-1.2 7-5.2 7-9.5V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
           <h3 class="text-xl font-bold text-white mb-3">Compliance-First</h3>
           <p class="text-cool-gray text-sm leading-relaxed">
-            Geolocation enforcement, KYC/AML
-            integration, jurisdiction-aware access
-            controls, and regulatory reporting built
-            from the ground up.
+            Player verification, responsible gaming
+            tools, and audit-ready reporting, aligned
+            with the PAGCOR codes of conduct from
+            day one.
           </p>
         </div>
       </div>
@@ -227,6 +222,15 @@ const pulseTweens: gsap.core.Tween[] = []
 
 onMounted(() => {
   if (!sectionEl.value) return
+
+  // Reduced motion: no reveal, no ray pulses — land on the finished state
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (titleTextEl.value) titleTextEl.value.style.clipPath = 'inset(0 0 0 0%)'
+    if (titleBarEl.value) titleBarEl.value.style.display = 'none'
+    sectionEl.value.querySelectorAll<HTMLElement>('.connector-pulse')
+      .forEach((el) => { el.style.display = 'none' })
+    return
+  }
 
   sectionEl.value.querySelectorAll<HTMLElement>('.service-card').forEach((card) => {
     const xTo = gsap.quickTo(card, '--mx', { duration: 0.5, ease: 'power3.out' })
@@ -482,21 +486,34 @@ onBeforeUnmount(() => {
   pointer-events: none;
   will-change: transform;
 }
+/* Line icons take their colour from the brand token — no more blue rasters. */
+.service-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 1.25rem;
+  color: var(--color-primary);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.service-card:hover .service-icon {
+  color: var(--color-coral);
+  transform: translateY(-2px);
+}
+
 .service-card {
   --mx: 50;
   --my: 50;
   position: relative;
   background:
-    radial-gradient(120% 100% at calc(var(--mx) * 1%) calc(var(--my) * 1%), rgb(5 37 131) 0%, rgba(9, 20, 37, 0.77) 55%),
+    radial-gradient(120% 100% at calc(var(--mx) * 1%) calc(var(--my) * 1%), rgb(139 12 106) 0%, rgba(26, 4, 44, 0.77) 55%),
     var(--color-navy-light);
-  border: 1px solid rgba(142, 179, 239, 0.15);
+  border: 1px solid rgba(237, 24, 121, 0.15);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .service-card:hover {
-  border-color: rgba(142, 179, 239, 0.35);
+  border-color: rgba(237, 24, 121, 0.35);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.06) inset,
-    0 10px 30px -10px rgba(14, 47, 146, 0.6);
+    0 10px 30px -10px rgba(180, 12, 139, 0.6);
 }
 </style>

@@ -3,9 +3,11 @@
     <div class="max-w-7xl mx-auto md:px-6 md:px-16 flex items-center justify-between">
       <NuxtLink to="/">
         <img
-          src="/images/logo-full.webp"
-          alt="SkyTech International"
-          class="h-10"
+          src="/images/logo-ovg.png"
+          alt="One Visaya Gaming"
+          width="262"
+          height="44"
+          class="h-10 w-auto"
         />
       </NuxtLink>
 
@@ -30,9 +32,10 @@
 
       <button
         class="md:hidden text-white"
+        aria-label="Open menu"
         @click="mobileOpen = true"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
@@ -44,7 +47,7 @@
         <div
           v-if="mobileOpen"
           class="fixed inset-0 z-[200] flex flex-col items-center justify-center md:hidden"
-          style="background: radial-gradient(circle at 50% 40%, rgb(0, 30, 90) 0%, rgb(1, 12, 35) 45%, rgb(0, 4, 12) 100%)"
+          style="background: radial-gradient(circle at 50% 40%, rgb(123, 1, 141) 0%, rgb(26, 4, 44) 45%, rgb(11, 1, 24) 100%)"
         >
           <nav class="flex flex-col items-center gap-8">
             <NuxtLink
@@ -53,7 +56,8 @@
               :to="link.to"
               class="text-white/80 text-2xl font-light tracking-wide transition-colors hover:text-white"
               :class="{ '!text-white underline underline-offset-8 decoration-white decoration-[1px]': isActive(link.to) }"
-              @click="mobileOpen = false"
+              aria-label="Close menu"
+            @click="mobileOpen = false"
             >
               {{ link.label }}
             </NuxtLink>
@@ -63,7 +67,7 @@
             class="absolute bottom-16 w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:text-white hover:border-white/40 transition-colors"
             @click="mobileOpen = false"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
