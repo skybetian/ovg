@@ -1,14 +1,8 @@
 <template>
-  <section ref="sectionEl" class="relative bg-navy py-16 md:py-24 overflow-hidden">
+  <section ref="sectionEl" class="relative bg-navy pt-20 pb-24 md:pt-28 md:pb-32 overflow-hidden">
     <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16">
-      <div ref="headingEl" class="text-center mb-12 md:mb-16">
-        <p class="text-cool-gray font-medium text-sm mb-2">Testimonial</p>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-outfit">
-          <span class="reveal">
-            <span ref="titleTextEl" class="reveal-text">What Our Clients Say</span>
-            <span ref="titleBarEl" class="reveal-bar" />
-          </span>
-        </h2>
+      <div class="text-center mb-12 md:mb-16">
+        <SectionHeading eyebrow="Testimonial" title="What Our Clients Say" />
       </div>
 
       <div ref="gridEl" class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-7">
@@ -55,27 +49,24 @@ gsap.registerPlugin(ScrollTrigger)
 // ponytail: placeholder copy — no real names or companies until the client supplies quotes
 const testimonials = [
   {
-    text: 'The platform handled our launch traffic without a hiccup. Onboarding was quick, and the back office gave our team everything it needed on day one.',
+    text: 'Launch day traffic hit harder than we planned for and the platform held. Our team was already working the back office by that afternoon.',
     role: 'Head of Operations, Online Gaming Operator',
   },
   {
-    text: 'Their team understands both technology and user experience. The interactive solutions they built significantly improved user engagement and retention.',
+    text: 'They asked about our players before they asked about our stack. That showed up in the numbers about a month later.',
     role: 'Product Director, Casino Platform',
   },
   {
-    text: 'Working with the team was seamless from start to finish. Their aggregation layer and reporting gave us the confidence to scale.',
+    text: 'One integration replaced four of ours. The reporting is the part my finance team actually thanks me for.',
     role: 'CTO, Gaming Technology Provider',
   },
   {
-    text: 'The level of security and attention to detail in their gaming software is unmatched. They take compliance as seriously as we do.',
+    text: 'They pushed back on two things we asked for, on compliance grounds. That is a large part of why we stayed.',
     role: 'CEO, Online Entertainment Company',
   },
 ]
 
 const sectionEl = ref<HTMLElement>()
-const headingEl = ref<HTMLElement>()
-const titleTextEl = ref<HTMLElement>()
-const titleBarEl = ref<HTMLElement>()
 const gridEl = ref<HTMLElement>()
 
 let trigger: ScrollTrigger | undefined
@@ -84,8 +75,6 @@ onMounted(() => {
   if (!sectionEl.value) return
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    if (titleTextEl.value) titleTextEl.value.style.clipPath = 'inset(0 0 0 0%)'
-    if (titleBarEl.value) titleBarEl.value.style.display = 'none'
     return
   }
 
@@ -98,19 +87,20 @@ onMounted(() => {
     },
   })
 
-  if (titleTextEl.value && titleBarEl.value) {
-    tl.to(titleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
-    tl.to(titleBarEl.value, { xPercent: -101, duration: 0.7 }, '<')
-  }
 
-  if (headingEl.value) {
-    tl.from(headingEl.value.querySelectorAll('p'), { opacity: 0, y: 20, duration: 0.6 }, '-=0.4')
-  }
 
+  // cards converge from the outside in, matching the two-column grid
   if (gridEl.value) {
+    const cards = Array.from(gridEl.value.children)
     tl.from(
-      gridEl.value.children,
-      { opacity: 0, y: 44, duration: 0.75, stagger: 0.12 },
+      cards,
+      {
+        opacity: 0,
+        x: (i: number) => (i % 2 === 0 ? -70 : 70),
+        duration: 0.8,
+        ease: 'power3.out',
+        stagger: 0.12,
+      },
       '-=0.25',
     )
   }
@@ -124,32 +114,17 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.reveal {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-}
-.reveal-text {
-  display: inline-block;
-  clip-path: inset(0 0 0 100%);
-}
-.reveal-bar {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-coral));
-  pointer-events: none;
-  will-change: transform;
-}
-
+/* same surface as the service and pillar cards — one treatment across the page */
 .quote-card {
-  background:
-    linear-gradient(135deg, rgba(180, 12, 139, 0.12), transparent 60%),
-    var(--color-navy-light);
-  border: 1px solid rgba(237, 24, 121, 0.16);
+  background: linear-gradient(160deg, #38104F 0%, #240A38 100%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 12px 28px -18px rgba(0, 0, 0, 0.9);
   transition: border-color 0.3s ease, transform 0.3s ease;
 }
 .quote-card:hover {
-  border-color: rgba(237, 24, 121, 0.42);
+  border-color: rgba(237, 24, 121, 0.4);
   transform: translateY(-4px);
 }
 

@@ -1,14 +1,8 @@
 <template>
-  <section ref="sectionEl" class="bg-navy py-16 md:py-24">
+  <section ref="sectionEl" class="bg-navy py-24 md:py-36">
     <div class="max-w-7xl mx-auto px-6 md:px-16">
-      <div ref="headingEl" class="text-center mb-12 md:mb-16">
-        <p class="text-cool-gray font-medium text-sm mb-2">Our Services</p>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-outfit">
-          <span class="reveal">
-            <span ref="titleTextEl" class="reveal-text">What We Do</span>
-            <span ref="titleBarEl" class="reveal-bar" />
-          </span>
-        </h2>
+      <div class="text-center mb-12 md:mb-16">
+        <SectionHeading eyebrow="Our Services" title="What We Do" />
       </div>
 
       <div ref="cardsGridEl" class="relative isolate grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-6 md:gap-8 items-center">
@@ -67,11 +61,11 @@
             height="460"
             loading="lazy"
             decoding="async"
-            class="relative z-10 w-full max-w-[190px] sm:max-w-[260px] md:max-w-[300px] h-auto"
+            class="wwd-badge relative z-10 w-full max-w-[190px] sm:max-w-[260px] md:max-w-[300px] h-auto"
           />
           <!-- Connector lines (desktop only) -->
           <svg
-            class="pointer-events-none absolute z-0 inset-x-0 top-1/2 -translate-y-1/2 w-full scale-120 h-6/12 hidden lg:block"
+            class="pointer-events-none absolute z-0 inset-x-0 top-1/2 -translate-y-1/2 w-full h-6/12 hidden lg:block"
             viewBox="0 0 424 367"
             preserveAspectRatio="none"
             fill="none"
@@ -160,9 +154,9 @@
           <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg>
           <h3 class="text-xl font-bold text-white mb-3">Platform Development</h3>
           <p class="text-cool-gray text-sm leading-relaxed">
-            Core gaming platform, player wallet,
-            back-office tools, and APIs built to
-            run at operator scale.
+            The core platform, player wallet, back
+            office, and APIs. Everything an operator
+            needs to run the business.
           </p>
         </div>
 
@@ -171,9 +165,9 @@
           <h3 class="text-xl font-bold text-white mb-3">Game Development</h3>
           <p class="text-cool-gray text-sm leading-relaxed">
             Slots, table games, and live-dealer
-            front ends — RNG logic, math models,
-            and UI built to hold up over long
-            play sessions.
+            front ends. We handle the RNG, the math,
+            and the interface players sit with for
+            hours.
           </p>
         </div>
 
@@ -181,9 +175,9 @@
           <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2.6"/><path d="M12 3v6.4M12 14.6V21M3 12h6.4M14.6 12H21"/><circle cx="12" cy="3" r="1.4"/><circle cx="12" cy="21" r="1.4"/><circle cx="3" cy="12" r="1.4"/><circle cx="21" cy="12" r="1.4"/></svg>
           <h3 class="text-xl font-bold text-white mb-3">Game Aggregation</h3>
           <p class="text-cool-gray text-sm leading-relaxed">
-            One integration, hundreds of titles.
-            Unified API, shared wallet, and
-            consolidated reporting across studios.
+            One integration, many studios. A single
+            API, one wallet, and reporting you can
+            read in one place.
           </p>
         </div>
 
@@ -192,9 +186,9 @@
           <h3 class="text-xl font-bold text-white mb-3">Compliance-First</h3>
           <p class="text-cool-gray text-sm leading-relaxed">
             Player verification, responsible gaming
-            tools, and audit-ready reporting, aligned
-            with the PAGCOR codes of conduct from
-            day one.
+            tools, and reporting an auditor can
+            follow. Built to the PAGCOR codes of
+            conduct, not bolted on later.
           </p>
         </div>
       </div>
@@ -209,9 +203,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const sectionEl = ref<HTMLElement>()
-const headingEl = ref<HTMLElement>()
-const titleTextEl = ref<HTMLElement>()
-const titleBarEl = ref<HTMLElement>()
 const cardsGridEl = ref<HTMLElement>()
 const centerImageEl = ref<HTMLElement>()
 
@@ -225,8 +216,6 @@ onMounted(() => {
 
   // Reduced motion: no reveal, no ray pulses — land on the finished state
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    if (titleTextEl.value) titleTextEl.value.style.clipPath = 'inset(0 0 0 0%)'
-    if (titleBarEl.value) titleBarEl.value.style.display = 'none'
     sectionEl.value.querySelectorAll<HTMLElement>('.connector-pulse')
       .forEach((el) => { el.style.display = 'none' })
     return
@@ -309,18 +298,7 @@ onMounted(() => {
     },
   })
 
-  if (titleTextEl.value && titleBarEl.value) {
-    tl.to(titleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
-    tl.to(titleBarEl.value, { xPercent: -101, duration: 0.7 }, '<')
-  }
 
-  if (headingEl.value) {
-    tl.from(
-      headingEl.value.querySelectorAll('p'),
-      { opacity: 0, y: 20, duration: 0.6 },
-      '-=0.4',
-    )
-  }
 
   if (cardsGridEl.value) {
     if (isDesktop) {
@@ -355,19 +333,6 @@ onMounted(() => {
     }
   }
 
-  if (centerImageEl.value) {
-    tl.from(
-      centerImageEl.value,
-      {
-        opacity: 0,
-        scale: 0.4,
-        transformOrigin: 'center center',
-        duration: 1,
-        ease: 'back.out(1.6)',
-      },
-      '<',
-    )
-  }
 
   if (rays.length) {
     tl.to(
@@ -470,22 +435,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-.reveal {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-}
-.reveal-text {
-  display: inline-block;
-  clip-path: inset(0 0 0 100%);
-}
-.reveal-bar {
-  position: absolute;
-  inset: 0;
-  background: var(--color-white);
-  pointer-events: none;
-  will-change: transform;
-}
 /* Line icons take their colour from the brand token — no more blue rasters. */
 .service-icon {
   width: 2.5rem;
@@ -503,12 +452,37 @@ onBeforeUnmount(() => {
   --mx: 50;
   --my: 50;
   position: relative;
-  background:
-    radial-gradient(120% 100% at calc(var(--mx) * 1%) calc(var(--my) * 1%), rgb(139 12 106) 0%, rgba(26, 4, 44, 0.77) 55%),
-    var(--color-navy-light);
-  border: 1px solid rgba(237, 24, 121, 0.15);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  isolation: isolate;
+  /* card must read against bg-navy without leaning on the pink — lift it and edge it */
+  background: #1F0632;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 12px 28px -18px rgba(0, 0, 0, 0.9);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* magenta spotlight is held at zero until hover — it tracks the cursor via --mx/--my */
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  /* tight pool that follows the cursor; fades to transparent so the card
+     colour underneath shows rather than being painted over */
+  background: radial-gradient(
+    38% 60% at calc(var(--mx) * 1%) calc(var(--my) * 1%),
+    rgba(237, 24, 121, 0.5) 0%,
+    rgba(180, 12, 139, 0.2) 45%,
+    transparent 78%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.service-card:hover::before {
+  opacity: 1;
 }
 .service-card:hover {
   border-color: rgba(237, 24, 121, 0.35);

@@ -85,8 +85,9 @@
       </div>
     </div>
 
-    <div class="bg-primary py-2">
-      <p class="text-center text-white text-sm">
+    <!-- was a full-width bg-primary bar: heavy on pink, and white on #ED1879 is only 4.20:1 -->
+    <div class="border-t border-primary/30 bg-black py-4">
+      <p class="text-center text-white/60 text-sm">
         &copy; {{ new Date().getFullYear() }} One Visaya Gaming Corporation. All Rights Reserved.
       </p>
     </div>

@@ -61,10 +61,10 @@
       </h1>
 
       <p class="text-white/80 text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-        One Visaya Gaming Corporation has been building online
-        entertainment since 2022 — founded by seasoned professionals
-        and veteran investors, and operated with strict adherence to
-        the PAGCOR codes of conduct.
+        One Visaya Gaming Corporation has built online entertainment
+        since 2022. Our founders and investors have spent years in this
+        industry, and we run every product by the PAGCOR codes of
+        conduct.
       </p>
 
       <div class="flex flex-wrap gap-4 justify-center">
@@ -83,9 +83,9 @@
 import { gsap } from 'gsap'
 
 const headlineLines = [
-  'Powering the Next',
-  'Generation of',
-  'Online Entertainment',
+  'The Platform Behind',
+  'Your Online',
+  'Gaming Business',
 ]
 
 interface LineRefs {

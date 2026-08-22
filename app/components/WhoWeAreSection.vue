@@ -1,48 +1,88 @@
 <template>
-  <section ref="sectionEl" class="relative bg-gradient-to-b from-black via-navy-dark to-navy py-16 md:py-24 overflow-hidden">
-    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      <div ref="textContent">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-8 font-outfit">
-          <span class="reveal">
-            <span ref="titleTextEl" class="reveal-text">Who We Are</span>
-            <span ref="titleBarEl" class="reveal-bar" />
-          </span>
-        </h2>
-        <p class="text-white/80 text-base md:text-lg leading-relaxed mb-6">
-          One Visaya Gaming Corporation is an industry-leading company
-          that has been in the business of online entertainment since
-          2022. We build the platform, the games, and the player systems
-          behind a modern gaming operation — where uptime, integrity,
-          and scale aren't optional. They're everything.
-        </p>
-        <p class="text-white/80 text-base md:text-lg leading-relaxed mb-10">
-          Founded by a group of professionals and veteran investors, and
-          operated with strict adherence to the PAGCOR codes of conduct.
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <NuxtLink to="/about" class="btn-light px-7 py-3 rounded">
-            Read More
-          </NuxtLink>
-          <NuxtLink to="/contacts" class="btn-outline-light px-7 py-3 rounded">
-            Contact Us
-          </NuxtLink>
-        </div>
-      </div>
+  <section
+    ref="sectionEl"
+    class="relative flex items-center overflow-hidden py-20 md:py-28 lg:py-0 lg:min-h-[100dvh]"
+  >
+    <!-- section backdrop: shown as-is, no overlay -->
+    <img
+      ref="bgEl"
+      src="/images/who-we-are-parallax.webp"
+      alt=""
+      aria-hidden="true"
+      width="1519"
+      height="3295"
+      loading="lazy"
+      decoding="async"
+      class="section-bg"
+    />
+    <!-- bridges the two seams: starts on the hero's grid-floor black, ends on
+         What We Do's plum, so neither boundary shows a step -->
+    <div ref="tintEl" class="absolute inset-0 section-tint" />
+    <!-- solid + mask rather than a gradient, so its colour can ride the same tween -->
+    <div ref="fadeEl" class="section-fade" />
 
-      <div ref="showcaseEl" class="relative flex items-center justify-center h-[360px] md:h-[440px]">
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-16">
+      <!-- lg+: the copy lives inside the phone -->
+      <div class="hidden lg:block phone">
+        <div class="phone-screen">
+          <img
+            ref="screenBgEl"
+            src="/images/who-we-are-parallax.webp"
+            alt=""
+            aria-hidden="true"
+            class="screen-bg"
+          />
+          <div class="screen-content">
+            <SectionHeading
+              title="Who We Are"
+              size-class="text-4xl xl:text-5xl"
+              class="mb-5"
+            />
+            <p
+              v-for="(para, i) in paragraphs"
+              :key="i"
+              class="text-white/80 text-xs xl:text-sm leading-relaxed mb-3 max-w-xl"
+            >
+              {{ para }}
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-3 mt-6">
+              <NuxtLink to="/about" class="btn-light px-6 py-2.5 rounded text-sm">
+                Read More
+              </NuxtLink>
+              <NuxtLink to="/contacts" class="btn-outline-light px-6 py-2.5 rounded text-sm">
+                Contact Us
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
+
         <img
-          v-for="game in games"
-          :key="game.src"
-          :ref="(el) => setPhoneRef(el as HTMLElement | null, game.slot)"
-          :src="game.src"
-          :alt="game.alt"
-          width="238"
-          height="322"
+          src="/images/phone-frame.png"
+          alt=""
+          aria-hidden="true"
+          width="974"
+          height="479"
           loading="lazy"
           decoding="async"
-          class="game-phone"
-          :class="`phone-${game.slot}`"
+          class="phone-frame"
         />
+      </div>
+
+      <!-- below lg the phone screen is too small to hold this, so the copy stands alone -->
+      <div class="lg:hidden rounded-xl bg-black/70 backdrop-blur-sm p-7">
+        <SectionHeading title="Who We Are" align="left" class="mb-6" />
+        <p
+          v-for="(para, i) in paragraphs"
+          :key="i"
+          class="text-white/80 text-base leading-relaxed mb-4"
+        >
+          {{ para }}
+        </p>
+        <div class="flex flex-wrap gap-4 mt-6">
+          <NuxtLink to="/about" class="btn-light px-7 py-3 rounded">Read More</NuxtLink>
+          <NuxtLink to="/contacts" class="btn-outline-light px-7 py-3 rounded">Contact Us</NuxtLink>
+        </div>
       </div>
     </div>
   </section>
@@ -54,137 +94,176 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const games = [
-  { slot: 'left', src: '/images/table-games.webp', alt: 'Blackjack table game on mobile' },
-  { slot: 'right', src: '/images/live-casino.webp', alt: 'Live roulette on mobile' },
-  { slot: 'front', src: '/images/slot-games.webp', alt: 'Slot game on mobile' },
-] as const
+const paragraphs = [
+  'One Visaya Gaming Corporation has been in online entertainment since 2022. We build the platform, the games, and the player systems a gaming operation runs on, and we keep them up and honest under real traffic.',
+  'We were founded by a group of professionals and veteran investors, and we operate under the PAGCOR codes of conduct.',
+]
 
 const sectionEl = ref<HTMLElement>()
-const titleTextEl = ref<HTMLElement>()
-const titleBarEl = ref<HTMLElement>()
-const textContent = ref<HTMLElement>()
-const showcaseEl = ref<HTMLElement>()
-const phoneEls = new Map<string, HTMLElement>()
+const bgEl = ref<HTMLElement>()
+const screenBgEl = ref<HTMLElement>()
+const tintEl = ref<HTMLElement>()
+const fadeEl = ref<HTMLElement>()
 
-function setPhoneRef(el: HTMLElement | null, slot: string) {
-  if (el) phoneEls.set(slot, el)
-  else phoneEls.delete(slot)
+// hero grid-floor black -> What We Do plum
+const TINT_START = 'rgba(11, 1, 24, 0.86)'
+const TINT_END = 'rgba(26, 4, 44, 0.86)'
+const FADE_START = 'rgb(11, 1, 24)'
+const FADE_END = 'rgb(26, 4, 44)'
+
+const mm = gsap.matchMedia()
+
+// how far a backdrop can travel before its bottom edge would show
+function travelOf(img: HTMLElement | undefined, frame: HTMLElement | undefined) {
+  return () => -Math.max(0, (img?.offsetHeight ?? 0) - (frame?.offsetHeight ?? 0))
 }
-
-let titleTrigger: ScrollTrigger | undefined
-const floats: gsap.core.Tween[] = []
 
 onMounted(() => {
   if (!sectionEl.value) return
 
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  // Desktop: pin, run both parallaxes, then hand over to the CTA.
+  // Not on touch — pinning fights momentum scrolling and the address-bar resize.
+  mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', () => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionEl.value,
+        start: 'top top',
+        end: '+=220%',
+        scrub: true,
+        pin: true,
+        pinSpacing: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      },
+    })
 
-  const tl = gsap.timeline({
-    defaults: { ease: 'power3.out' },
-    scrollTrigger: {
-      trigger: sectionEl.value,
-      start: 'top 75%',
-      toggleActions: 'play none none none',
-    },
+    tl.fromTo(bgEl.value!, { y: 0 }, { y: travelOf(bgEl.value, sectionEl.value), ease: 'none', duration: 1 }, 0)
+    tl.fromTo(
+      screenBgEl.value!,
+      { y: 0 },
+      { y: travelOf(screenBgEl.value, screenBgEl.value?.parentElement), ease: 'none', duration: 1 },
+      0,
+    )
+    tl.fromTo(tintEl.value!, { backgroundColor: TINT_START }, { backgroundColor: TINT_END, ease: 'none', duration: 1 }, 0)
+    tl.fromTo(fadeEl.value!, { backgroundColor: FADE_START }, { backgroundColor: FADE_END, ease: 'none', duration: 1 }, 0)
+
+
+    return () => tl.scrollTrigger?.kill()
   })
 
-  if (titleTextEl.value && titleBarEl.value) {
-    tl.to(titleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
-    tl.to(titleBarEl.value, { xPercent: -101, duration: 0.7 }, '<')
-  }
-
-  if (textContent.value) {
-    tl.from(
-      textContent.value.querySelectorAll('p, .flex'),
-      { opacity: 0, y: 30, duration: 0.8, stagger: 0.15 },
-      '-=0.3',
+  // Below lg: drift the backdrop only, no pin
+  mm.add('(max-width: 1023px) and (prefers-reduced-motion: no-preference)', () => {
+    const tween = gsap.fromTo(
+      bgEl.value!,
+      { y: 0 },
+      {
+        y: travelOf(bgEl.value, sectionEl.value),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: sectionEl.value,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+          invalidateOnRefresh: true,
+        },
+      },
     )
-  }
+    gsap.fromTo(tintEl.value!, { backgroundColor: TINT_START }, {
+      backgroundColor: TINT_END,
+      ease: 'none',
+      scrollTrigger: { trigger: sectionEl.value, start: 'top bottom', end: 'bottom top', scrub: true },
+    })
+    gsap.fromTo(fadeEl.value!, { backgroundColor: FADE_START }, {
+      backgroundColor: FADE_END,
+      ease: 'none',
+      scrollTrigger: { trigger: sectionEl.value, start: 'top bottom', end: 'bottom top', scrub: true },
+    })
 
-  // fan in: back phones spread outward, front one rises last
-  const order = ['left', 'right', 'front'].map((s) => phoneEls.get(s)).filter(Boolean) as HTMLElement[]
-  if (order.length) {
-    tl.from(order, { opacity: 0, y: 40, scale: 0.92, duration: 0.8, stagger: 0.12 }, '-=0.5')
-  }
-
-  // each phone drifts at its own speed so the stack feels layered
-  if (!reduced) {
-    const drift: Record<string, number> = { left: 4.2, right: 5.1, front: 3.6 }
-    for (const [slot, el] of phoneEls) {
-      floats.push(
-        gsap.to(el, {
-          y: slot === 'front' ? -14 : -9,
-          duration: drift[slot] ?? 4,
-          ease: 'sine.inOut',
-          repeat: -1,
-          yoyo: true,
-        }),
-      )
-    }
-  }
-
-  titleTrigger = tl.scrollTrigger
+    return () => tween.scrollTrigger?.kill()
+  })
 })
 
 onBeforeUnmount(() => {
-  titleTrigger?.kill()
-  floats.forEach((t) => t.kill())
+  mm.revert()
 })
 </script>
 
 <style scoped>
-.reveal {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
+/* natural aspect, not cover — the artwork is far taller than the section,
+   and the parallax walks it from its top edge to its bottom edge */
+.section-tint {
+  background-color: rgba(11, 1, 24, 0.86);
+  pointer-events: none;
 }
-.reveal-text {
-  display: inline-block;
-  clip-path: inset(0 0 0 100%);
-}
-.reveal-bar {
+
+/* one element, faded at both ends: solid at the top and bottom edges where the
+   neighbouring sections meet, clear through the middle so the photo reads */
+.section-fade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-coral));
+  pointer-events: none;
+  background-color: rgb(11, 1, 24);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 24%, transparent 76%, #000 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 24%, transparent 76%, #000 100%);
+}
+
+.section-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
   pointer-events: none;
   will-change: transform;
 }
 
-/* Fanned product stack. GSAP owns y, so tilt/offset live in a separate property. */
-.game-phone {
-  position: absolute;
-  width: 168px;
+.phone {
+  position: relative;
+  width: 100%;
+  max-width: 56rem;
+  margin-inline: auto;
+  filter: drop-shadow(0 40px 70px rgba(0, 0, 0, 0.75));
+}
+
+.phone-frame {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
   height: auto;
-  border-radius: 20px;
+  pointer-events: none;
+}
+
+/* Measured as the union of every screen-coloured pixel, not a scan from the
+   centre: the notch sits inside the screen and stops a centre scan short. */
+.phone-screen {
+  position: absolute;
+  left: 2.26%;
+  top: 5.22%;
+  width: 95.48%;
+  height: 89.56%;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 1.6rem;
+}
+
+.screen-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
   will-change: transform;
 }
 
-@media (min-width: 768px) {
-  .game-phone { width: 214px; }
-}
-
-.phone-left,
-.phone-right {
-  filter: brightness(0.72) saturate(0.9);
-  z-index: 1;
-}
-
-.phone-left {
-  translate: -56% 0;
-  rotate: -9deg;
-  scale: 0.9;
-}
-
-.phone-right {
-  translate: 56% 0;
-  rotate: 9deg;
-  scale: 0.9;
-}
-
-.phone-front {
-  z-index: 2;
-  filter: drop-shadow(0 26px 50px rgba(237, 24, 121, 0.28))
-    drop-shadow(0 14px 30px rgba(0, 0, 0, 0.75));
+.screen-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 3rem;
 }
 </style>
