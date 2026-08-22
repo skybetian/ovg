@@ -37,7 +37,9 @@ onMounted(() => {
     const whoWeAre = document.querySelectorAll('section')[1] as HTMLElement | undefined
     if (!flyer || !badge || !whoWeAre) return
 
-    gsap.set(badge, { opacity: 0 })
+    // the rays point at the badge, so they stay hidden until it has landed
+    const connectors = document.querySelector<HTMLElement>('.wwd-connectors')
+    gsap.set([badge, connectors].filter(Boolean), { opacity: 0 })
 
     // The badge's resting spot on screen: its own x (unaffected by scroll) and
     // vertically centred, which is where trigger B fires.
@@ -115,12 +117,12 @@ onMounted(() => {
       onEnter: () => {
         landed = true
         gsap.set(flyer, { opacity: 0 })
-        gsap.set(badge, { opacity: 1 })
+        gsap.set([badge, connectors].filter(Boolean), { opacity: 1 })
       },
       onLeaveBack: () => {
         landed = false
         gsap.set(flyer, { opacity: 1 })
-        gsap.set(badge, { opacity: 0 })
+        gsap.set([badge, connectors].filter(Boolean), { opacity: 0 })
       },
     })
 
@@ -149,7 +151,7 @@ onMounted(() => {
     return () => {
       flight.scrollTrigger?.kill()
       handoff.kill()
-      gsap.set(badge, { clearProps: 'opacity' })
+      gsap.set([badge, connectors].filter(Boolean), { clearProps: 'opacity' })
     }
   })
 })

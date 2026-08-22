@@ -1,11 +1,6 @@
 <template>
   <div ref="rootEl" :class="['section-heading', { 'is-in': shown }, align === 'left' ? 'text-left' : 'text-center']">
-    <p v-if="eyebrow" class="eyebrow">
-      <span class="chevrons" aria-hidden="true">
-        <span /><span /><span />
-      </span>
-      {{ eyebrow }}
-    </p>
+    <p v-if="eyebrow" class="eyebrow">{{ eyebrow }}</p>
 
     <!-- words are split for the reveal, so the real title lives on aria-label -->
     <component :is="as" :class="['heading font-outfit', sizeClass]" :aria-label="title">
@@ -64,9 +59,7 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
+  display: inline-block;
   margin-bottom: 0.85rem;
   font-size: 0.875rem;
   font-weight: 500;
@@ -80,20 +73,6 @@ onBeforeUnmount(() => {
   transform: translateX(0);
 }
 
-/* three chevrons echoing the hero flanks, brightest nearest the label */
-.chevrons {
-  display: inline-flex;
-  gap: 2px;
-}
-.chevrons span {
-  width: 5px;
-  height: 5px;
-  border-top: 1.5px solid var(--color-primary);
-  border-right: 1.5px solid var(--color-primary);
-  transform: rotate(45deg);
-}
-.chevrons span:nth-child(1) { opacity: 0.35; }
-.chevrons span:nth-child(2) { opacity: 0.65; }
 
 .heading {
   font-weight: 700;
