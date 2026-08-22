@@ -7,7 +7,7 @@
           alt="One Visaya Gaming"
           width="262"
           height="44"
-          class="h-10 w-auto"
+          class="nav-logo h-10 w-auto"
         />
       </NuxtLink>
 
