@@ -30,8 +30,8 @@
                 :max-dot-size="4.1"
                 :threshold="0.08"
                 :contrast="1.2"
-                dot-color="#FFFFFF"
-                background-color="#000000"
+                dot-color="#ffffff"
+                background-color="#2f0d44"
                 :square="true"
               />
             </div>
