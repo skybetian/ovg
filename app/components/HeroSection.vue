@@ -1,5 +1,5 @@
 <template>
-  <section class="relative flex items-center justify-center overflow-hidden bg-black pt-24 pb-32 lg:py-0 lg:min-h-dvh">
+  <section class="relative flex items-center justify-center overflow-hidden bg-black min-h-dvh pt-24 pb-32 lg:py-0">
     <video
       ref="videoEl"
       autoplay
@@ -182,18 +182,6 @@ onMounted(() => {
 /* ponytail: brightness is the dial — 0.35 for near-black, 0.85 for the original */
 .brand-tint {
   filter: sepia(1) hue-rotate(255deg) saturate(4) brightness(0.25);
-}
-
-.grad-line {
-  background: linear-gradient(
-    90deg,
-    var(--color-magenta-deep) 0%,
-    var(--color-primary) 15%,
-    var(--color-coral) 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 
 /* Synthwave floor: flat grid tipped away from the camera */

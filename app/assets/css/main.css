@@ -33,59 +33,92 @@ body {
   position: relative;
 }
 
-/* Buttons — slide-fill hover */
-.btn-primary {
+/* Buttons: one shared arrowhead wipe — --btn-fill is the colour that sweeps in.
+   Each variant only declares its own resting colours. */
+.btn-primary,
+.btn-outline-light,
+.btn-light {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
   font-weight: 500;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.btn-primary::before,
+.btn-outline-light::before,
+.btn-light::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 130%;
+  z-index: -1;
+  background-color: var(--btn-fill);
+  clip-path: polygon(0 0, calc(100% - 1.5rem) 0, 100% 50%, calc(100% - 1.5rem) 100%, 0 100%);
+  transform: translateX(-100%);
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-primary:hover::before,
+.btn-outline-light:hover::before,
+.btn-light:hover::before {
+  transform: translateX(0);
+}
+
+.btn-primary {
+  --btn-fill: #ffffff;
   color: #ffffff;
   border: 1px solid var(--color-primary-deep);
-  background-image: linear-gradient(to right, #ffffff 50%, var(--color-primary-deep) 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
-  transition: background-position 0.4s ease, color 0.3s ease;
+  background-color: var(--color-primary-deep);
 }
 .btn-primary:hover {
-  background-position: left bottom;
   color: var(--color-primary-deep);
+  border-color: #ffffff;
 }
 
 .btn-outline-light {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  font-weight: 500;
+  --btn-fill: #ffffff;
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.6);
-  background-image: linear-gradient(to right, #ffffff 50%, transparent 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
-  transition: background-position 0.4s ease, color 0.3s ease, border-color 0.3s ease;
+  background-color: transparent;
 }
 .btn-outline-light:hover {
-  background-position: left bottom;
   color: var(--color-black);
   border-color: #ffffff;
 }
 
 .btn-light {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  font-weight: 500;
+  --btn-fill: var(--color-primary-deep);
   color: var(--color-primary-deep);
-  background-image: linear-gradient(to right, var(--color-primary-deep) 50%, #ffffff 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
-  transition: background-position 0.4s ease, color 0.3s ease;
+  background-color: #ffffff;
 }
 .btn-light:hover {
-  background-position: left bottom;
   color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary::before,
+  .btn-outline-light::before,
+  .btn-light::before {
+    transition: none;
+  }
+}
+
+/* Brand gradient text — shared by the hero headline and the About timeline years */
+.grad-line {
+  background: linear-gradient(
+    90deg,
+    var(--color-magenta-deep) 0%,
+    var(--color-primary) 15%,
+    var(--color-coral) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Nav links — underline grows from 0 → full width on hover (matches .footer-link) */
@@ -129,4 +162,35 @@ body {
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Carousel track — pointer-drag paging, shared by Testimonials and Game Categories.
+   cubic-bezier matches Tailwind's ease-out (not the CSS keyword) so timing stays identical. */
+.carousel-track {
+  transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track {
+    transition: none;
+  }
+}
+
+/* Carousel pagination dots — shared by every drag/scroll carousel on the site */
+.dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.22);
+  transition: background-color 0.3s ease, width 0.3s ease;
+}
+.dot:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+.dot-on {
+  width: 1.6rem;
+  background: var(--color-primary);
+}
+.dot:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
 }

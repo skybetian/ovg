@@ -4,7 +4,7 @@
       <div class="flex flex-col lg:flex-row lg:justify-between gap-12 lg:gap-16">
         <!-- Left: Logo, description, buttons -->
         <div ref="leftColEl" class="max-w-md">
-          <img src="/images/logo-ovg.png" alt="One Visaya Gaming" class="h-12 mb-6" />
+          <img src="/images/logo-ovg.webp" alt="One Visaya Gaming" class="h-12 mb-6" />
           <p class="text-white/70 text-sm leading-relaxed mb-8">
             One Visaya Gaming Corporation has been in the business of online
             entertainment since 2022, operating with strict adherence to the
@@ -76,7 +76,7 @@
           <div>
             <h3 class="text-lg font-bold mb-5">Connect with us</h3>
             <div class="flex gap-3">
-              <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon">
+              <a href="https://www.linkedin.com/company/one-visaya-gaming-corporation/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon">
                 <img src="/images/linkedin.webp" alt="LinkedIn" class="w-9 h-9" />
               </a>
             </div>

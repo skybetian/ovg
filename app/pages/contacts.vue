@@ -6,9 +6,9 @@
       paragraph="Contact us for business inquiries, technical support, or collaboration opportunities."
       cta-to="#lets-talk"
       cta-label="Send Us Inquiry"
-      image="/images/usa.webp"
-      image-alt="United States map"
-      bg-image="/images/contacts-bg.webp"
+      image="/images/contact-us.webp"
+      image-alt="Smiling support agent wearing a headset, framed by playing cards and chips"
+      bg-image="/images/contact-us-section.webp"
     />
 
     <!-- Let's Talk -->
@@ -17,19 +17,20 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <!-- Left: info -->
           <div ref="letsTalkInfoEl">
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-outfit mb-6">
-              <span class="reveal">
-                <span ref="letsTalkTitleTextEl" class="reveal-text">Let&rsquo;s Talk</span>
-                <span ref="letsTalkTitleBarEl" class="reveal-bar" />
-              </span>
-            </h2>
+            <SectionHeading
+              eyebrow="Get in Touch"
+              title="Let’s Talk"
+              align="left"
+              size-class="text-4xl md:text-5xl lg:text-6xl"
+              class="mb-6"
+            />
             <p class="text-white/70 text-base md:text-lg leading-relaxed max-w-md mb-12">
               Have some big idea or brand to develop and need help? Then reach out we&rsquo;d love to hear about your project and provide help
             </p>
 
             <h3 class="text-2xl font-bold text-white font-outfit mb-3">Location</h3>
             <p class="text-white/70 mb-10">
-              <!-- TODO: real OVG address -->Visayas, Philippines
+              Cebu, Central Visayas, Philippines
             </p>
 
             <h3 class="text-2xl font-bold text-white font-outfit mb-3">Email</h3>
@@ -38,7 +39,7 @@
             <h3 class="text-2xl font-bold text-white font-outfit mb-4">Socials</h3>
             <ul class="space-y-3">
               <li>
-                <a href="#" target="_blank" rel="noopener" class="text-sky-blue underline underline-offset-4 hover:text-primary transition-colors">
+                <a href="https://www.linkedin.com/company/one-visaya-gaming-corporation/" target="_blank" rel="noopener" class="text-sky-blue underline underline-offset-4 hover:text-primary transition-colors">
                   LinkedIn
                 </a>
               </li>
@@ -131,8 +132,6 @@ gsap.registerPlugin(ScrollTrigger)
 
 const letsTalkEl = ref<HTMLElement>()
 const letsTalkInfoEl = ref<HTMLElement>()
-const letsTalkTitleTextEl = ref<HTMLElement>()
-const letsTalkTitleBarEl = ref<HTMLElement>()
 const letsTalkFormEl = ref<HTMLFormElement>()
 
 let letsTalkTrigger: ScrollTrigger | undefined
@@ -149,26 +148,22 @@ onMounted(() => {
     },
   })
 
-  // Title reveal
-  if (letsTalkTitleTextEl.value && letsTalkTitleBarEl.value) {
-    tl.to(letsTalkTitleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
-    tl.to(letsTalkTitleBarEl.value, { xPercent: -101, duration: 0.7 }, '<')
-  }
-
   // Info content fade up
   if (letsTalkInfoEl.value) {
     tl.from(
       letsTalkInfoEl.value.querySelectorAll('p, h3, ul'),
       { opacity: 0, y: 30, duration: 0.7, stagger: 0.1 },
-      '-=0.3',
+      0,
     )
   }
 
-  // Form slide in from right
+  // Form slide in from right; mobile rises up instead — an x-transform on a w-full
+  // grid item with no overflow-hidden ancestor here would overflow the viewport.
   if (letsTalkFormEl.value) {
+    const isMobile = window.innerWidth < 1024
     tl.from(
       letsTalkFormEl.value,
-      { opacity: 0, x: 60, duration: 0.9, ease: 'power3.out' },
+      { opacity: 0, ...(isMobile ? { y: 40 } : { x: 60 }), duration: 0.9, ease: 'power3.out' },
       '<',
     )
   }
@@ -247,21 +242,3 @@ async function onSubmit() {
 }
 </script>
 
-<style scoped>
-.reveal {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-}
-.reveal-text {
-  display: inline-block;
-  clip-path: inset(0 0 0 100%);
-}
-.reveal-bar {
-  position: absolute;
-  inset: 0;
-  background: #ffffff;
-  pointer-events: none;
-  will-change: transform;
-}
-</style>

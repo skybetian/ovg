@@ -1,15 +1,13 @@
 <template>
   <section ref="sectionEl" class="bg-navy py-16 md:py-24 overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 md:px-16">
-      <div ref="headingEl" class="text-center mb-12 md:mb-16">
-        <p class="text-cool-gray font-medium text-sm mb-2">The Leaders</p>
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 font-outfit">
-          <span class="reveal">
-            <span ref="titleTextEl" class="reveal-text">The Team Behind SkyTech</span>
-            <span ref="titleBarEl" class="reveal-bar" />
-          </span>
-        </h2>
-        <p class="text-white/60 text-base">
+      <div class="text-center mb-12 md:mb-16">
+        <SectionHeading
+          eyebrow="The Leaders"
+          title="The Team Behind SkyTech"
+          class="mb-4"
+        />
+        <p ref="subtitleEl" class="text-white/60 text-base">
           Meet the experienced leaders driving innovation, strategy, and growth.
         </p>
       </div>
@@ -88,9 +86,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const sectionEl = ref<HTMLElement>()
-const headingEl = ref<HTMLElement>()
-const titleTextEl = ref<HTMLElement>()
-const titleBarEl = ref<HTMLElement>()
+const subtitleEl = ref<HTMLElement>()
 
 const currentSlide = ref(1)
 let pointerId: number | null = null
@@ -175,17 +171,8 @@ onMounted(() => {
     },
   })
 
-  if (titleTextEl.value && titleBarEl.value) {
-    tl.to(titleTextEl.value, { clipPath: 'inset(0 0 0 0%)', duration: 0.7 }, 0.1)
-    tl.to(titleBarEl.value, { xPercent: -101, duration: 0.7 }, '<')
-  }
-
-  if (headingEl.value) {
-    tl.from(
-      headingEl.value.querySelectorAll('p'),
-      { opacity: 0, y: 20, duration: 0.6 },
-      '-=0.4',
-    )
+  if (subtitleEl.value) {
+    tl.from(subtitleEl.value, { opacity: 0, y: 20, duration: 0.6 }, 0)
   }
 
   headingTrigger = tl.scrollTrigger
@@ -242,21 +229,5 @@ function onPointerEnd(e: PointerEvent) {
   background: #f0f5ff;
   border-color: rgba(237, 24, 121, 0.25);
   box-shadow: 0 8px 30px -8px rgba(0, 0, 0, 0.15);
-}
-.reveal {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-}
-.reveal-text {
-  display: inline-block;
-  clip-path: inset(0 0 0 100%);
-}
-.reveal-bar {
-  position: absolute;
-  inset: 0;
-  background: var(--color-white);
-  pointer-events: none;
-  will-change: transform;
 }
 </style>

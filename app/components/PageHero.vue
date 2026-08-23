@@ -5,10 +5,11 @@
       alt=""
       :class="['absolute inset-0 w-full h-full object-cover opacity-40', bgPosition ? `object-${bgPosition}` : '']"
     />
-    <div
+    <!-- temporarily off so the new bg art can be judged on its own -->
+    <!-- <div
       class="absolute inset-0"
       style="background: linear-gradient(to bottom, #0B0118 0%, rgba(123, 1, 141, 0.7) 100%)"
-    />
+    /> -->
 
     <div :class="['relative z-10 max-w-7xl mx-auto px-6 md:px-16 w-full', image ? 'grid grid-cols-1 lg:grid-cols-2 gap-12 items-center' : 'flex justify-center']">
       <div ref="textContent" :class="['flex flex-col', image ? 'order-2 lg:order-1 text-center lg:text-left items-center lg:items-start' : 'text-center items-center']">
@@ -59,6 +60,13 @@ const titleTextEl = ref<HTMLElement>()
 const titleBarEl = ref<HTMLElement>()
 
 onMounted(() => {
+  // Reduced motion: land on the finished state, skip the reveal entirely
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (titleTextEl.value) titleTextEl.value.style.clipPath = 'inset(0 0 0 0%)'
+    if (titleBarEl.value) titleBarEl.value.style.display = 'none'
+    return
+  }
+
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
   if (titleTextEl.value && titleBarEl.value) {
@@ -75,13 +83,7 @@ onMounted(() => {
   }
 
   if (heroImage.value) {
-    gsap.from(heroImage.value, {
-      opacity: 0,
-      x: 60,
-      duration: 1,
-      delay: 0.3,
-      ease: 'power3.out',
-    })
+    tl.from(heroImage.value, { opacity: 0, x: 60, duration: 1 }, 0.3)
   }
 })
 </script>
@@ -99,7 +101,7 @@ onMounted(() => {
 .reveal-bar {
   position: absolute;
   inset: 0;
-  background: #ffffff;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-coral));
   pointer-events: none;
   will-change: transform;
 }

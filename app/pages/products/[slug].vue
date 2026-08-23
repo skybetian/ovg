@@ -64,9 +64,12 @@
     <!-- Gallery -->
     <section ref="galleryEl" class="bg-navy py-20 md:py-28">
       <div class="max-w-6xl mx-auto px-6 md:px-16">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-outfit mb-12">
-          Gallery
-        </h2>
+        <SectionHeading
+          title="Gallery"
+          align="left"
+          size-class="text-3xl md:text-4xl lg:text-5xl"
+          class="mb-12"
+        />
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <div
             v-for="(image, idx) in product.gallery"

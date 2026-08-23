@@ -151,7 +151,7 @@
         </div>
 
         <div class="service-card js-left-card rounded-xl p-6 md:p-8 lg:col-start-1 lg:row-start-1">
-          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg>
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 12C18.7956 12 19.5587 11.6839 20.1213 11.1213C20.6839 10.5587 21 9.79565 21 9V7C21 6.20435 20.6839 5.44129 20.1213 4.87868C19.5587 4.31607 18.7956 4 18 4H6C5.20435 4 4.44129 4.31607 3.87868 4.87868C3.31607 5.44129 3 6.20435 3 7V9C3 9.79565 3.31607 10.5587 3.87868 11.1213C4.44129 11.6839 5.20435 12 6 12M18 12H6M18 12C18.7956 12 19.5587 12.3161 20.1213 12.8787C20.6839 13.4413 21 14.2044 21 15V17C21 17.7956 20.6839 18.5587 20.1213 19.1213C19.5587 19.6839 18.7956 20 18 20H6C5.20435 20 4.44129 19.6839 3.87868 19.1213C3.31607 18.5587 3 17.7956 3 17V15C3 14.2044 3.31607 13.4413 3.87868 12.8787C4.44129 12.3161 5.20435 12 6 12M7 8V8.01M7 16V16.01"/></svg>
           <h3 class="text-xl font-bold text-white mb-3">Platform Development</h3>
           <p class="text-cool-gray text-sm leading-relaxed">
             The core platform, player wallet, back
@@ -161,7 +161,7 @@
         </div>
 
         <div class="service-card js-left-card rounded-xl p-6 md:p-8 lg:col-start-1 lg:row-start-2">
-          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 12h4M9 10v4"/><circle cx="15.5" cy="11" r="1"/><circle cx="17.5" cy="13.5" r="1"/><path d="M17.9 6H6.1a4 4 0 0 0-3.9 3.2l-1 5A3.4 3.4 0 0 0 4.5 18c1 0 1.9-.5 2.5-1.3L8.5 15h7l1.5 1.7c.6.8 1.5 1.3 2.5 1.3a3.4 3.4 0 0 0 3.3-3.8l-1-5A4 4 0 0 0 17.9 6Z"/></svg>
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 15.0003L18.07 19.2843C18.4128 19.645 18.8632 19.8847 19.3538 19.9677C19.8444 20.0506 20.3487 19.9722 20.7909 19.7443C21.2332 19.5163 21.5896 19.1511 21.8067 18.7034C22.0238 18.2557 22.0899 17.7497 21.995 17.2613L20.395 9.0293M8 9V11M7 10H9M14 10H16M15.5002 5C16.8263 5 18.0981 5.52678 19.0358 6.46447C19.9735 7.40215 20.5002 8.67392 20.5002 10C20.5002 11.3261 19.9735 12.5979 19.0358 13.5355C18.0981 14.4732 16.8263 15 15.5002 15H10.0002L5.98524 19.227C5.6418 19.5886 5.19014 19.8288 4.69832 19.9113C4.20651 19.9939 3.70118 19.9143 3.2585 19.6847C2.81582 19.4551 2.45977 19.0878 2.244 18.6382C2.02823 18.1886 1.96444 17.681 2.06224 17.192L3.69624 9.019C3.92305 7.88546 4.53563 6.86553 5.42974 6.13278C6.32384 5.40003 7.44423 4.99973 8.60024 5H15.5002Z"/></svg>
           <h3 class="text-xl font-bold text-white mb-3">Game Development</h3>
           <p class="text-cool-gray text-sm leading-relaxed">
             Slots, table games, and live-dealer
@@ -172,7 +172,7 @@
         </div>
 
         <div class="service-card js-right-card rounded-xl p-6 md:p-8 lg:col-start-3 lg:row-start-1">
-          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2.6"/><path d="M12 3v6.4M12 14.6V21M3 12h6.4M14.6 12H21"/><circle cx="12" cy="3" r="1.4"/><circle cx="12" cy="21" r="1.4"/><circle cx="3" cy="12" r="1.4"/><circle cx="21" cy="12" r="1.4"/></svg>
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 18C12.5304 18 13.0391 18.2107 13.4142 18.5858C13.7893 18.9609 14 19.4696 14 20C14 20.5304 13.7893 21.0391 13.4142 21.4142C13.0391 21.7893 12.5304 22 12 22C11.4696 22 10.9609 21.7893 10.5858 21.4142C10.2107 21.0391 10 20.5304 10 20C10 19.4696 10.2107 18.9609 10.5858 18.5858C10.9609 18.2107 11.4696 18 12 18ZM12 18V14M12 6C11.4696 6 10.9609 5.78929 10.5858 5.41421C10.2107 5.03914 10 4.53043 10 4C10 3.46957 10.2107 2.96086 10.5858 2.58579C10.9609 2.21071 11.4696 2 12 2C12.5304 2 13.0391 2.21071 13.4142 2.58579C13.7893 2.96086 14 3.46957 14 4C14 4.53043 13.7893 5.03914 13.4142 5.41421C13.0391 5.78929 12.5304 6 12 6ZM12 6V10M6 12C6 11.4696 5.78929 10.9609 5.41421 10.5858C5.03914 10.2107 4.53043 10 4 10C3.46957 10 2.96086 10.2107 2.58579 10.5858C2.21071 10.9609 2 11.4696 2 12C2 12.5304 2.21071 13.0391 2.58579 13.4142C2.96086 13.7893 3.46957 14 4 14C4.53043 14 5.03914 13.7893 5.41421 13.4142C5.78929 13.0391 6 12.5304 6 12ZM6 12H10M18 12C18 11.4696 18.2107 10.9609 18.5858 10.5858C18.9609 10.2107 19.4696 10 20 10C20.5304 10 21.0391 10.2107 21.4142 10.5858C21.7893 10.9609 22 11.4696 22 12C22 12.5304 21.7893 13.0391 21.4142 13.4142C21.0391 13.7893 20.5304 14 20 14C19.4696 14 18.9609 13.7893 18.5858 13.4142C18.2107 13.0391 18 12.5304 18 12ZM18 12H14M14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10M14 12C14 12.5304 13.7893 13.0391 13.4142 13.4142C13.0391 13.7893 12.5304 14 12 14M12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14"/></svg>
           <h3 class="text-xl font-bold text-white mb-3">Game Aggregation</h3>
           <p class="text-cool-gray text-sm leading-relaxed">
             One integration, many studios. A single
@@ -182,7 +182,7 @@
         </div>
 
         <div class="service-card js-right-card rounded-xl p-6 md:p-8 lg:col-start-3 lg:row-start-2">
-          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5.5c0 4.3 2.9 8.3 7 9.5 4.1-1.2 7-5.2 7-9.5V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.0008 21C10.444 20.5962 8.98429 19.8836 7.70836 18.9045C6.43242 17.9254 5.36632 16.6998 4.57341 15.3005C3.78049 13.9013 3.27694 12.3569 3.09269 10.7592C2.90843 9.16147 3.04722 7.54302 3.50081 6C6.61634 6.14257 9.66498 5.06658 12.0008 3C14.3366 5.06658 17.3853 6.14257 20.5008 6C20.9544 7.54302 21.0932 9.16147 20.9089 10.7592C20.7247 12.3569 20.2211 13.9013 19.4282 15.3005C18.6353 16.6998 17.5692 17.9254 16.2933 18.9045C15.0173 19.8836 13.5576 20.5962 12.0008 21ZM12.0008 3V21M3.5 12H20.5"/></svg>
           <h3 class="text-xl font-bold text-white mb-3">Compliance-First</h3>
           <p class="text-cool-gray text-sm leading-relaxed">
             Player verification, responsible gaming
