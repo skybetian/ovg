@@ -129,6 +129,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+useSeoMeta({
+  title: 'About OVGC',
+  description: 'Learn about One Visaya Gaming Corporation (OVGC): our mission, values, and journey building trusted, PAGCOR-compliant gaming technology since 2022.',
+})
+
 const overviewEl = ref<HTMLElement>()
 const overviewTextEl = ref<HTMLElement>()
 const overviewImageEl = ref<HTMLElement>()

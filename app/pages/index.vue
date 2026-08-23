@@ -26,6 +26,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+useSeoMeta({
+  title: 'Interactive Gaming Technology',
+  description: 'One Visaya Gaming Corporation (OVGC) is a Cebu-based gaming system administrator and content aggregator delivering trusted gaming solutions since 2022.',
+})
+
 const flyerEl = ref<HTMLElement>()
 const mm = gsap.matchMedia()
 

@@ -85,6 +85,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+useSeoMeta({
+  title: 'Privacy Policy',
+  description: 'How One Visaya Gaming Corporation (OVGC) collects, uses, and protects personal data across our website and gaming technology services, per applicable law.',
+})
+
 const contentEl = ref<HTMLElement>()
 
 let trigger: ScrollTrigger | undefined

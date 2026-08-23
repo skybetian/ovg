@@ -155,8 +155,18 @@ if (!product) {
   throw createError({ statusCode: 404, statusMessage: 'Product not found', fatal: true })
 }
 
-useHead({
-  title: `${product.name} — One Visaya Gaming Corporation`,
+// cuts on a word boundary so the description never ends mid-word
+function truncate(text: string, max = 155): string {
+  if (text.length <= max) return text
+  return `${text.slice(0, text.lastIndexOf(' ', max)).trimEnd()}…`
+}
+
+const config = useRuntimeConfig()
+
+useSeoMeta({
+  title: product.name,
+  description: truncate(product.intro),
+  ogImage: `${config.public.siteUrl}${product.hero}`,
 })
 
 const heroEl = ref<HTMLElement>()
