@@ -18,7 +18,7 @@
       >
         <div
           class="flex"
-          :class="dragging ? '' : 'transition-transform duration-500 ease-out'"
+          :class="dragging ? '' : 'carousel-track'"
           :style="trackStyle"
         >
           <!-- padded inside the page, not on the viewport: the viewport clip
@@ -106,61 +106,20 @@ const testimonials = [
 ]
 
 const sectionEl = ref<HTMLElement>()
-const viewportEl = ref<HTMLElement>()
 
 // 2 per page from lg up, 1 below — tablets get the single-column reading width
 const perPage = ref(1)
-const current = ref(0)
-const dragOffset = ref(0)
-const dragging = ref(false)
-
-const pages = computed(() => {
-  const out = []
-  for (let i = 0; i < testimonials.length; i += perPage.value) {
-    out.push(testimonials.slice(i, i + perPage.value))
-  }
-  return out
-})
-
-const trackStyle = computed(() => ({
-  transform: `translate3d(calc(${-current.value * 100}% + ${dragOffset.value}px), 0, 0)`,
-  touchAction: 'pan-y',
-  cursor: dragging.value ? 'grabbing' : 'grab',
-  userSelect: 'none' as const,
-}))
-
-let pointerId: number | null = null
-let startX = 0
-let trackWidth = 0
-
-function onDown(e: PointerEvent) {
-  if (!viewportEl.value || (e.pointerType === 'mouse' && e.button !== 0)) return
-  pointerId = e.pointerId
-  startX = e.clientX
-  trackWidth = viewportEl.value.clientWidth
-  dragging.value = true
-  ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
-}
-
-function onMove(e: PointerEvent) {
-  if (!dragging.value || e.pointerId !== pointerId) return
-  let delta = e.clientX - startX
-  const last = pages.value.length - 1
-  // rubber-band at the ends so it cannot be dragged into empty space
-  if ((current.value === 0 && delta > 0) || (current.value === last && delta < 0)) delta *= 0.35
-  dragOffset.value = delta
-}
-
-function onUp(e: PointerEvent) {
-  if (!dragging.value || e.pointerId !== pointerId) return
-  const threshold = Math.max(50, trackWidth * 0.15)
-  const last = pages.value.length - 1
-  if (dragOffset.value <= -threshold && current.value < last) current.value++
-  else if (dragOffset.value >= threshold && current.value > 0) current.value--
-  dragOffset.value = 0
-  dragging.value = false
-  pointerId = null
-}
+const {
+  viewportEl,
+  current,
+  dragging,
+  pages,
+  trackStyle,
+  onDown,
+  onMove,
+  onUp,
+  clampCurrent,
+} = useCarousel(computed(() => testimonials), perPage)
 
 let trigger: ScrollTrigger | undefined
 let mql: MediaQueryList | undefined
@@ -173,8 +132,7 @@ onMounted(() => {
   perPage.value = mql.matches ? 2 : 1
   onMql = (e) => {
     perPage.value = e.matches ? 2 : 1
-    // fewer pages after a resize can leave current past the end
-    current.value = Math.min(current.value, pages.value.length - 1)
+    clampCurrent()
   }
   mql.addEventListener('change', onMql)
 
@@ -231,22 +189,5 @@ onBeforeUnmount(() => {
   color: var(--color-coral);
 }
 
-.dot {
-  width: 0.6rem;
-  height: 0.6rem;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.22);
-  transition: background-color 0.3s ease, width 0.3s ease;
-}
-.dot:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-.dot-on {
-  width: 1.6rem;
-  background: var(--color-primary);
-}
-.dot:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 3px;
-}
+/* .dot / .dot-on / .carousel-track now live in main.css, shared across every carousel */
 </style>

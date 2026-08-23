@@ -62,13 +62,13 @@ withDefaults(defineProps<{ showReadMore?: boolean }>(), {
 const blocks = [
   {
     title: 'Our Vision',
-    body: 'To be the platform operators keep choosing, because it stays up and keeps getting better.',
+    body: 'To be a leading global force in interactive gaming technology, powering the future of digital gaming through world-class platforms, diverse content, and trusted solutions that enable partners to grow and lead, while building a borderless gaming ecosystem driven by innovation, security, scalability, and operational excellence that creates lasting value for partners and exceptional experiences for players worldwide.',
     image: '/images/vision-eye.webp',
     alt: 'Close-up of a human eye, rendered as a halftone print',
   },
   {
     title: 'Our Mission',
-    body: 'To build online entertainment technology that is safe to run and easy to grow. Our team has been in this industry for years, and we hold every product we ship to the PAGCOR codes of conduct.',
+    body: 'To shape the future of global gaming by connecting world-class technology, content, and experiences through secure, scalable, and innovative solutions. We strive to be a trusted partner to gaming businesses worldwide, driving growth through operational excellence, continuous innovation, and solutions that deliver lasting value and exceptional player experiences.',
     image: '/images/mission-rocket.webp',
     alt: 'A rocket on its launch pad, rendered as a halftone print',
   },

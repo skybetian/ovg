@@ -58,7 +58,7 @@
         </div>
 
         <img
-          src="/images/phone-frame.png"
+          src="/images/phone-frame.webp"
           alt=""
           aria-hidden="true"
           width="974"
@@ -95,8 +95,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const paragraphs = [
-  'One Visaya Gaming Corporation has been in online entertainment since 2022. We build the platform, the games, and the player systems a gaming operation runs on, and we keep them up and honest under real traffic.',
-  'We were founded by a group of professionals and veteran investors, and we operate under the PAGCOR codes of conduct.',
+  'One Visaya Gaming Corporation (OVGC) is a technology-driven gaming company shaping the future of digital gaming through innovative technology, diverse content, and trusted solutions. We bring technology, content, and operational expertise together into one ecosystem that lets our partners scale, compete, and thrive.',
+  'Built on innovation, security, scalability, and operational excellence, we deliver seamless player experiences and long-term partnerships founded on trust, performance, and shared growth.',
 ]
 
 const sectionEl = ref<HTMLElement>()
@@ -247,6 +247,16 @@ onBeforeUnmount(() => {
   border-radius: 1.6rem;
 }
 
+/* transparent at the top, half-black at the foot — keeps the copy legible over the parallax */
+.phone-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
 .screen-bg {
   position: absolute;
   top: 0;
@@ -259,6 +269,7 @@ onBeforeUnmount(() => {
 .screen-content {
   position: absolute;
   inset: 0;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
