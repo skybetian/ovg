@@ -1,2 +1,4 @@
 User-Agent: *
 Disallow:
+
+Sitemap: https://REPLACE_WITH_PRODUCTION_DOMAIN.example/sitemap.xml

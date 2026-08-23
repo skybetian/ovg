@@ -121,38 +121,47 @@ body {
   color: transparent;
 }
 
-/* Nav links — underline grows from 0 → full width on hover (matches .footer-link) */
-.nav-link-shift {
-  display: inline-block;
-  padding: 0.5rem 0;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
-  background-image: linear-gradient(#ffffff, #ffffff);
-  background-repeat: no-repeat;
-  background-size: 0% 1px;
-  background-position: left bottom;
-  transition: background-size 0.4s ease, color 0.3s ease;
-}
-.nav-link-shift:hover {
-  color: #ffffff;
-  background-size: 100% 1px;
-}
-
-/* Footer links — underline grows from 0 → full width on hover */
+/* same radial brand gradient the navbar links use, opening from the centre */
 .footer-link {
+  position: relative;
   display: inline-block;
+  padding-bottom: 4px;
   color: rgba(255, 255, 255, 0.8);
-  background-image: linear-gradient(#ffffff, #ffffff);
-  background-repeat: no-repeat;
-  background-size: 0% 1px;
-  background-position: left bottom;
-  padding-bottom: 2px;
-  transition: background-size 0.4s ease, color 0.3s ease;
+  background-image: radial-gradient(
+    ellipse 70% 100% at 50% 50%,
+    var(--color-coral) 0%,
+    var(--color-primary) 55%,
+    var(--color-magenta-deep) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: color 0.35s ease;
+}
+.footer-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: inherit;
+  background-clip: border-box;
+  transform: scaleX(0);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .footer-link:hover {
-  color: #ffffff;
-  background-size: 100% 1px;
+  color: transparent;
+}
+.footer-link:hover::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-link,
+  .footer-link::after {
+    transition: none;
+  }
 }
 
 /* Hide scrollbar but keep scroll functionality */
@@ -168,6 +177,11 @@ body {
    cubic-bezier matches Tailwind's ease-out (not the CSS keyword) so timing stays identical. */
 .carousel-track {
   transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1);
+}
+/* Backstop for WebKit/Blink; Firefox has no CSS equivalent so images still need draggable="false" in markup */
+.carousel-track img {
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 @media (prefers-reduced-motion: reduce) {
   .carousel-track {

@@ -124,6 +124,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+useSeoMeta({
+  title: 'Terms of Use',
+  description: 'Terms of Use for One Visaya Gaming Corporation (OVGC), covering compliance controls, jurisdictional restrictions, and acceptable use of this website.',
+})
+
 const contentEl = ref<HTMLElement>()
 
 let trigger: ScrollTrigger | undefined

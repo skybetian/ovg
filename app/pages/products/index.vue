@@ -62,7 +62,8 @@
       </div>
     </section>
 
-    <!-- Tilted Banner -->
+    <!-- Tilted Banner: parked. Its refs and GSAP tilt are commented out in <script setup>. -->
+    <!--
     <div ref="bannerEl" class="relative bg-navy-dark py-16 md:py-20 overflow-hidden">
       <div
         ref="bannerStripEl"
@@ -73,8 +74,10 @@
         </p>
       </div>
     </div>
+    -->
 
-    <!-- Game Categories -->
+    <!-- Game Categories: parked. Its refs, carousel wiring and GSAP block are commented out in <script setup>. -->
+    <!--
     <section ref="categoriesEl" class="bg-navy-dark pt-20 pb-28 md:pt-28 md:pb-36">
       <div class="max-w-7xl mx-auto px-6 md:px-16">
         <div class="text-center mb-12 md:mb-16">
@@ -104,10 +107,12 @@
               :aria-hidden="pageIndex !== categoriesCurrent"
             >
               <div v-for="category in page" :key="category.title" class="category-card">
-                <!-- Title + description are baked into the artwork; alt carries both for screen readers -->
+                Title + description are baked into the artwork; alt carries both for screen readers
+                draggable=false: native img drag-and-drop fires pointercancel and kills our pointer-drag paging
                 <img
                   :src="category.image"
                   :alt="`${category.title}. ${category.description}`"
+                  draggable="false"
                   class="category-phone block w-full h-auto aspect-[238/484] object-contain"
                 />
               </div>
@@ -129,6 +134,7 @@
         </div>
       </div>
     </section>
+    -->
 
     <!-- Our Interactive Platform -->
     <section id="interactive-platform" ref="platformEl" class="bg-black py-20 md:py-28">
@@ -309,6 +315,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+useSeoMeta({
+  title: 'Gaming Products & Platforms',
+  description: "Explore OVGC's diverse gaming content and platforms — slot, table, live casino, arcade, live sports, and e-sports — engineered for security and scale.",
+})
+
 // declared up top: categoriesPerPage/platformCount below read these at setup time, not lazily
 const categories = [
   { title: 'Slot Games', description: 'Experience the thrill of every spin with action-packed slot games and exciting rewards.', image: '/images/slot-games.webp' },
@@ -328,9 +339,12 @@ const featuresEl = ref<HTMLElement>()
 const featuresTextEl = ref<HTMLElement>()
 const featuresGridEl = ref<HTMLElement>()
 
+/* parked with the Tilted Banner markup above
 const bannerEl = ref<HTMLElement>()
 const bannerStripEl = ref<HTMLElement>()
+*/
 
+/* parked with the Game Categories markup above
 const categoriesEl = ref<HTMLElement>()
 
 // 3 per page from lg, 2 from sm, 1 below — mirrors the old grid-cols-1/2/3 breakpoints
@@ -346,6 +360,7 @@ const {
   onUp: onCategoriesUp,
   clampCurrent: clampCategoriesCurrent,
 } = useCarousel(computed(() => categories), categoriesPerPage)
+*/
 
 let featuresTrigger: ScrollTrigger | undefined
 let categoriesTrigger: ScrollTrigger | undefined
@@ -358,8 +373,10 @@ const platformCtaEl = ref<HTMLElement>()
 const platformCurrent = ref(0)
 const platformCount = platforms.length + 4
 
+/* parked with the Game Categories markup above
 let categoriesMql: { sm: MediaQueryList; lg: MediaQueryList } | undefined
 let onCategoriesMql: (() => void) | undefined
+*/
 
 // Native scroll-snap drives the dots here (see Job 1 reasoning in the report) — step is
 // re-measured from the DOM each call so it stays correct across breakpoints, no cached width.
@@ -417,6 +434,7 @@ onMounted(() => {
     featuresTrigger = ftl.scrollTrigger
   }
 
+  /* parked with the Tilted Banner markup above
   // Banner tilt animation (scrubbed on scroll)
   if (bannerStripEl.value && bannerEl.value) {
     gsap.fromTo(
@@ -434,7 +452,9 @@ onMounted(() => {
       },
     )
   }
+  */
 
+  /* parked with the Game Categories markup above
   // Categories: perPage mirrors the old grid-cols-1/2/3 breakpoints (sm 640, lg 1024)
   categoriesMql = {
     sm: window.matchMedia('(min-width: 640px)'),
@@ -466,6 +486,7 @@ onMounted(() => {
 
     categoriesTrigger = ctl.scrollTrigger
   }
+  */
 
   // Platform dots: native scroll-snap drives them, no drag-carousel duplicate — see report
   onPlatformScroll()
@@ -522,12 +543,14 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   featuresTrigger?.kill()
-  categoriesTrigger?.kill()
+  // categoriesTrigger?.kill() — parked
   platformTrigger?.kill()
+  /* parked with the Game Categories markup above
   if (categoriesMql && onCategoriesMql) {
     categoriesMql.sm.removeEventListener('change', onCategoriesMql)
     categoriesMql.lg.removeEventListener('change', onCategoriesMql)
   }
+  */
   window.removeEventListener('resize', onPlatformScroll)
 })
 

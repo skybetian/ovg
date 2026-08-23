@@ -50,6 +50,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+useSeoMeta({
+  title: 'Cookie Policy',
+  description: 'Learn how One Visaya Gaming Corporation uses cookies and similar technologies to enhance functionality, performance, and security across our platforms.',
+})
+
 const contentEl = ref<HTMLElement>()
 
 let trigger: ScrollTrigger | undefined

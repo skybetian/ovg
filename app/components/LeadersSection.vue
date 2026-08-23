@@ -4,7 +4,7 @@
       <div class="text-center mb-12 md:mb-16">
         <SectionHeading
           eyebrow="The Leaders"
-          title="The Team Behind SkyTech"
+          title="The Team Behind One Visaya Gaming"
           class="mb-4"
         />
         <p ref="subtitleEl" class="text-white/60 text-base">
@@ -98,19 +98,19 @@ const leaders = [
     name: 'Wendy Wongso',
     role: 'Chief Executive Officer',
     image: '/images/wendy-wongso.webp',
-    bio: 'As Managing Member and CEO, Wendy leads Skytech\'s strategic direction and oversees all business operations. He brings extensive experience in technology management and business development to drive the company\'s growth in the fintech and interactive entertainment sectors.',
+    bio: 'As Managing Member and CEO, Wendy leads OVGC\'s strategic direction and oversees all business operations. He brings extensive experience in technology management and business development to drive the company\'s growth in the fintech and interactive entertainment sectors.',
   },
   {
     name: 'Rich Newman',
     role: 'Legal Advisor',
     image: '/images/rich-newman.webp',
-    bio: 'Rich serves as Legal Advisor, providing expert guidance on regulatory compliance, corporate governance, and legal strategy. His experience in U.S. gaming and technology law helps guide SkyTech in understanding and meeting applicable legal requirements across jurisdictions.',
+    bio: 'Rich serves as Legal Advisor, providing expert guidance on regulatory compliance, corporate governance, and legal strategy. His experience in U.S. gaming and technology law helps guide OVGC in understanding and meeting applicable legal requirements across jurisdictions.',
   },
   {
     name: 'Mark Munger',
     role: 'Compliance & Technology Advisor',
     image: '/images/mark-munger.webp',
-    bio: 'Mark advises on compliance strategy and technology architecture. With deep expertise in software engineering and fintech regulatory requirements, he provides guidance to help Skytech build platforms with security, scalability, and compliance at their core.',
+    bio: 'Mark advises on compliance strategy and technology architecture. With deep expertise in software engineering and fintech regulatory requirements, he provides guidance to help OVGC build platforms with security, scalability, and compliance at their core.',
   },
 ]
 

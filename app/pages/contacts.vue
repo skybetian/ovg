@@ -130,6 +130,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+useSeoMeta({
+  title: 'Contact Us',
+  description: 'Get in touch with One Visaya Gaming Corporation in Cebu, Central Visayas, Philippines for partnership inquiries, technical support, and collaboration.',
+})
+
 const letsTalkEl = ref<HTMLElement>()
 const letsTalkInfoEl = ref<HTMLElement>()
 const letsTalkFormEl = ref<HTMLFormElement>()
