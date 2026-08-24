@@ -57,10 +57,24 @@ onMounted(() => {
     // it departs from the navbar mark: same spot, same size, so at rest it
     // simply sits on top of the one already there
     const navLogo = document.querySelector<HTMLElement>('.nav-logo')
-    const startX = () => navLogo?.getBoundingClientRect().left ?? 0
-    const startY = () => navLogo?.getBoundingClientRect().top ?? 0
-    // the wordmark's monogram is square at its left, so its height is its width
-    const startScale = () => (navLogo?.offsetHeight ?? 40) / flyer.offsetWidth
+    // the stacked wordmark carries its monogram at the top, centred, so the
+    // departure box is that mark's, not the logo element's own corner.
+    // Fractions come straight from the asset: mark at x 120..315 of 440,
+    // rows 0..194 of 329, and square enough that its height is its width.
+    const MARK_LEFT = 120 / 440
+    const MARK_HEIGHT = 195 / 329
+    const navMark = () => {
+      const rect = navLogo?.getBoundingClientRect()
+      if (!rect) return { left: 0, top: 0, size: 40 }
+      return {
+        left: rect.left + rect.width * MARK_LEFT,
+        top: rect.top,
+        size: rect.height * MARK_HEIGHT,
+      }
+    }
+    const startX = () => navMark().left
+    const startY = () => navMark().top
+    const startScale = () => navMark().size / flyer.offsetWidth
 
     // Driven through a proxy rather than tweening x/y directly: the path
     // serpentines across the viewport while descending, and every point is

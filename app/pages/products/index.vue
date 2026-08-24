@@ -305,6 +305,7 @@
     </section> -->
 
     <GameProvidersSection />
+    <GameAggregatorSection />
 
   </div>
 </template>

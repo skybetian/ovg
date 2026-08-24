@@ -2,7 +2,7 @@
   <section ref="sectionEl" class="relative bg-navy-dark py-16 md:py-24 overflow-hidden">
     <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-16">
       <div class="text-center mb-12 md:mb-16">
-        <SectionHeading eyebrow="About Us" title="Why We Are Best" />
+        <SectionHeading eyebrow="About Us" title="Trusted & Innovative Platform" />
       </div>
 
       <div ref="blocksEl" class="space-y-14 md:space-y-20">

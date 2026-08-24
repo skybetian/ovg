@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto px-6 md:px-16">
       <div class="text-center mb-12">
         <SectionHeading
-          eyebrow="Strategic Partners"
+          eyebrow="Game Providers"
           title="The Studios Behind the Games"
           size-class="text-3xl md:text-4xl lg:text-5xl"
         />
@@ -62,6 +62,13 @@ onMounted(() => {
   }
 
   trigger = tl.scrollTrigger
+
+  // the logos load lazily and shift this section after mount, which otherwise
+  // leaves the trigger measuring a stale start it never reaches
+  nextTick(() => ScrollTrigger.refresh())
+  if (document.readyState !== 'complete') {
+    window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true })
+  }
 })
 
 onBeforeUnmount(() => {
@@ -71,7 +78,6 @@ onBeforeUnmount(() => {
 const providers = [
   { name: 'Evolution', logo: '/images/evolution.webp' },
   { name: 'Sexy', logo: '/images/sexy.webp' },
-  { name: 'Sanatech', logo: '/images/sanatech.webp' },
 ]
 </script>
 

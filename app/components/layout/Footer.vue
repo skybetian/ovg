@@ -1,16 +1,22 @@
 <template>
   <footer ref="footerEl" class="bg-black text-white">
     <div class="max-w-7xl mx-auto px-6 md:px-16 py-14 md:py-20">
-      <div class="flex flex-col lg:flex-row lg:justify-between gap-12 lg:gap-16">
+      <div class="flex flex-col items-center lg:items-start lg:flex-row lg:justify-between gap-12 lg:gap-16">
         <!-- Left: Logo, description, buttons -->
-        <div ref="leftColEl" class="max-w-md">
-          <img src="/images/logo-ovg.webp" alt="One Visaya Gaming" class="h-12 mb-6" />
+        <div ref="leftColEl" class="max-w-md text-center lg:text-left">
+          <img
+            src="/images/logo-ovg-stacked.webp"
+            alt="One Visaya Gaming"
+            width="440"
+            height="329"
+            class="w-40 md:w-48 h-auto mb-6 mx-auto lg:mx-0"
+          />
           <p class="text-white/70 text-sm leading-relaxed mb-8">
             One Visaya Gaming Corporation has been in the business of online
             entertainment since 2022, operating with strict adherence to the
             PAGCOR codes of conduct.
           </p>
-          <div class="flex flex-wrap gap-4">
+          <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
             <NuxtLink to="/contacts" class="btn-primary px-7 py-3 rounded">
               Get Started
             </NuxtLink>
@@ -21,9 +27,9 @@
         </div>
 
         <!-- Right: Links + Socials -->
-        <div ref="linksColsEl" class="flex flex-col gap-10">
+        <div ref="linksColsEl" class="flex flex-col gap-10 items-center lg:items-start">
           <!-- Row: Quick Links & Legal -->
-          <div class="grid grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
+          <div class="grid grid-cols-2 gap-8 sm:gap-12 lg:gap-16 text-center lg:text-left">
             <div>
               <h3 class="text-lg font-bold mb-6">Quick Links</h3>
               <ul class="space-y-3">
@@ -73,9 +79,9 @@
           </div>
 
           <!-- Connect with us -->
-          <div>
+          <div class="text-center lg:text-left">
             <h3 class="text-lg font-bold mb-5">Connect with us</h3>
-            <div class="flex gap-3">
+            <div class="flex gap-3 justify-center lg:justify-start">
               <a href="https://www.linkedin.com/company/one-visaya-gaming-corporation/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon">
                 <img src="/images/linkedin.webp" alt="LinkedIn" class="w-9 h-9" />
               </a>

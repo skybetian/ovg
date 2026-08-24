@@ -137,6 +137,7 @@
     </Teleport>
 
     <GameProvidersSection />
+    <GameAggregatorSection />
   </div>
 </template>
 
